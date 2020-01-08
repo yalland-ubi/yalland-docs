@@ -1,5 +1,8 @@
 # DCtiy v2 обзор изменений
 
+![](../images/DCity-v2.png)
+
+
 ## ERC20
 
 - удаляется Mintable trait (овнер имеет право на минт)
