@@ -68,7 +68,7 @@
 |40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 
 Все разрешения динамически регулируются через БД.
-	
+    
 #### [1] Проверка валидности сессии.
 Запрос: 
 ```json
@@ -81,7 +81,13 @@
 ```json
 {
     "result":"success",
-    "role":ROLE_ID
+    "role":ROLE_ID,
+    "roleRights":
+    [
+        REQUEST_ID1,
+        REQUEST_ID2,
+        ...
+    ]
     <,"person":
     {
         "personId":ID,
@@ -106,14 +112,14 @@
 }
 ```
 "role" - идентификатор роли, под которой создана сессия. На текущий момент существуют следующие роли:
-- 1	- сайт;
-- 2	- администратор;
-- 3	- оператор;
-- 4	- регистратор;
-- 5	- пользователь;
-- 6	- магазин;
-- 7	- приложение;
-- 8	- бэкенд.
+- 1    - сайт;
+- 2    - администратор;
+- 3    - оператор;
+- 4    - регистратор;
+- 5    - пользователь;
+- 6    - магазин;
+- 7    - приложение;
+- 8    - бэкенд.
 
 Массив "person" передается только в случае, если сессия создана от пользователя системы (5).
 
@@ -131,7 +137,13 @@
 {
     "result":"success",
     "ssid":"SESSION_ID",
-    "role":ROLE_ID
+    "role":ROLE_ID,
+    "roleRights":
+    [
+        REQUEST_ID1,
+        REQUEST_ID2,
+        ...
+    ]
 }
 ````
 
@@ -139,13 +151,13 @@
 Запрос:
 ```json
 {
-	"request":"logout"
+    "request":"logout"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success"
+    "result":"success"
 }
 ```
 
@@ -153,65 +165,65 @@
 Запрос:
 ```json
 {
-	"request":"personList",
-	"ssid":"SESSION_ID"
-	<,"pageNumber":PAGE_NUMBER>
-	<,"amountOnPage":AMOUNT_ON_PAGE>
-	<,"orderBy":"FIELD_FOR_ORDER">
-	<,"orderAsc":TRUE>
-	<,"filter":
-	{
-		"personId":ID,
-		"registerDate":"REGISTER_DATE",
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"rowType":ROW_TYPE,
-		"rowOptions":ROW_OPTIONS,
-		"isActive":IS_ACTIVE,
-		"congeniality":CONGENIALITY,
-		"balance":BALANCE
-	}>
+    "request":"personList",
+    "ssid":"SESSION_ID"
+    <,"pageNumber":PAGE_NUMBER>
+    <,"amountOnPage":AMOUNT_ON_PAGE>
+    <,"orderBy":"FIELD_FOR_ORDER">
+    <,"orderAsc":TRUE>
+    <,"filter":
+    {
+        "personId":ID,
+        "registerDate":"REGISTER_DATE",
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "rowType":ROW_TYPE,
+        "rowOptions":ROW_OPTIONS,
+        "isActive":IS_ACTIVE,
+        "congeniality":CONGENIALITY,
+        "balance":BALANCE
+    }>
 }
 ````
 Ответ:
 ```json
 {
-	"result":"success",
-	"pagesAmount":PAGES_AMOUNT,
-	"pageNumber":PAGE_NUMBER,
-	"personList":
-	[
-		{
-			"personId":ID,
-			"registerDate":"REGISTER_DATE",
-			"firstName":"FIRST_NAME",
-			"secondName":"SECOND_NAME",
-			"gender":GENDER,
-			"dateOfBirth":"DATE_OF_BIRTH",
-			"phoneNumber":"PHONE_NUMBER",
-			"email":"EMAIL",
-			"passport":"PASSPORT_DATA",
-			"dateOfIssue":"DATE_OF_ISSUE",
-			"organization":"ORGANIZATION",
-			"registerAddress":"REGISTER_ADDRESS",
-			"walletAddress":"WALLET_ADDRESS",
-			"rowType":ROW_TYPE,
-			"rowOptions":ROW_OPTIONS,
-			"isActive":IS_ACTIVE,
-			"congeniality":CONGENIALITY,
-			"balance":BALANCE
-		},
-		...
-	]
+    "result":"success",
+    "pagesAmount":PAGES_AMOUNT,
+    "pageNumber":PAGE_NUMBER,
+    "personList":
+    [
+        {
+            "personId":ID,
+            "registerDate":"REGISTER_DATE",
+            "firstName":"FIRST_NAME",
+            "secondName":"SECOND_NAME",
+            "gender":GENDER,
+            "dateOfBirth":"DATE_OF_BIRTH",
+            "phoneNumber":"PHONE_NUMBER",
+            "email":"EMAIL",
+            "passport":"PASSPORT_DATA",
+            "dateOfIssue":"DATE_OF_ISSUE",
+            "organization":"ORGANIZATION",
+            "registerAddress":"REGISTER_ADDRESS",
+            "walletAddress":"WALLET_ADDRESS",
+            "rowType":ROW_TYPE,
+            "rowOptions":ROW_OPTIONS,
+            "isActive":IS_ACTIVE,
+            "congeniality":CONGENIALITY,
+            "balance":BALANCE
+        },
+        ...
+    ]
 }
 ```
 
@@ -219,41 +231,41 @@
 Запрос:
 ```json
 {
-	"request":"personShow",
-	"ssid":"SESSION_ID",
-	"personId":ID
+    "request":"personShow",
+    "ssid":"SESSION_ID",
+    "personId":ID
 }
 ````
 Ответ:
 ```json
 {
-	"result":"success",
-	"ssid":"SESSION_ID",
-	"role":ROLE_ID
-	<,"confirmPhone":true>,
-	"person":
-	{
-		"personId":ID,
-		"registerDate":"REGISTER_DATE",
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"rowType":ROW_TYPE,
-		"rowOptions":ROW_OPTIONS,
-		"isActive":IS_ACTIVE,
-		"congeniality":CONGENIALITY,
-		"balance":BALANCE,
-		"photo":"PHOTO_ENCODED_BASE64",
-		"passportPhoto":"PHOTO_ENCODED_BASE64"
-	}
+    "result":"success",
+    "ssid":"SESSION_ID",
+    "role":ROLE_ID
+    <,"confirmPhone":true>,
+    "person":
+    {
+        "personId":ID,
+        "registerDate":"REGISTER_DATE",
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "rowType":ROW_TYPE,
+        "rowOptions":ROW_OPTIONS,
+        "isActive":IS_ACTIVE,
+        "congeniality":CONGENIALITY,
+        "balance":BALANCE,
+        "photo":"PHOTO_ENCODED_BASE64",
+        "passportPhoto":"PHOTO_ENCODED_BASE64"
+    }
 }
 ```
 
@@ -261,55 +273,61 @@
 Запрос:
 ```json
 {
-	"request":"personCreate",
-	"ssid":"SESSION_ID",
-	"person":
-	{
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"promocodeValue":"PROMOCODE_VALUE",
-		"password":"PASSWORD_INTO_SHA256",
-		"photo":"PHOTO_ENCODED_BASE64"
-	}
+    "request":"personCreate",
+    "ssid":"SESSION_ID",
+    "person":
+    {
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "promocodeValue":"PROMOCODE_VALUE",
+        "password":"PASSWORD_INTO_SHA256",
+        "photo":"PHOTO_ENCODED_BASE64"
+    }
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"ssid":"SESSION_ID",
-	"role":ROLE_ID
-	<,"confirmPhone":true>,
-	"person":
-	{
-		"personId":ID,
-		"registerDate":"REGISTER_DATE",
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"rowType":ROW_TYPE,
-		"rowOptions":ROW_OPTIONS,
-		"isActive":IS_ACTIVE,
-		"congeniality":CONGENIALITY,
-		"balance":BALANCE
-	}
+    "result":"success",
+    "ssid":"SESSION_ID",
+    "role":ROLE_ID
+    <,"confirmPhone":true>,
+    "roleRights":
+    [
+        REQUEST_ID1,
+        REQUEST_ID2,
+        ...
+    ],
+    "person":
+    {
+        "personId":ID,
+        "registerDate":"REGISTER_DATE",
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "rowType":ROW_TYPE,
+        "rowOptions":ROW_OPTIONS,
+        "isActive":IS_ACTIVE,
+        "congeniality":CONGENIALITY,
+        "balance":BALANCE
+    }
 }
 ```
 В случае, если в ответ приходит "confirmPhone":true, значит на телефон пользователя отправлен код для подтверждения.
@@ -453,38 +471,44 @@
 Запрос:
 ```json
 {
-	"request":"personLogin",
-	"email":"EMAIL" / "phoneNumber":"PHONE_NUMBER" / "walletAddress":"WALLET_ADDRESS",
-	"password":"PASSWORD_INTO_SHA256"
+    "request":"personLogin",
+    "email":"EMAIL" / "phoneNumber":"PHONE_NUMBER" / "walletAddress":"WALLET_ADDRESS",
+    "password":"PASSWORD_INTO_SHA256"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"ssid":"SESSION_ID",
-	"role":ROLE_ID ,
-	"person":
-	{
-		"personId":ID,
-		"registerDate":"REGISTER_DATE",
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"rowType":ROW_TYPE,
-		"rowOptions":ROW_OPTIONS,
-		"isActive":IS_ACTIVE,
-		"congeniality":CONGENIALITY,
-		"balance":BALANCE
-	}
+    "result":"success",
+    "ssid":"SESSION_ID",
+    "role":ROLE_ID ,
+    "roleRights":
+    [
+        REQUEST_ID1,
+        REQUEST_ID2,
+        ...
+    ],
+    "person":
+    {
+        "personId":ID,
+        "registerDate":"REGISTER_DATE",
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "rowType":ROW_TYPE,
+        "rowOptions":ROW_OPTIONS,
+        "isActive":IS_ACTIVE,
+        "congeniality":CONGENIALITY,
+        "balance":BALANCE
+    }
 }
 ```
 
@@ -492,14 +516,14 @@
 Запрос:
 ```json
 {
-	"request":"restorePassword",
-	"email":"EMAIL" / "phoneNumber":"PHONE_NUMBER"
+    "request":"restorePassword",
+    "email":"EMAIL" / "phoneNumber":"PHONE_NUMBER"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success"
+    "result":"success"
 }
 ```
  
@@ -507,14 +531,14 @@
 Запрос:
 ```json
 {
-	"request":"confirmPhoneRequest",
-	"ssid":"SESSION_ID"
+    "request":"confirmPhoneRequest",
+    "ssid":"SESSION_ID"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success"
+    "result":"success"
 }
 ```
 
@@ -522,42 +546,42 @@
 Запрос:
 ```json
 {
-	"request":"personVerify",
-	"ssid":"SESSION_ID",
-	"person":
-	{
-		"passportPhoto":"PHOTO_ENCODED_BASE64",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION"
-	}
+    "request":"personVerify",
+    "ssid":"SESSION_ID",
+    "person":
+    {
+        "passportPhoto":"PHOTO_ENCODED_BASE64",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION"
+    }
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"person":
-	{
-		"personId":ID,
-		"registerDate":"REGISTER_DATE",
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"rowType":ROW_TYPE,
-		"rowOptions":ROW_OPTIONS,
-		"isActive":IS_ACTIVE,
-		"congeniality":CONGENIALITY,
-		"balance":BALANCE
-	}
+    "result":"success",
+    "person":
+    {
+        "personId":ID,
+        "registerDate":"REGISTER_DATE",
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "rowType":ROW_TYPE,
+        "rowOptions":ROW_OPTIONS,
+        "isActive":IS_ACTIVE,
+        "congeniality":CONGENIALITY,
+        "balance":BALANCE
+    }
 }
 ```
 
@@ -565,16 +589,16 @@
 Запрос:
 ```json
 {
-	"request":"setPassword",
-	"ssid":"SESSION_ID",
-	"password":"PASSWORD_INTO_SHA256"
+    "request":"setPassword",
+    "ssid":"SESSION_ID",
+    "password":"PASSWORD_INTO_SHA256"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"rowType":ROW_TYPE
+    "result":"success",
+    "rowType":ROW_TYPE
 }
 ```
 
@@ -582,16 +606,16 @@
 Запрос:
 ```json
 {
-	"request":"setPhoto",
-	"ssid":"SESSION_ID",
-	"photo":"PHOTO_ENCODED_BASE64"
+    "request":"setPhoto",
+    "ssid":"SESSION_ID",
+    "photo":"PHOTO_ENCODED_BASE64"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"rowType":ROW_TYPE
+    "result":"success",
+    "rowType":ROW_TYPE
 }
 ```
 
@@ -599,36 +623,36 @@
 Запрос:
 ```json
 {
-	"request":"findPersonByWallet",
-	"walletAddress":"WALLET_ADDRESS",
-	"ssid":"SESSION_ID"
+    "request":"findPersonByWallet",
+    "walletAddress":"WALLET_ADDRESS",
+    "ssid":"SESSION_ID"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"person":
-	{
-		"personId":ID,
-		"registerDate":"REGISTER_DATE",
-		"firstName":"FIRST_NAME",
-		"secondName":"SECOND_NAME",
-		"gender":GENDER,
-		"dateOfBirth":"DATE_OF_BIRTH",
-		"phoneNumber":"PHONE_NUMBER",
-		"email":"EMAIL",
-		"passport":"PASSPORT_DATA",
-		"dateOfIssue":"DATE_OF_ISSUE",
-		"organization":"ORGANIZATION",
-		"registerAddress":"REGISTER_ADDRESS",
-		"walletAddress":"WALLET_ADDRESS",
-		"rowType":ROW_TYPE,
-		"rowOptions":ROW_OPTIONS,
-		"isActive":IS_ACTIVE,
-		"congeniality":CONGENIALITY,
-		"balance":BALANCE
-	}
+    "result":"success",
+    "person":
+    {
+        "personId":ID,
+        "registerDate":"REGISTER_DATE",
+        "firstName":"FIRST_NAME",
+        "secondName":"SECOND_NAME",
+        "gender":GENDER,
+        "dateOfBirth":"DATE_OF_BIRTH",
+        "phoneNumber":"PHONE_NUMBER",
+        "email":"EMAIL",
+        "passport":"PASSPORT_DATA",
+        "dateOfIssue":"DATE_OF_ISSUE",
+        "organization":"ORGANIZATION",
+        "registerAddress":"REGISTER_ADDRESS",
+        "walletAddress":"WALLET_ADDRESS",
+        "rowType":ROW_TYPE,
+        "rowOptions":ROW_OPTIONS,
+        "isActive":IS_ACTIVE,
+        "congeniality":CONGENIALITY,
+        "balance":BALANCE
+    }
 }
 ```
 
@@ -636,16 +660,16 @@
 Запрос:
 ```json
 {
-	"request":"getPersonTypeByWallet",
-	"walletAddress":"WALLET_ADDRESS",
-	"ssid":"SESSION_ID"
+    "request":"getPersonTypeByWallet",
+    "walletAddress":"WALLET_ADDRESS",
+    "ssid":"SESSION_ID"
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"rowType":ROW_TYPE
+    "result":"success",
+    "rowType":ROW_TYPE
 }
 ```
 Значения поля "rowType" описано в пункте "[8] Регистрация нового пользователя".
@@ -654,21 +678,21 @@
 Запрос:
 ```json
 {
-	"request":"logCreate",
-	"ssid":"SESSION_ID",
-	"log":
-	{
-		"deviceId":"DEVICE_ID",
-		"osVersion":"OS_VERSION",
-		"firebaseToken":"FIREBASE_TOKEN",
-		"walletAddress":"WALLET_ADDRESS"
-	}
+    "request":"logCreate",
+    "ssid":"SESSION_ID",
+    "log":
+    {
+        "deviceId":"DEVICE_ID",
+        "osVersion":"OS_VERSION",
+        "firebaseToken":"FIREBASE_TOKEN",
+        "walletAddress":"WALLET_ADDRESS"
+    }
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success"
+    "result":"success"
 }
 ```
 
@@ -676,33 +700,33 @@
 Запрос:
 ```json
 {
-	"request":"getLogs",
-	"ssid":"SESSION_ID",
-	"query":
-	{
-		<"deviceId":"DEVICE_ID">,
-		<"osVersion":"OS_VERSION">,
-		<"firebaseToken":"FIREBASE_TOKEN">,
-		<"walletAddress":"WALLET_ADDRESS">,
-		<"logsLimit":LOGS_LIMIT>
-	}
+    "request":"getLogs",
+    "ssid":"SESSION_ID",
+    "query":
+    {
+        <"deviceId":"DEVICE_ID">,
+        <"osVersion":"OS_VERSION">,
+        <"firebaseToken":"FIREBASE_TOKEN">,
+        <"walletAddress":"WALLET_ADDRESS">,
+        <"logsLimit":LOGS_LIMIT>
+    }
 }
 ```
 Ответ:
 ```json
 {
-	"result":"success",
-	"logs":
-	[
-		{
-			"timestamp":TIMESTAMP,
-			"deviceId":"DEVICE_ID",
-			"osVersion":"OS_VERSION",
-			"firebaseToken":"FIREBASE_TOKEN",
-			"walletAddress":"WALLET_ADDRESS"
-		},
-		...
-	]
+    "result":"success",
+    "logs":
+    [
+        {
+            "timestamp":TIMESTAMP,
+            "deviceId":"DEVICE_ID",
+            "osVersion":"OS_VERSION",
+            "firebaseToken":"FIREBASE_TOKEN",
+            "walletAddress":"WALLET_ADDRESS"
+        },
+        ...
+    ]
 }
 ```
 Значения поля "logsLimit" в запросе определяет количество возвращаемых записей в порядке, обратном порядку их создания. Если значение этого поля не задано, возвращается 10 последних записей.
