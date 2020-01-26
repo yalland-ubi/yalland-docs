@@ -1,4 +1,4 @@
-#### Версия 1.2.8
+#### Версия 1.2.9
 #### Тестовый сервер: http://83.219.137.8:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -146,6 +146,72 @@
 ```json
 {
 	"result":"success"
+}
+```
+
+#### [6] Просмотр списка пользователей.
+Запрос:
+```json
+{
+	"request":"personList",
+	"ssid":"SESSION_ID"
+	<,"pageNumber":PAGE_NUMBER>
+	<,"amountOnPage":AMOUNT_ON_PAGE>
+	<,"orderBy":"FIELD_FOR_ORDER">
+	<,"orderAsc":TRUE>
+	<,"filter":
+	{
+		"personId":ID,
+		"registerDate":"REGISTER_DATE",
+		"firstName":"FIRST_NAME",
+		"secondName":"SECOND_NAME",
+		"gender":GENDER,
+		"dateOfBirth":"DATE_OF_BIRTH",
+		"phoneNumber":"PHONE_NUMBER",
+		"email":"EMAIL",
+		"passport":"PASSPORT_DATA",
+		"dateOfIssue":"DATE_OF_ISSUE",
+		"organization":"ORGANIZATION",
+		"registerAddress":"REGISTER_ADDRESS",
+		"walletAddress":"WALLET_ADDRESS",
+		"rowType":ROW_TYPE,
+		"rowOptions":ROW_OPTIONS,
+		"isActive":IS_ACTIVE,
+		"congeniality":CONGENIALITY,
+		"balance":BALANCE
+	}>
+}
+````
+Ответ:
+```json
+{
+	"result":"success",
+	"pagesAmount":PAGES_AMOUNT,
+	"pageNumber":PAGE_NUMBER,
+	"personList":
+	[
+		{
+			"personId":ID,
+			"registerDate":"REGISTER_DATE",
+			"firstName":"FIRST_NAME",
+			"secondName":"SECOND_NAME",
+			"gender":GENDER,
+			"dateOfBirth":"DATE_OF_BIRTH",
+			"phoneNumber":"PHONE_NUMBER",
+			"email":"EMAIL",
+			"passport":"PASSPORT_DATA",
+			"dateOfIssue":"DATE_OF_ISSUE",
+			"organization":"ORGANIZATION",
+			"registerAddress":"REGISTER_ADDRESS",
+			"walletAddress":"WALLET_ADDRESS",
+			"rowType":ROW_TYPE,
+			"rowOptions":ROW_OPTIONS,
+			"isActive":IS_ACTIVE,
+			"congeniality":CONGENIALITY,
+			"balance":BALANCE
+		},
+		...
+	]
 }
 ```
 
@@ -662,7 +728,7 @@
 Запрос:
 ```json
 {
-    "request":"emailIsUnique" required,
+    "request":"emailIsUnique",
     "email":"EMAIL",
     "ssid":"SESSION_ID"
 }
