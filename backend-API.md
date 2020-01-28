@@ -66,7 +66,7 @@
 |38|getServerVersion           |          |+   |             |        |           |            |       |+         |+     |
 |39|emailIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
-|41|acceptPersonVerify         |          |    |+            |+       |           |            |       |+         |+     |
+|41|acceptPersonVerify         |          |    |+            |+       |           |            |       |          |      |
 
 Все разрешения динамически регулируются через БД.
     
