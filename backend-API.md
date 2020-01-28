@@ -1,5 +1,5 @@
-#### Версия 1.2.9
-#### Тестовый сервер: http://83.219.137.8:5000/
+#### Версия 1.2.10
+#### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
 2. Content-type: application/json.
@@ -66,6 +66,7 @@
 |38|getServerVersion           |          |+   |             |        |           |            |       |+         |+     |
 |39|emailIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
+|41|acceptPersonVerify         |          |    |+            |+       |           |            |       |+         |+     |
 
 Все разрешения динамически регулируются через БД.
     
@@ -241,7 +242,6 @@
 {
     "result":"success",
     "ssid":"SESSION_ID",
-    "role":ROLE_ID
     <,"confirmPhone":true>,
     "person":
     {
@@ -300,13 +300,13 @@
     "result":"success",
     "ssid":"SESSION_ID",
     "role":ROLE_ID
-    <,"confirmPhone":true>,
     "roleRights":
     [
         REQUEST_ID1,
         REQUEST_ID2,
         ...
-    ],
+    ]
+    <,"confirmPhone":true>,
     "person":
     {
         "personId":ID,
@@ -779,3 +779,21 @@
     "result":"success"
 }
 ```
+
+#### [41] Подтверждение / отклонение верификации.
+Запрос:
+```json
+{
+    "request":"verifyPerson",
+    "ssid":"SESSION_ID",
+    "acceptVerify":TRUE
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "rowType":ROW_TYPE
+}
+```
+Значения поля "acceptVerify" определяет принятие (TRUE) или отклонение (FALSE) запроса на верификацию.
