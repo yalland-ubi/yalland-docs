@@ -785,7 +785,7 @@
 Запрос:
 ```json
 {
-    "request":"verifyPerson",
+    "request":"acceptPersonVerify",
     "ssid":"SESSION_ID",
     "personId":ID,
     "acceptVerify":TRUE
