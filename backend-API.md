@@ -433,6 +433,7 @@
         "registerAddress":"REGISTER_ADDRESS",
         "walletAddress":"WALLET_ADDRESS",
         "photo":"PHOTO_ENCODED_BASE64",
+        "passportPhoto":"PHOTO_ENCODED_BASE64",
         "rowType":ROW_TYPE,
         "rowOptions":ROW_OPTIONS,
         "isActive":IS_ACTIVE 
@@ -786,6 +787,7 @@
 {
     "request":"verifyPerson",
     "ssid":"SESSION_ID",
+    "personId":ID,
     "acceptVerify":TRUE
 }
 ```
