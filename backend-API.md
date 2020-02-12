@@ -1,4 +1,4 @@
-#### Версия 1.2.10
+#### Версия 1.3.0
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -67,6 +67,8 @@
 |39|emailIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |41|acceptPersonVerify         |          |    |+            |+       |           |            |       |          |      |
+|47|walletOwnerIsVerified      |          |    |             |        |           |            |       |          |+     |
+|48|checkPromoPayByWallet      |          |    |             |        |           |            |       |          |+     |
 
 Все разрешения динамически регулируются через БД.
     
@@ -334,25 +336,14 @@
 После регистрации на почту пользователя (если она задана и в опциях сервера указана отправка писем) отправляется письмо.
 Сразу после регистрации, если регистрация происходила с сайта или из приложения, устанавливается пользовательская сессия, как при входе в личный кабинет.
 
-Сразу после регистрации (на текущий момент), пользователю добавляется тариф. Запрос:
-```json
-{
-    "request":"addTariff",
-    "walletId":WALLET_ID
-}
-```
-Ответ:
-```json
-{
-    "result":"success"
-}
-```
-Если пользователь регистрировался по промокоду, то отправляется запрос на добавление валюты пользователю и/или хозяину промокода. Запрос:
+Если пользователь регистрировался по промокоду и в свойствах акции указано начисление хозяину промокода, то отправляется запрос на добавление валюты хозяину промокода. Запрос:
 ```json
 {
     "request":"payUserByPromo",
-    "walletId":WALLET_ID,
-    "amount":AMOUNT
+    "walletAddress":"WALLET_ADDRESS",
+    "stringTariffId":"TARIFF_ID",
+    "yalAmount":AMOUNT,
+    "referralPaymentId":PAYMENT_ID
 }
 ```
 Ответ:
@@ -799,3 +790,69 @@
 }
 ```
 Значения поля "acceptVerify" определяет принятие (TRUE) или отклонение (FALSE) запроса на верификацию.
+
+После подтверждения верификации пользователю добавляется тариф. Запрос:
+```json
+{
+    "request":"addTariff",
+    "walletAddress":"WALLET_ADDRESS",
+    "stringTariffId":"TARIFF_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+Если пользователь регистрировался по промокоду и в свойствах акции указано начисление регистрирующемуся, то отправляется запрос на добавление валюты. Запрос:
+```json
+{
+    "request":"payUserByPromo",
+    "walletAddress":"WALLET_ADDRESS",
+    "stringTariffId":"TARIFF_ID",
+    "yalAmount":AMOUNT,
+    "referralPaymentId":PAYMENT_ID
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+
+#### [47] Проверка адреса кошелька на верификацию.
+Запрос:
+```json
+{
+    "request":"walletOwnerIsVerified",
+    "walletAddress":"WALLET_ADDRESS",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+	"walletOwnerIsVerified":TRUE/FALSE
+}
+```
+
+#### [48] Проверка выплаты по реферальной ссылке.
+Запрос:
+```json
+{
+    "request":"checkPromoPayByWallet",
+    "walletAddress":"WALLET_ADDRESS",
+    "ssid":"SESSION_ID",
+    "yalAmount":AMOUNT,
+    "referralPaymentId":PAYMENT_ID
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
