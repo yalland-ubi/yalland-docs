@@ -1,4 +1,4 @@
-#### Версия 1.3.0
+#### Версия 1.3.1
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -29,8 +29,6 @@
 |1 |checkSession               |+         |    |             |        |           |            |       |          |      |
 |2 |login                      |+         |    |             |        |           |            |       |          |      |
 |3 |logout                     |+         |    |             |        |           |            |       |          |      |
-|4 |(TODO) getActiveList       |          |    |             |        |           |            |       |          |      |
-|5 |(TODO) findDuplicatePhoto  |          |    |             |        |           |            |       |          |      |
 |6 |personList                 |          |    |+            |+       |           |            |       |          |      |
 |7 |personShow                 |          |    |+            |+       |           |            |       |          |      |
 |8 |personCreate               |          |+   |             |        |           |            |       |+         |      |
@@ -38,15 +36,9 @@
 |10|confirmPhone               |          |+   |             |        |           |+           |       |          |      |
 |11|personFind                 |          |    |+            |        |           |            |       |          |      |
 |12|personRemove               |          |    |+            |        |           |            |       |          |      |
-|13|(TODO) saveCheck           |          |    |             |        |           |            |       |          |      |
-|14|(TODO) getActiveAmount     |          |    |             |        |           |            |       |          |      |
 |15|personLogin                |+         |    |             |        |           |            |       |          |      |
-|16|(TODO) getRoles            |          |    |             |        |           |            |       |          |      |
-|17|(TODO) setRoles            |          |    |             |        |           |            |       |          |      |
 |18|changePassword             |          |    |             |        |           |+           |       |          |      |
 |19|restorePassword            |+         |    |             |        |           |            |       |          |      |
-|20|(TODO) createTransaction   |          |    |             |        |           |            |       |          |      |
-|21|(TODO) changeTransaction   |          |    |             |        |           |            |       |          |      |
 |22|createPromocodePool        |          |    |+            |        |           |            |       |          |      |
 |23|createReferralAction       |          |    |+            |        |           |            |       |          |      |
 |24|createPromocodePoolByAction|          |    |             |        |           |+           |       |          |      |
@@ -69,6 +61,7 @@
 |41|acceptPersonVerify         |          |    |+            |+       |           |            |       |          |      |
 |47|walletOwnerIsVerified      |          |    |             |        |           |            |       |          |+     |
 |48|checkPromoPayByWallet      |          |    |             |        |           |            |       |          |+     |
+|49|updatePaymentStatus        |          |    |             |        |           |            |       |          |+     |
 
 Все разрешения динамически регулируются через БД.
     
@@ -518,7 +511,65 @@
     "result":"success"
 }
 ```
- 
+
+#### [24] Создание пула промокодов.
+Запрос:
+```json
+{
+    "request":"createPromocodePoolByAction",
+    "ssid":"SESSION_ID",
+    "poolSettingsId":ID
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+Только верифицированные пользователи имеют право на участие в акции.
+Пользователь имеет право создать только один промокод в рамках одной акции.
+
+#### [26] Получение списка активных акций.
+Запрос:
+```json
+{
+    "request":"getActiveReferralActions",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "referralActionsList":
+    [
+        {
+            "poolSettingsId":ID,
+            "createDate":"DATE",
+            "maxRegisterAmount":MAX_REGISTER,
+            "registerAmount":REGISTER_AMOUNT,
+            "rewardAmount":REWARD_AMOUNT,
+            "maxUseAmount":USE_AMOUNT,
+            "expireDate":"DATE",
+            "options":OPTIONS,
+            "isActive":TRUE,
+            "description":"DESCRIPTION",
+            "promocodesList":
+            [
+                {
+                    "promocodeId":ID,
+                    "promocodeValue":"PROMOCODE_VALUE",
+                    "promocodeUseAmount":AMOUNT
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
+```
+
 #### [30] Запрос на подтверждения телефона.
 Запрос:
 ```json
@@ -835,7 +886,7 @@
 ```json
 {
     "result":"success",
-	"walletOwnerIsVerified":TRUE/FALSE
+    "walletOwnerIsVerified":TRUE/FALSE
 }
 ```
 
@@ -856,3 +907,26 @@
     "result":"success"
 }
 ```
+
+#### [49] Обновление состояния платежа.
+Запрос:
+```json
+{
+    "request":"updatePaymentStatus",
+    "ssid":"SESSION_ID",
+    "referralPaymentId":PAYMENT_ID,
+    "paymentStatus":STATUS
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+
+"paymentStatus" - состояние платежа:
+- 1    - новый платеж;
+- 2    - находится в обработке;
+- 3    - выплачен;
+- 4    - отменен.
