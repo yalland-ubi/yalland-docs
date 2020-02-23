@@ -1,4 +1,4 @@
-#### Версия 1.3.1
+#### Версия 1.3.2
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -62,6 +62,7 @@
 |47|walletOwnerIsVerified      |          |    |             |        |           |            |       |          |+     |
 |48|checkPromoPayByWallet      |          |    |             |        |           |            |       |          |+     |
 |49|updatePaymentStatus        |          |    |             |        |           |            |       |          |+     |
+|50|getTariffList              |          |    |+            |        |           |            |       |          |      |
 
 Все разрешения динамически регулируются через БД.
     
@@ -336,7 +337,8 @@
     "walletAddress":"WALLET_ADDRESS",
     "stringTariffId":"TARIFF_ID",
     "yalAmount":AMOUNT,
-    "referralPaymentId":PAYMENT_ID
+    "referralPaymentId":PAYMENT_ID,
+    "ssid":"SESSION_ID"
 }
 ```
 Ответ:
@@ -512,7 +514,32 @@
 }
 ```
 
-#### [24] Создание пула промокодов.
+#### [23] Создание реферальной акции.
+Запрос:
+```json
+{
+    "request":"createReferralAction",
+    "ssid":"SESSION_ID",
+    "referralAction":
+    {
+        "maxRegisterAmount":MAX_REGISTER,
+        "tariffId":TARIFF_ID,
+        "maxUseAmount":USE_AMOUNT,
+        "expireDate":"DATE",
+        "options":OPTIONS,
+        "isActive":TRUE,
+        "description":"DESCRIPTION"
+    }
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+
+#### [24] Создание пула промокодов по акции.
 Запрос:
 ```json
 {
@@ -847,7 +874,8 @@
 {
     "request":"addTariff",
     "walletAddress":"WALLET_ADDRESS",
-    "stringTariffId":"TARIFF_ID"
+    "stringTariffId":"TARIFF_ID",
+    "ssid":"SESSION_ID"
 }
 ```
 Ответ:
@@ -863,7 +891,8 @@
     "walletAddress":"WALLET_ADDRESS",
     "stringTariffId":"TARIFF_ID",
     "yalAmount":AMOUNT,
-    "referralPaymentId":PAYMENT_ID
+    "referralPaymentId":PAYMENT_ID,
+    "ssid":"SESSION_ID"
 }
 ```
 Ответ:
@@ -930,3 +959,29 @@
 - 2    - находится в обработке;
 - 3    - выплачен;
 - 4    - отменен.
+
+#### [50] Получение списка всех тарифов.
+Запрос:
+```json
+{
+    "request":"getTariffList",
+    "ssid":"SESSION_ID",
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "tariffList":
+    [
+        {
+            "tariffId":ID,
+            "coinAmount":COIN_AMOUNT,
+            "stringTariffId":"STRING_TARIFF_ID",
+            "description":"DESCRIPTION",
+            "isDefault":TRUE
+        },
+        ...
+    ]
+}
+```
