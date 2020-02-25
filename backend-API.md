@@ -557,6 +557,37 @@
 Только верифицированные пользователи имеют право на участие в акции.
 Пользователь имеет право создать только один промокод в рамках одной акции.
 
+#### [25] Получение списка всех акций.
+Запрос:
+```json
+{
+    "request":"getReferralActions",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "referralActionsList":
+    [
+        {
+            "poolSettingsId":ID,
+            "createDate":"DATE",
+            "maxRegisterAmount":MAX_REGISTER,
+            "registerAmount":REGISTER_AMOUNT,
+            "tariffId":TARIFF_ID,
+            "maxUseAmount":USE_AMOUNT,
+            "expireDate":"DATE",
+            "options":OPTIONS,
+            "isActive":TRUE,
+            "description":"DESCRIPTION",
+        },
+        ...
+    ]
+}
+```
+
 #### [26] Получение списка активных акций.
 Запрос:
 ```json
@@ -576,7 +607,7 @@
             "createDate":"DATE",
             "maxRegisterAmount":MAX_REGISTER,
             "registerAmount":REGISTER_AMOUNT,
-            "rewardAmount":REWARD_AMOUNT,
+            "tariffId":TARIFF_ID,
             "maxUseAmount":USE_AMOUNT,
             "expireDate":"DATE",
             "options":OPTIONS,
