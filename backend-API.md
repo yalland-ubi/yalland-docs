@@ -1,4 +1,4 @@
-#### Версия 1.3.2
+#### Версия 1.3.3
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -59,6 +59,7 @@
 |39|emailIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |41|acceptPersonVerify         |          |    |+            |+       |           |            |       |          |      |
+|42|updateWalletState          |          |    |             |        |           |            |       |          |+     |
 |47|walletOwnerIsVerified      |          |    |             |        |           |            |       |          |+     |
 |48|checkPromoPayByWallet      |          |    |             |        |           |            |       |          |+     |
 |49|updatePaymentStatus        |          |    |             |        |           |            |       |          |+     |
@@ -389,7 +390,9 @@
 - RT_VERIFIED = 16 - верифицирована (получено фото паспорта и валидированы его данные)
 - RT_VERIFY_REJECT = 32 - верификация отклонена
 - RT_BLOCKED = 64 - заблокирована
-- T_TARIFF_IS_SET = 128 - тариф установлен
+- RT_TARIFF_REQUESTED = 128 - отправлен запрос на установку тарифа
+- RT_TARIFF_IS_SET = 256 - тариф установлен
+- RT_INVALID_WALLET_ADDRESS = 512 - невалидный адрес кошелька
 
 Поле "rowOptions" отмечает опции регистрации, представляет из себя битовую маску:
 - O_UNDEFINED = 0
@@ -429,7 +432,11 @@
 Ответ:
 ```json
 {
-    "result":"success"
+    "result":"success",
+    "personId":ID,
+    "rowType":ROW_TYPE,
+    "rowOptions":ROW_OPTIONS,
+    "congeniality":CONGENIALITY
 }
 ```
 Отправляться должны только те поля, которые подверглись изменениям.
@@ -900,7 +907,7 @@
 ```
 Значения поля "acceptVerify" определяет принятие (TRUE) или отклонение (FALSE) запроса на верификацию.
 
-После подтверждения верификации пользователю добавляется тариф. Запрос:
+После подтверждения верификации отправляется запрос на бэкенд для добавления тарифа пользователю:
 ```json
 {
     "request":"addTariff",
@@ -932,6 +939,27 @@
     "result":"success"
 }
 ```
+
+#### [42] Обновление состояния кошелька пользователя.
+Запрос:
+```json
+{
+    "request":"updateWalletState",
+    "ssid":"SESSION_ID",
+    "walletAddress":"WALLET_ADDRESS",
+    "walletState":STATE
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+}
+```
+Поле "walletState" типа UInt отмечает состояние кошелька:
+- 0 - невалидный адрес кошелька
+- 1 - тариф уже был установлен
+- 2 - тариф установлен
 
 #### [47] Проверка адреса кошелька на верификацию.
 Запрос:
