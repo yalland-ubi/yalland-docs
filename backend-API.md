@@ -1,4 +1,4 @@
-#### Версия 1.3.3
+#### Версия 1.3.4
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -190,6 +190,27 @@
         "congeniality":CONGENIALITY,
         "balance":BALANCE
     }>
+    <,"filterRules":
+    {
+        "personId":COMPARE_TYPE,
+        "registerDate":COMPARE_TYPE,
+        "firstName":COMPARE_TYPE,
+        "secondName":COMPARE_TYPE,
+        "gender":COMPARE_TYPE,
+        "dateOfBirth":COMPARE_TYPE,
+        "phoneNumber":COMPARE_TYPE,
+        "email":COMPARE_TYPE,
+        "passport":COMPARE_TYPE,
+        "dateOfIssue":COMPARE_TYPE,
+        "organization":COMPARE_TYPE,
+        "registerAddress":COMPARE_TYPE,
+        "walletAddress":COMPARE_TYPE,
+        "rowType":COMPARE_TYPE,
+        "rowOptions":COMPARE_TYPE,
+        "isActive":COMPARE_TYPE,
+        "congeniality":COMPARE_TYPE,
+        "balance":COMPARE_TYPE
+    }>
 }
 ````
 Ответ:
@@ -224,6 +245,13 @@
     ]
 }
 ```
+"COMPARE_TYPE" - тип сравнения:
+- 0    - like (применяется по умолчанию, если не задан тип сравнения);
+- 1    - equal;
+- 2    - less;
+- 3    - less or equal;
+- 4    - greater;
+- 5    - greater or equal.
 
 #### [7] Просмотр пользователя.
 Запрос:
