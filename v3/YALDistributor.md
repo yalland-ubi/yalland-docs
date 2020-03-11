@@ -14,7 +14,7 @@ The contract has `minter` permissions at YAL(ERC20) contract
 ### Inbound
 
 * An owner can manage the verifier address and his reward, a reward should comply "<100%" requirement
-* A verifier can manage member: add/addMultiple/activate/deactivate, claims his rewards 
+* A verifier can manage member: add/addMultiple/change/activate/deactivate, claims his rewards 
 * Any member which is inside the member list and is active at the moment can claim distributed tokens if he was already included at the beginning of the current period
 
 ## Reward calculations
@@ -197,6 +197,11 @@ contract YALDistribution {
     Member storage member = members[id];
     require(member.active == true);
     activeMemberCount--;
+  }
+
+  function changeMemberAddress(uint256 _memberId, address _to) external onlyVerifier {
+    Member storage member = members[id];
+    member.addr = _to;
   }
 
   // MEMBER INTERFACE
