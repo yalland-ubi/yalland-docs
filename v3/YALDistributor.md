@@ -23,6 +23,7 @@ The contract has `minter` permissions at YAL(ERC20) contract
 * An already existing member could claim his funds for a period if he had not claimed it yet
 * If a member had deactivated status at beginning of the current period and was activated, he could claim his funds the same way as an already existing user does
 * If a member had been deactivated in a current period and had not claimed funds yet, he can't claim the funds unless he will be activated in this period again
+* If a member claims his reward in the current period, a verifier performs activate/deactivate actions on the member in the current period, the member can't claim the period reward again since he already did.
 * There is no way to delete member completely, only to deactivate him
 * Member can't claim funds for a period other than the current
 * Non claimed rewards go to ???
