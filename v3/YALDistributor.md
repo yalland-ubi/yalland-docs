@@ -224,6 +224,12 @@ contract YALDistribution {
 
     token.transferFrom(address(this), msg.sender, periodRewardPerMember[getCurrentPeriodId()]);
   }
+    
+  function changeMyAddress(uint256 _memberId, address _to) external {
+    Member storage member = members[id];
+    require(member.addr = msg.sender);
+    member.addr = _to;
+  }
 
   // PERMISSIONLESS INTERFACE
   function mintNewPeriodIfRequired() external mintNewPeriodIfRequired {
