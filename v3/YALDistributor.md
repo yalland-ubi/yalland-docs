@@ -32,7 +32,6 @@ The contract has `minter` permissions at YAL(ERC20) contract
 ## Dealing with period transition
 
 In order to detect a new period and perform corresponding actions, there is `handlePeriodTransitionIfRequired` modifier introduced. If there is a new period started, the modifier will:
-* cache `activeMemberCount` and `periodVolume` values
 * calculate and cache `rewardPerUser` for the current period.
 * calculate and cache `verifierReward` for the current period.
 
