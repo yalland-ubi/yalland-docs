@@ -95,8 +95,8 @@ contract YALDistribution {
   IERC20 public token;
   uint256 public activeMemberCount;
 
-  mapping(uint256 => Member) public members;
-  mapping(address => uint256) public memberAddress2Id;
+  mapping(bytes32 => Member) public members;
+  mapping(address => bytes32) public memberAddress2Id;
   // periodId => rewardPerMember
   mapping(uint256 => uint256) public periodRewardPerMember;
   // periodId => amount
@@ -115,6 +115,165 @@ contract YALDistribution {
   }
 
   constructor(
+    IERC20 _token,
+    uint256 _periodLength,
+    uint256 _genesisTimestamp,
+    uint256 _periodVolume
+  )
+    public
+  {
+    // ..assign
+  }
+
+  // Mints tokens, assigns the verifier reward and caches reward per member
+  modifier handlePeriodTransitionIfRequired() {
+    uint256 currentPeriodId = getCurrentPeriodId();
+
+    if (periodRewardPerMember[currentPeriodId] == 0) {
+      verifierPeriodReward[currentPeriodId] = periodVolume * verifierRewardShare;
+
+      // imbalance will be left at the contract
+      uint256 currentPeriodRewardPerMember = (periodVolume * (100 ether - verifierRewardShare)) / activeMemberCount;
+      assert(currentPeriodRewardPerMember > 0);
+      periodRewardPerMember[currentPeriodId] = currentPeriodRewardPerMember;
+    }
+
+    _;
+  }
+
+  // OWNER INTERFACE
+
+  function setVerifier(address _verifier) external onlyOwner {
+    verifier = _verifier;
+  }
+
+  function setVerifierRewardShare(uint256 _share) external onlyOwner {
+    require(_share < 100 ether);
+    verifierRewardShare = _share;
+  }
+
+  function setPeriodVolume(uint256 _newVolume) external onlyOwner {
+    periodVolume = _newVolume;
+  }
+
+  // VERIFIER INTERFACE
+
+  function addMembers(bytes32[] calldata _memberIds, address calldata _addrs) external mintNewPeriodIfRequired onlyVerifier {
+    uint256[] memory ids = new uint256(_members.length);
+
+    for (uint256 i = 0; i < _members.length; i++) {
+      ids[i] = _addMember(_members[i]);
+    }
+
+    return ids;
+  }
+
+  function addMember(bytes32 _memberId, bytes32 _member) external mintNewPeriodIfRequired onlyVerifier {
+    return _addMember(_member);
+  }
+
+  function _addMember(bytes32 _memberId, address _member) internal {
+    require(memberAddress2Id[_member] == address(0), "The address already registered");
+
+    Member storage member = members[_memberId];
+
+    member.addr = _member;
+    member.active = true;
+    member.createdAt = now;
+
+    activeMemberCount++;
+  }
+
+  function activateMember(bytes32 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
+    Member storage member = members[id];
+    require(member.active == false);
+    require(member.createdAt != 0);
+    activeMemberCount++;
+  }
+
+  function deactivateMember(bytes32 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
+    Member storage member = members[id];
+    require(member.active == true);
+    activeMemberCount--;
+  }
+
+  function changeMemberAddress(bytes32 _memberId, address _to) external onlyVerifier {
+    Member storage member = members[id];
+    member.addr = _to;
+  }
+
+  function claimVerifierReward(uint256 _periodId, address _to) external onlyVerifier {
+    // TODO: add already claimed check
+    token.mint(_to, verifierPeriodRewards[_periodId]);
+  }
+
+  // MEMBER INTERFACE
+  // @dev Claims msg.sender funds for the previous period
+  function claimFunds(
+    uint256 _memberId
+  )
+    external
+    handlePeriodTransitionIfRequired
+  {
+    Member storage member = members[_memberId];
+
+    require(member.addr == msg.sender, "Address doesn't match");
+    require(member.active == true, "Not active member");
+
+    require(member.createdAt < getCurrentPeriodBeginsAt());
+    require(member.claimedPeriods[getCurrentPeriodId()] == false);
+
+    member.claimedPeriods[getCurrentPeriodId()] = true;
+
+    token.mint(msg.sender, verifierPeriodReward[getCurrentPeriodId()]);
+  }
+
+  function changeMyAddress(bytes32 _memberId, address _to) external {
+    Member storage member = members[id];
+    require(member.addr = msg.sender);
+    member.addr = _to;
+  }
+
+  // PERMISSIONLESS INTERFACE
+  function handlePeriodTransitionIfRequired() external handlePeriodTransitionIfRequired {
+  }
+
+  // INTERNAL METHODS
+
+  function nextId() internal returns (uint256) {
+    return ++idCounter;
+  }
+
+  // VIEW METHODS
+
+  function getCurrentPeriodId() public view returns (uint256) {
+    uint256 blockTimestamp = block.timestamp;
+
+    require(blockTimestamp > genesisTimestamp, "Contract not initiated yet");
+
+    // return (blockTimestamp - genesisTimestamp) / periodLength;
+    return (blockTimestamp.sub(genesisTimestamp)) / periodLength;
+  }
+
+  function getNextPeriodBeginsAt() public view returns (uint256) {
+    if (block.timestamp <= genesisTimestamp) {
+      return genesisTimestamp;
+    }
+
+    // return ((getCurrentPeriod() + 1) * periodLength) + genesisTimestamp;
+    return ((getCurrentPeriodId() + 1).mul(periodLength)).add(genesisTimestamp);
+  }
+
+  function getCurrentPeriodBeginsAt() public view returns (uint256) {
+    if (block.timestamp <= genesisTimestamp) {
+      return genesisTimestamp;
+    }
+
+    // return (getCurrentPeriod() * periodLength) + genesisTimestamp;
+    return (getCurrentPeriodId().mul(periodLength)).add(genesisTimestamp);
+  }
+}
+
     IERC20 _token,
     uint256 _periodLength,
     uint256 _genesisTimestamp,
