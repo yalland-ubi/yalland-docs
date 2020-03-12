@@ -26,14 +26,15 @@ The contract has `minter` permissions at YAL(ERC20) contract
 * If a member claims his reward in the current period, a verifier performs activate/deactivate actions on the member in the current period, the member can't claim the period reward again since he already did.
 * There is no way to delete member completely, only to deactivate him
 * Member can't claim funds for a period other than the current
-* Non claimed rewards go to ???
+* A member mints his reward on each claim, the reward amount is calculated once within `handlePeriodTransitionIfRequired` modifier
+* The funds not claimed by users are not minted, so there is no need to redistribute them
 
 ## Dealing with period transition
 
-In order to detect a new period and perform corresponding actions, there is `mintNewPeriodIfRequired` modifier introduced. If there is a new period started, the modifier will:
-* mint `periodVolume` to the contract address
-* calculate and assign a `verifier` reward
+In order to detect a new period and perform corresponding actions, there is `handlePeriodTransitionIfRequired` modifier introduced. If there is a new period started, the modifier will:
+* cache `activeMemberCount` and `periodVolume` values
 * calculate and cache `rewardPerUser` for the current period.
+* calculate and cache `verifierReward` for the current period.
 
 The `activeMemberCount` variable at this time should have exactly the same value as it had at the particular time when the period had started.
 
@@ -47,7 +48,7 @@ The modifier is included into the following methods:
 
 So each call for the aforementioned methods would cause these checks.
 
-The `mintNewPeriodIfRequired` will be replaced with a function if it causes `stack too deep` errors.
+The `handlePeriodTransitionIfRequired` will be replaced with a function if it causes `stack too deep` errors.
 
 ## Deployment
 
@@ -99,12 +100,12 @@ contract YALDistribution {
   mapping(address => uint256) public memberAddress2Id;
   // periodId => rewardPerMember
   mapping(uint256 => uint256) public periodRewardPerMember;
+  // periodId => amount
+  mapping(uint256 => uint256) public verifierPeriodReward;
 
   address public verifier;
   // 100% == 100 ether
   uint256 public verifierRewardShare;
-  // in token
-  uint256 public verifierRewards;
 
   struct Member {
     bool active;
@@ -126,13 +127,11 @@ contract YALDistribution {
   }
 
   // Mints tokens, assigns the verifier reward and caches reward per member
-  modifier mintNewPeriodIfRequired() {
+  modifier handlePeriodTransitionIfRequired() {
     uint256 currentPeriodId = getCurrentPeriodId();
 
     if (periodRewardPerMember[currentPeriodId] == 0) {
-      token.mint(address(this), periodVolume);
-
-      verifierRewards += (periodVolume * (100 ether - verifierRewardShare));
+      verifierPeriodReward[currentPeriodId] = periodVolume * verifierRewardShare;
 
       // imbalance will be left at the contract
       uint256 currentPeriodRewardPerMember = (periodVolume * (100 ether - verifierRewardShare)) / activeMemberCount;
@@ -152,6 +151,10 @@ contract YALDistribution {
   function setVerifierRewardShare(uint256 _share) external onlyOwner {
     require(_share < 100 ether);
     verifierRewardShare = _share;
+  }
+
+  function setPeriodVolume(uint256 _newVolume) external onlyOwner {
+    periodVolume = _newVolume;
   }
 
   // VERIFIER INTERFACE
@@ -186,14 +189,14 @@ contract YALDistribution {
     return id;
   }
 
-  function activateMember(uint256 _memberId) external mintNewPeriodIfRequired onlyVerifier {
+  function activateMember(uint256 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
     Member storage member = members[id];
     require(member.active == false);
     require(member.createdAt != 0);
     activeMemberCount++;
   }
 
-  function deactivateMember(uint256 _memberId) external mintNewPeriodIfRequired onlyVerifier {
+  function deactivateMember(uint256 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
     Member storage member = members[id];
     require(member.active == true);
     activeMemberCount--;
@@ -204,13 +207,18 @@ contract YALDistribution {
     member.addr = _to;
   }
 
+  function claimVerifierReward(uint256 _periodId, address _to) external onlyVerifier {
+    // TODO: add already claimed check
+    token.mint(_to, verifierPeriodRewards[_periodId]);
+  }
+
   // MEMBER INTERFACE
   // @dev Claims msg.sender funds for the previous period
   function claimFunds(
     uint256 _memberId
   )
     external
-    mintNewPeriodIfRequired
+    handlePeriodTransitionIfRequired
   {
     Member storage member = members[_memberId];
 
@@ -222,9 +230,9 @@ contract YALDistribution {
 
     member.claimedPeriods[getCurrentPeriodId()] = true;
 
-    token.transferFrom(address(this), msg.sender, periodRewardPerMember[getCurrentPeriodId()]);
+    token.mint(msg.sender, verifierPeriodReward[getCurrentPeriodId()]);
   }
-    
+
   function changeMyAddress(uint256 _memberId, address _to) external {
     Member storage member = members[id];
     require(member.addr = msg.sender);
@@ -232,7 +240,7 @@ contract YALDistribution {
   }
 
   // PERMISSIONLESS INTERFACE
-  function mintNewPeriodIfRequired() external mintNewPeriodIfRequired {
+  function handlePeriodTransitionIfRequired() external handlePeriodTransitionIfRequired {
   }
 
   // INTERNAL METHODS
@@ -270,4 +278,5 @@ contract YALDistribution {
     return (getCurrentPeriodId().mul(periodLength)).add(genesisTimestamp);
   }
 }
+
 ```
