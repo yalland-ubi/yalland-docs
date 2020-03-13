@@ -1,5 +1,10 @@
 # YalDistributorV3
 
+## Important Updates
+-  add mapping (uint256 //period// => bool //deactivationStatus//) public deactivationPerPeriod;
+- in deactivateMember() add deactivationPerPeriod.[getCurrentPeriod()] = true;
+- check in claimFunds() activationPerPeriod[getCurrentPeriod()-1] == false; 
+
 ## Constructor arguments (the values can't be changed later):
 - erc20TokenAddress
 - periodLength
@@ -438,3 +443,4 @@ contract YALDistribution {
 }
 
 ```
+
