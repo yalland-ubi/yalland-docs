@@ -1,6 +1,10 @@
 # YalDistributorV3
 
 ## Important Updates
+### 14/03/2020
+- Use lastActivateTimestamp and lastDeActivateTimestamp in structMember and activateMember(), deactivateMember(), claimFunds() functions instead of mapping (uint256 //period// => bool //deactivationStatus//)
+
+### 13/03/2020
 -  add mapping (uint256 //period// => bool //deactivationStatus//) public deactivationPerPeriod;
 - in deactivateMember() add deactivationPerPeriod.[getCurrentPeriod()] = true;
 - check in claimFunds() activationPerPeriod[getCurrentPeriod()-1] == false; 
