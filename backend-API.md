@@ -1,4 +1,4 @@
-#### Версия 1.3.4
+#### Версия 1.3.5
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -60,6 +60,9 @@
 |40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
 |41|acceptPersonVerify         |          |    |+            |+       |           |            |       |          |      |
 |42|updateWalletState          |          |    |             |        |           |            |       |          |+     |
+|43|setPersonSnId              |          |    |+            |        |           |            |       |          |      |
+|44|getPersonSnId              |          |    |+            |        |           |            |       |          |      |
+|45|getPersonDataByWallet      |          |    |             |        |           |            |       |          |+     |
 |47|walletOwnerIsVerified      |          |    |             |        |           |            |       |          |+     |
 |48|checkPromoPayByWallet      |          |    |             |        |           |            |       |          |+     |
 |49|updatePaymentStatus        |          |    |             |        |           |            |       |          |+     |
@@ -988,6 +991,74 @@
 - 0 - невалидный адрес кошелька
 - 1 - тариф уже был установлен
 - 2 - тариф установлен
+
+#### [43] Связка аккаунта пользователя с соцсетями.
+Запрос:
+```json
+{
+    "request":"setPersonSnId",
+    "personId":ID,
+    "socialNetworkId":SN_ID,
+    "socialNetworkPersonId":"SN_PERSON_ID",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+
+"socialNetworkId" - идентификатор соцсети в системе:
+- 1    - ВКонтакте;
+- 2    - Youtube;
+- 3    - Instagram;
+- 4    - Facebook.
+
+#### [44] Получение списка идентификаторов пользователя в соцсетях.
+Запрос:
+```json
+{
+    "request":"getPersonSnId",
+    "personId":ID,
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "snPersonIdList":
+    [
+        {
+            "personId":ID,
+            "socialNetworkId":SN_ID,
+            "socialNetworkPersonId":"SN_PERSON_ID"
+        },
+        ...
+    ]
+}
+```
+
+#### [45] Типа записи и идентификатора пользователя по адресу кошелька.
+Запрос:
+```json
+{
+    "request":"getPersonTypeByWallet",
+    "walletAddress":"WALLET_ADDRESS",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "rowType":ROW_TYPE,
+    "personId":ID
+}
+```
+Значения поля "rowType" описано в пункте "[8] Регистрация нового пользователя".
 
 #### [47] Проверка адреса кошелька на верификацию.
 Запрос:
