@@ -33,6 +33,16 @@ gsnFee = 0.03 ETH
 total = 1.04 ETH
 ```
 
+For negligible amounts it is possible to have 0 fee even when `transferFee > 0`, for ex:
+
+```
+For transferFee = 20%
+
+amount to transfer - 4 wei
+transferFee = 0 wei
+total = 4 wei
+```
+
 
 ## Additional methods
 
