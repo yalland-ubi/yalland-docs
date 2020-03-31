@@ -17,11 +17,29 @@ GSN supprots the following methods:
 * `#approve()` - approver pays for the transaction in YAL tokens
 * `#transfer()` - from account pays for the transactin in YAL tokens
 
+
+## Fees
+### TransferFee
+* `transferFee` now is calculated on top of the amount being transferred
+* `gsnFee` is calculated on top of the amount being transferred
+
+Example:
+```
+For transferFee = 1% and gsnFee = 3%
+
+amount to transfer - 1 ETH
+transferFee = 0.01 ETH
+gsnFee = 0.03 ETH
+total = 1.04 ETH
+```
+
+
 ## Additional methods
 
-* `#transferWithMemo(address _to, uint256 _amount, string calldata _memo)` - the same as #transfer() but with
+* `#transferWithMemo(address _to, uint256 _amount, string calldata _memo)` - the same as `#transfer()` but with
 additional string memo which is emitted using corresponding event.
 
 ## Other requirements
 
 * `#transfer()`, `#transferFrom()`, `#approve()` method from/to arguments should represent only the active holders in YALDistributor contract
+
