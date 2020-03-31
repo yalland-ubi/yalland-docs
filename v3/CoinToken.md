@@ -51,5 +51,7 @@ additional string memo which is emitted using corresponding event.
 
 ## Other requirements
 
-* `#transfer()`, `#transferFrom()`, `#approve()` method from/to arguments should represent only the active holders in YALDistributor contract
+* `#transfer()`, `#transferFrom()`, `#approve()` method from/to arguments should represent only the active holders in YALDistributor contract. If one of them is not in the active list, the transfer will revert.
+* `#transferFrom()` transaction msg.sender could either be in YALDisctributor active user list or in a specific whitelist for eligible performing this method.
+* The aforementioned whitelist for `#transferFrom()` is public and can be managed by `transfer_wl_manager` role
 
