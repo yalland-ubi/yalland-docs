@@ -14,13 +14,14 @@ ERC20 compatible token with the following functionlaity:
 ## GSN support
 
 GSN supprots the following methods:
-* `#approve()` - approver pays for the transaction in YAL tokens
-* `#transfer()` - from account pays for the transactin in YAL tokens
+* `#approve()` - approver pays for the transaction in YAL tokens;
+* `#transfer()` - from account pays for the transactin in YAL tokens;
+* `transferFrom()` - from account pays for the transaction in YAL tokens;
 
 
 ## Fees
-* `transferFee` now is calculated on top of the amount being transferred
-* `gsnFee` is fixed and is defined by the coin contract owner
+* `transferFee` now is calculated on top of the amount being transferred;
+* `gsnFee` is fixed and is defined by the additinal role;
 
 Example:
 ```
@@ -50,8 +51,8 @@ additional string memo which is emitted using corresponding event.
 ## Other requirements
 
 * `#transfer()`, `#transferFrom()`, `#approve()` method from/to/msg.sender arguments should represent either:
-- the active holder in YALDistributor contract
-- or an allowed address in a specific whitelist residing in ERC20 contract
+- the active holder in YALDistributor contract;
+- or an allowed address in a specific whitelist residing in ERC20 contract;
 
 If one of them is not in the active list, the transfer will revert.
 
