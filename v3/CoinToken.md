@@ -16,7 +16,8 @@ ERC20 compatible token with the following functionlaity:
 GSN supprots the following methods:
 * `#approve()` - approver pays for the transaction in YAL tokens;
 * `#transfer()` - from account pays for the transactin in YAL tokens;
-* `transferFrom()` - from account pays for the transaction in YAL tokens;
+* `#transferWithMemo()` - the same as `#transfer()` but has an additional `memo` string argument
+* `#transferFrom()` - from account pays for the transaction in YAL tokens;
 
 
 ## Fees
