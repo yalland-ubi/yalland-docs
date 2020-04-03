@@ -1,0 +1,1 @@
+- Yall ERC20 Token - ERC20 standard token with the following additional functions: caching balance per block, the ability to specify a note as an arbitrary line when the transfer () method is called.
