@@ -12,8 +12,8 @@ YALL has the following purposes:
 - redistribution of excess profits. 
 #### Emission model
 #### Transfer between chains
-Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by "Governance Proposal manager contract".
-Governance Proposal manager contract can:
+Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by `Governance Proposal manager contract`.
+`Governance Proposal manager contract` can:
 - change YALL token address on both chains;
 - change mediator contract on both chains;
 - define mediator parameters: Min per transaction, Max per transaction, Transaction limit max per day.
@@ -25,6 +25,9 @@ YST has the following purposes:
 - creation of economic motivation for decentralized governance.
 #### Emission model
 YST has fixed supply, issued once, may not have additional emissions(minted) or be destroyed(burned).
+#### Staking 
+YST token can be staked by their Owners on Ethereum mainnet. The Owner of the token sends it to the `YALL STAKING mediator` contract. The token is blocked in the contract. The owner of the token receives a blocked balance, which is simultaneously available in both Ethereum and xDai.  
+![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-1.png)
 #### Transfer between chains
 Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). In the future, it is possible to be able to transfer tokens to ETH 2.0, Aragon chain, Yalland chain (if implemented) or any other reliable chain with high bandwidth and low transaction cost. 
 ## Yalland SideChain contracts overview
