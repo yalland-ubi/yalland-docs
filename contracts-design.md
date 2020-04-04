@@ -13,6 +13,7 @@ YALL has the following purposes:
 #### Emission model
 #### Transfer between chains
 Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by `Governance Proposal manager contract`.
+
 `Governance Proposal manager contract` can:
 - change YALL token address on both chains;
 - change mediator contract on both chains;
