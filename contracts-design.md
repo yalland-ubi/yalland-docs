@@ -13,6 +13,7 @@ YALL has the following purposes:
 #### Emission model
 #### Transfer between chains
 Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). The number of transferred tokens is limited to 10 000 YALL from below. 
+![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-1.png)
 ### Yall ERC20 Staking Token(YST)
 #### Purpose
 YST has the following purposes:
