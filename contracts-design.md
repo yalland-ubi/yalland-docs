@@ -18,6 +18,8 @@ Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary
 - change YALL token address on both chains;
 - change mediator contract on both chains;
 - define mediator parameters: Min per transaction, Max per transaction, Transaction limit max per day.
+
+Any owner can send his YALL tokens to Ethereum mainnet. To do this, Owner transfers his Yall to `YALL ERC20 MEDIATOR` contract. This contract, in turn, transmits the message through the AMB to the mediator, which is located in Ethereum mainchain. `YALL ERC20 MEDIATOR` in Ethereum issues the right amount of tokens. When sent back, Yall tokens are burned at Ethereum and released on xDai.
 ![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-1.png)
 ### Yall ERC20 Staking Token(YST)
 #### Purpose
