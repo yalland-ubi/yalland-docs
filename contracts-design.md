@@ -2,7 +2,7 @@
 
 ## Roles
 - **Yalland UBI program member** - a unique person who has proved that he is a unique person and receives YALL tokens for the purchase of goods and services;
-- **Verifier** - association of non-profit organizations and foundations that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
+- **Verifiers** - association of non-profit organizations and foundations that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
 - **Delegators** -  YST token holders, which elect Verifiers by voting, upgrade smart contracts and change their parameters.
 
 ## Yalland Tokens
