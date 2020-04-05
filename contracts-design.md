@@ -27,7 +27,7 @@ Initially, only the first mechanism is used. In the future, it will be completel
 Each program participant can receive YALL as a Universal Basic Income for paying for goods and services. YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the right to mint tokens.
 ![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-3.png)
 After 264,000,000 YALL has been minted, YALL initial emission will cease and users will receive a weekly payment only from the Commission pool contract.
-#### Transfer between chains
+#### YALL transfer between chains
 Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by `Governance Proposal manager contract`.
 
 `Governance Proposal manager contract` can:
@@ -38,17 +38,17 @@ Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary
 Any owner can send his YALL tokens to Ethereum mainnet. To do this, Owner transfers his Yall to `YALL ERC20 MEDIATOR` contract. This contract, in turn, transmits the message through the AMB to the mediator, which is located in Ethereum mainchain. `YALL ERC20 MEDIATOR` in Ethereum issues the right amount of tokens. When sent back, Yall tokens are burned at Ethereum and released on xDai.
 ![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-1.png)
 ### Yall ERC20 Staking Token(YST)
-#### Purpose
+#### YST purpose
 YST has the following purposes:
 - decentralized governance of the universal basic income system;
 - creation of economic motivation for decentralized governance.
-#### Emission model
+#### YST emission model
 YST has fixed supply, issued once, may not have additional emissions(minted) or be destroyed(burned).
-#### Staking 
+#### YST staking 
 YST token can be staked by their Owners on Ethereum mainnet. The Owner of the token sends it to the `YALL STAKING mediator contract`. The token is blocked in the contract and the Owner of the token receives a blocked balance, which is simultaneously available in both Ethereum and xDai. 
 Using this balance, the token holder can create proposals for upgrading smart contracts, changing their parameters and elect Verifiers.
 ![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-2.png)
-#### Transfer between chains
+#### YST transfer between chains
 Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). In the future, it is possible to be able to transfer tokens to ETH 2.0, Aragon chain, Yalland chain (if implemented) or any other reliable chain with high bandwidth and low transaction cost. 
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
