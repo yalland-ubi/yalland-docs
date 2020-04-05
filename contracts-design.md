@@ -1,4 +1,7 @@
 # Yalland Project Smart Contracts Design
+## Yalland universal basic income overview
+The program is a public blockchain smart contract system managed by a decentralized community. Everyone can participate in the program, verifying himself as a unique person and receive points (tokens), which can be exchanged for products, services or fiat money on the open market.
+## Yalland Basic economic principles
 
 ## Roles
 - **Yalland UBI program member** - a unique person who has proved that he is a unique person and receives YALL tokens for the purchase of goods and services;
