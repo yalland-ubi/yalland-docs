@@ -17,11 +17,12 @@ YALL has the following purposes:
 - means of payment for goods and services;
 - redistribution of excess profits. 
 #### Program member verification
-In order to receive UBI, each person who wants to participate in the program must periodically confirm that he is a unique person. This is a prerequisite for an honest distribution of basic income. For these purposes, two mechanisms are used:
+In order to receive UBI, each person who wants to participate in the program must periodically confirm that he (or she) is a unique person. This is a prerequisite for an honest distribution of basic income. For these purposes, two mechanisms are used:
 - the mechanism of delegated decentralized verification;
 - the mechanism of complete decentralized verification.
 Initially, only the first mechanism is used. In the future, it will be completely replaced by a second one.
 ##### Delegated decentralized verification
+##### Complete decentralized verification
 #### Emission model
 YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the rights to mint tokens.
 ![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-3.png)
