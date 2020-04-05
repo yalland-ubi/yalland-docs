@@ -11,19 +11,29 @@ ERC20 compatible token with the following functionlaity:
 * GSNRecipientSigned - GSN support
 
 
-## GSN support
 
-GSN supprots the following methods:
-* `#approve()` - approver pays for the transaction in YAL tokens;
-* `#transfer()` - from account pays for the transactin in YAL tokens;
-* `#transferWithMemo()` - the same as `#transfer()` but has an additional `memo` string argument
-* `#transferFrom()` - from account pays for the transaction in YAL tokens;
 
 
 ## Fees
 * `transferFee` now is calculated on top of the amount being transferred;
 * `gsnFee` is fixed and is defined by the additinal role;
 
+### GSN fee
+
+GSN supprots the following methods:
+* `#approve()` - msg.sender (approver) pays for the transaction in YAL tokens;
+* `#transfer()` - msg.sender(from) account pays for the transactin in YAL tokens;
+* `#transferWithMemo()` - the same as `#transfer()`
+* `#transferFrom()` - msg.sender pays for the transaction in YAL tokens;
+
+### Transfer fee
+
+Transfer fee is charged for the following methods:
+* `#transfer()` - msg.sender(from) account pays for the transactin in YAL tokens;
+* `#transferWithMemo()` - the same as `#transfer()`
+* `#transferFrom()` - msg.sender pays for the transaction in YAL tokens;
+
+### Examples
 Example:
 ```
 For transferFee = 1% and gsnFee = 0.03 ETH
