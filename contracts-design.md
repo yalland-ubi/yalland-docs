@@ -30,7 +30,7 @@ In order to receive UBI, each person who wants to participate in the program mus
 Initially, only the first mechanism is used. 
 In the future, it will be completely replaced by a second one.
 ### Delegated decentralized verification
-YST token Holders, whose main task is to decentralize UBI system governance, add or remove Verifiers by voting. For this, they receive a part of the YALL tokens emission.
+YST token Holders, whose main task is to decentralize UBI system governance, add or remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission.
 Each Verifier is a non-profit organization registered in the relevant jurisdiction in accordance with local laws. They identify UBI program participants and allow them to receive YALL tokens. For identification, they use documents, open sources and government databases. They also store personal data of participants strictly in accordance with local laws in a shared database. It is important to note that Verifiers must have a deposit, both in YALL and YST tokens. If the Verifier is removed, its security deposit is debited in favor of the YST Holders.
 ![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-5.png)
 ### Complete decentralized verification
