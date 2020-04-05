@@ -13,7 +13,7 @@ Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income p
 
 ![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-4.png)
 
-Thus, the wealthier and more successful Alice, Philanthropist and Speculator through natural market mechanisms, supports Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
+Thus, the wealthier and more successful Alice, Philanthropist and Speculator through natural market mechanisms, support Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
 ## Roles
 - **Yalland UBI program member** - a unique person who has proved that he is a unique person and receives YALL tokens for the purchase of goods and services;
 - **Verifiers** - association of non-profit organizations and foundations that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
