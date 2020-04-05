@@ -3,15 +3,16 @@
 The program is a public blockchain smart contract system managed by a decentralized community. Everyone can participate in the program, verifying himself as a unique person and receive points (tokens), which can be exchanged for products, services or fiat money on the open market.
 The program is not state-owned and is built on the principles of P2P - economics.
 ## Yalland Basic economic principles
-Meet ALice, Bob and Dan. Alice is a high income person, Bob just lost his job and he does not fit a little extra cash, Dan runs a grocery store.
+Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income person, Bob just lost his job and he does not fit a little extra cash, Dan runs a grocery store. Philanthropist has a lot of assets and he is very concerned about social stability. The speculator just wants to make profit.
 - ALice, Bob and Dan all participate in Yalland UBI program as they share the values of social stability and mutual assistance. The all get 100 YALL each month;
 - Bob goes to Dan and buys products for a month for 50 YALL;
 - Dan goes to open market and sells 50 YALL for 200 USD;
 - Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 100 YALL for 400 USD in the open market and pays 200 YALL to Dan;
-- Also, an anonymous philanthropist periodically comes to the market and maintains the YALL rate, buying them from the market.
+- Philanthropist periodically comes to the market and maintains the YALL rate, buying them from the market;
+- And of course there is a Speculator on the market who buys and sells YALL in order to profit from price fluctuations. Sometimes he succeeds, sometimes not.
 ![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-4.png)
 
-Thus, the wealthier and more successful Alice, through natural market mechanisms, supports Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
+Thus, the wealthier and more successful Alice, Philanthropist and Speculator through natural market mechanisms, supports Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
 ## Roles
 - **Yalland UBI program member** - a unique person who has proved that he is a unique person and receives YALL tokens for the purchase of goods and services;
 - **Verifiers** - association of non-profit organizations and foundations that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
