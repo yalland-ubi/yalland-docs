@@ -9,6 +9,7 @@ Meet ALice, Bob and Dan. Alice is a high income person, Bob just lost his job an
 - Dan goes to open market and sells 50 YALL for 200 USD;
 - Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 50 YALL for 200 USD in the open market and pays 150 YALL to Den.
 ![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-4.png)
+
 Thus, the wealthier and more successful Alice, through natural market mechanisms, supports Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
 ## Roles
 - **Yalland UBI program member** - a unique person who has proved that he is a unique person and receives YALL tokens for the purchase of goods and services;
