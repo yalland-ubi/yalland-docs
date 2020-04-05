@@ -3,7 +3,7 @@
 The program is a public blockchain smart contract system managed by a decentralized community. Everyone can participate in the program, verifying himself as a unique person and receive points (tokens), which can be exchanged for products, services or fiat money on the open market.
 The program is not state-owned and is built on the principles of P2P - economics.
 ## Yalland Basic economic principles
-Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income person, Bob just lost his job and he does not fit a little extra cash, Dan runs a grocery store. Philanthropist has a lot of assets and he is very concerned about social stability. The speculator just wants to make profit.
+Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income person, Bob just lost his job and he does not fit a little extra cash, Dan runs a grocery store. Philanthropist has a lot of assets and he is very concerned about social stability. The Speculator just wants to make some profit.
 - ALice, Bob and Dan all participate in Yalland UBI program as they share the values of social stability and mutual assistance. The all get 100 YALL each month;
 - Bob goes to Dan and buys products for a month for 50 YALL;
 - Dan goes to open market and sells 50 YALL for 200 USD;
