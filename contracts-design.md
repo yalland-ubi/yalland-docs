@@ -24,9 +24,9 @@ Initially, only the first mechanism is used. In the future, it will be completel
 ##### Delegated decentralized verification
 ##### Complete decentralized verification
 #### Emission model
-YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the rights to mint tokens.
+Each program participant can receive YALL as a Universal Basic Income for paying for goods and services. YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the right to mint tokens.
 ![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-3.png)
-After 264,000,000 YALL has been minted, YALL initial emission will cease and users will receive a weekly payment from the Commission pool contract.
+After 264,000,000 YALL has been minted, YALL initial emission will cease and users will receive a weekly payment only from the Commission pool contract.
 #### Transfer between chains
 Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by `Governance Proposal manager contract`.
 
