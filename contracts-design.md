@@ -10,6 +10,7 @@ Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income p
 - Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 100 YALL for 400 USD in the open market and pays 200 YALL to Dan;
 - Philanthropist periodically comes to the market and maintains the YALL rate, buying them from the market;
 - And of course there is a Speculator on the market who buys and sells YALL in order to profit from price fluctuations. Sometimes he succeeds, sometimes not.
+
 ![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-4.png)
 
 Thus, the wealthier and more successful Alice, Philanthropist and Speculator through natural market mechanisms, supports Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
