@@ -13,7 +13,8 @@ transfer fee. YALL has a limited supply. YALL is transferable between  different
 In order to receive UBI, each person who wants to participate in the program must periodically confirm that he (or she) is a unique person. This is a prerequisite for an honest distribution of basic income. For these purposes, two mechanisms are used:
 - the mechanism of delegated decentralized verification;
 - the mechanism of complete decentralized verification.
-Initially, only the first mechanism is used. In the future, it will be completely replaced by a second one.
+Initially, only the first mechanism is used. 
+In the future, it will be completely replaced by a second one.
 ### Delegated decentralized verification
 ### Complete decentralized verification
 
