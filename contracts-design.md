@@ -7,7 +7,8 @@ Meet ALice, Bob and Dan. Alice is a high income person, Bob just lost his job an
 - ALice, Bob and Dan all participate in Yalland UBI program as they share the values of social stability and mutual assistance. The all get 100 YALL each month;
 - Bob goes to Dan and buys products for a month for 50 YALL;
 - Dan goes to open market and sells 50 YALL for 200 USD;
-- Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 50 YALL for 200 USD in the open market and pays 150 YALL to Den.
+- Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 100 YALL for 400 USD in the open market and pays 200 YALL to Dan;
+- Also, an anonymous philanthropist periodically comes to the market and maintains the YALL rate, buying them from the market.
 ![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-4.png)
 
 Thus, the wealthier and more successful Alice, through natural market mechanisms, supports Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
