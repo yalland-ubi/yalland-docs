@@ -5,24 +5,25 @@
 - **Verifiers** - association of non-profit organizations and foundations that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
 - **Delegators** -  YST token holders, which elect Verifiers by voting, upgrade smart contracts and change their parameters.
 
-## Yalland Tokens
-### Tokens Overview
+## Tokens Overview
 - **Yalland ERC20 Token(YALL)** - ERC20 standard token with the following additional functions: balance caching per block, the ability to specify a note as an arbitrary line when the token transfer is performed, token transfer can be performed only between verified users and whitelisted smart contracts, compatibility with Gas Station Network(GSN), 
 transfer fee. YALL has a limited supply. YALL is transferable between  different chains. For current implementation it’s initial created on xDAI chain and transferable to Ethereum mainnet and back via ETH-xDai Arbitrary Message Bridge.   
 - **Yall ERC20 Staking Token(YST)** - ERC20 standard token with the following additional functions: balance caching per block. The main purpose of the token is the decentralized management of smart contracts of the system of universal basic income. Token has fixed supply. It’s initially created on Ethereum mainnet as a token of Aragon organisation. It can be staked.
+## Program member verification
+In order to receive UBI, each person who wants to participate in the program must periodically confirm that he (or she) is a unique person. This is a prerequisite for an honest distribution of basic income. For these purposes, two mechanisms are used:
+- the mechanism of delegated decentralized verification;
+- the mechanism of complete decentralized verification.
+Initially, only the first mechanism is used. In the future, it will be completely replaced by a second one.
+### Delegated decentralized verification
+### Complete decentralized verification
+
+## Yalland Tokens
 ### Yall ERC20 Token(YALL)
 #### Purpose
 YALL has the following purposes:
 - providing each person with the minimum amount of goods and services necessary for life;
 - means of payment for goods and services;
 - redistribution of excess profits. 
-#### Program member verification
-In order to receive UBI, each person who wants to participate in the program must periodically confirm that he (or she) is a unique person. This is a prerequisite for an honest distribution of basic income. For these purposes, two mechanisms are used:
-- the mechanism of delegated decentralized verification;
-- the mechanism of complete decentralized verification.
-Initially, only the first mechanism is used. In the future, it will be completely replaced by a second one.
-##### Delegated decentralized verification
-##### Complete decentralized verification
 #### Emission model
 Each program participant can receive YALL as a Universal Basic Income for paying for goods and services. YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the right to mint tokens.
 ![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-3.png)
