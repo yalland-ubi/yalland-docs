@@ -71,7 +71,7 @@ Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbi
 ### Emission pool
 A certain percentage of the total YALL issue (currently 10%) goes to the total emission pool to reward Verifiers and Delegators. Initially, their remuneration is divided 50% / 50%, but this distribution can be changed.
 At the beginning of each token issuing period `YALL Distribution Contract` calls the` YALL ERC20 Contract`, which in turn mints tokens on the `Emission Reward Pool contract`.
-Verifiers receive 5% of the emissions distributed in equal parts between them. Delegators receive 5% of the emission, distributed in proportion to their wall.
+Verifiers receive 5% of the emissions distributed in equal parts between them. Delegators receive 5% of the emission, distributed in proportion to their Stake.
 ![Emission pool](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-6.png)
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
