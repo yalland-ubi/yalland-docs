@@ -2,14 +2,17 @@
 ## Yalland universal basic income overview
 The program is a public blockchain smart contract system managed by a decentralized community. Everyone can participate in the program, verifying himself as a unique person and receive points (tokens), which can be exchanged for products, services or fiat money on the open market.
 The program is not state-owned and is built on the principles of P2P - economics.
-The presented smart contract system is blockchain agnistic and can be executed in any Turing-complete virtual machine. It is assumed that it will work initially on Ethereum + xDai and then will be migrated to Ethereum 2.0.
+The presented smart contract system is blockchain agnostic and can be executed in any Turing-complete virtual machine. It is assumed that it will work initially on `Ethereum mainnet` and `xDai sidechain` and then will be moved completely to `Ethereum 2.0`. 
+Prior to Ethereum 2.0, an intermediate migration of the project from `xDai` to its own `Ethermint chain` or `Aragon chain` is possible.
+
 ## Yalland Basic economic principles
 Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income person, Bob just lost his job and he does not fit a little extra cash, Dan runs a grocery store. Philanthropist has a lot of assets and he is very concerned about social stability. The Speculator just wants to make some profit.
 - ALice, Bob and Dan all participate in Yalland UBI program as they share the values of social stability and mutual assistance. The all get 100 YALL each month;
 - Bob goes to Dan and buys products for a month for 50 YALL;
 - Dan goes to open market and sells 50 YALL for 200 USD;
 - Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 100 YALL for 400 USD in the open market and pays 200 YALL to Dan;
-- Philanthropist periodically comes to the market and maintains the YALL rate, buying them from the market;
+- Due to the fact that there is an exchange market with great liquidity, Dan can pay YALL to his assistant Dave and farmer John, who supplies him with milk and cheese from the farm.
+- Philanthropist periodically buys YALL from the market and thereby supports its exchange rate;
 - And of course there is a Speculator on the market who buys and sells YALL in order to profit from price fluctuations. Sometimes he succeeds, sometimes not.
 
 ![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-4.png)
