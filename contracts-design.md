@@ -11,7 +11,7 @@ Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income p
 - Bob goes to Dan and buys products for a month for 50 YALL;
 - Dan goes to open market and sells 50 YALL for 200 USD;
 - Alice also have 100 YALL. But she, unlike Bob, consumes more goods, since she has a greater income. Since she supports UBI values and prefers to pay in YALL, she buys 100 YALL for 400 USD in the open market and pays 200 YALL to Dan;
-- Due to the fact that there is an exchange market with great liquidity, Dan can pay YALL to his assistant Dave and farmer John, who supplies him with milk and cheese from the farm.
+- Due to the fact that there is an exchange market with great liquidity, Dan can pay YALL to his assistant Dave and farmer John, who supplies him with milk and cheese from the farm;
 - Philanthropist periodically buys YALL from the market and thereby supports its exchange rate;
 - And of course there is a Speculator on the market who buys and sells YALL in order to profit from price fluctuations. Sometimes he succeeds, sometimes not.
 
@@ -20,7 +20,7 @@ Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income p
 Thus, the wealthier and more successful Alice, Philanthropist and Speculator through natural market mechanisms, support Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
 ## Roles
 - **Yalland UBI program member** - a unique person who has proved that he is a unique person and receives YALL tokens for the purchase of goods and services;
-- **Verifiers** - association of non-profit organizations and foundations that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
+- **Verifiers** - association of non-profit organizations, foundations  and notaries that confirm the uniqueness of people in the program and their right to receive UBI in YALL tokens;
 - **Delegators** -  YST token holders, which elect Verifiers by voting, upgrade smart contracts and change their parameters.
 
 ## Tokens Overview
@@ -34,9 +34,15 @@ In order to receive UBI, each person who wants to participate in the program mus
 Initially, only the first mechanism is used. 
 In the future, it will be completely replaced by a second one.
 ### Delegated decentralized verification (DDV)
-YST token Holders, whose main task is to decentralize UBI system governance, add or remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission from `Emission Reward Pool contract`.
+YST token Holders, whose main task is to decentralize Yalland UBI system governance, add or remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission from `Emission Reward Pool contract`.
 Each Verifier is a non-profit organization registered in the relevant jurisdiction in accordance with local laws. They identify UBI program participants and allow them to receive YALL tokens. For identification, they use documents, open sources and government databases. They also store personal data of participants strictly in accordance with local laws in a shared database. It is important to note that Verifiers must have a deposit, both in YALL and YST tokens. If the Verifier is removed, its security deposit is debited in favor of the YST Holders.
 ![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-5.png)
+
+The main risk here is the dishonest behavior of one or more Verifiers, which can create non-existent personalities in order to obtain benefits.
+We solve this problem as follows:
+- Verifiers have a deposit that can be slashed and a constant income from their work;
+- Verifiers are organizations or notaries that may be held liable in accordance with the law;
+- Non-existent members can be identified based on their transaction analysis.
 ### Complete decentralized verification (CDV)
 TBD
 ### Verified user address change
