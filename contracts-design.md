@@ -68,12 +68,20 @@ Using this balance, the token holder can create proposals for upgrading smart co
 ![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-2.png)
 #### YST transfer between chains
 Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). In the future, it is possible to be able to transfer tokens to ETH 2.0, Aragon chain, Yalland chain (if implemented) or any other reliable chain with high bandwidth and low transaction cost. 
-### Emission pool
+### Emission Reward pool
 A certain percentage of the total YALL issue (currently 10%) goes to the total emission pool to reward Verifiers and Delegators. Initially, their remuneration is divided 50% / 50%, but this distribution can be changed.
 At the beginning of each token issuing period `YALL Distribution Contract` calls the` YALL ERC20 Contract`, which in turn mints tokens on the `Emission Reward Pool contract`.
 Verifiers receive 5% of the emissions distributed in equal parts between them. Delegators receive 5% of the emission, distributed in proportion to their Stake.
 
 ![Emission pool](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-6.png)
+
+### Commission Reward Pool
+All operations with YALL have a commission, which is established by the `Governance Proposal manager contract`. The commission from each transfer goes to the `Commission Reward Pool Contract`. Until the end of the initial YALL distribution, this commission is divided between the Verifiers (in proportion to their total number) and the Delegators (in proportion to the steak) in proportion determined by `Governance Proposal manager contract`.
+
+After the end of the initial YALL distribution, part of the commission goes to payments to program participants through YALL Distribution Contract.
+
+![Commission Reward Pool](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-7.png)
+
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
 - [GSN Frequently Asked Questions](https://docs.openzeppelin.com/gsn-provider/0.1/gsn-faq#how_does_it_work)
