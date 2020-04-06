@@ -82,6 +82,20 @@ After the end of the initial YALL distribution, part of the commission goes to p
 
 ![Commission Reward Pool](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-7.png)
 
+### Governance
+Decentralized governance of Yalland UBI system is performed by Delegators. They stake YST token to smart contract on Ethereum mainnet and vote by their stake. Simultaneosly they can vote on different chains (Ethereum and xDai). They upgrade smart contract, elect verifiers and set contract parameters. All those operations are performed by `Governance Proposal manager contract`. Delegators create proposals and vote on them. 
+`Governance Proposal manager contract` has following parameters:
+- support = 51% - the number of votes "Yes" required to make a decision;
+- duration = 7 days - voting duration;
+- minimum support = 10%;
+Voting takes place according to the following algorithm:
+- Delegators casts a vote with his stake;
+- if voting is not closed and `support` > 51%, the decision is made;
+- if voting is  closed and `support` > `minimum support`, the decision is made.
+
+Support, duration and minimum support can be changed.
+
+![Governance](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-8.png)
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
 - [GSN Frequently Asked Questions](https://docs.openzeppelin.com/gsn-provider/0.1/gsn-faq#how_does_it_work)
