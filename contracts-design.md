@@ -100,9 +100,25 @@ Support, duration and minimum support can be changed.
 ![Governance](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-8.png)
 
 ### Gas Station Network
+To improve the user experience, the Gas Station Network is used. This is a system that allows Member to pay a gas commission not with a network token, but with ERC20. A program participant creates a transaction in the wallet and sends it to the Relayer. The Relayer signs the transaction and, through the GSN, sends it to the corresponding smart contracts. Relayer pays for gas and receives a commission in YALL from Member.
 
-
+![Governance](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-9.png)
 ### Development Roadmap
+|Period|Scope|Status|
+|-----|-------|-------|
+|April 2020|New Yalland distribution in Yalland chain|Done|
+|April 2020|New Token contract in Testnet|Done|
+|April 2020|New Token contract in in Yalland chain|In progress|
+|April 2020|GSN network in Testnet|Done|
+|April 2020|Sidechain => Mainnet Bridge for YALL transfer in Testnet|Done|
+|April 2020|Smart contract migration to xDai|In progress|
+|May 2020|Yalland Staking token in Testnet|In progress|
+|May 2020|Yalland Staking token in Ethereum mainnet|In progress|
+|May 2020|Yalland Staking token Bridge in Testnet|In progress|
+|May 2020|Yalland Staking Proposal manager in Testnet|In progress|
+|May 2020|Emission pool in Testnet|In progress|
+|May 2020|Commission pool in Testnet|In progress|
+|May 2020|Yalland Staking token Bridge in Ethereum mainnet + xdai; Yalland Staking Proposal manager in xDai;Emission pool; Commission pool|In progress|
 
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
