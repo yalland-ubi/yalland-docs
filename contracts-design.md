@@ -29,11 +29,11 @@ In order to receive UBI, each person who wants to participate in the program mus
 - the mechanism of complete decentralized verification.
 Initially, only the first mechanism is used. 
 In the future, it will be completely replaced by a second one.
-### Delegated decentralized verification
-YST token Holders, whose main task is to decentralize UBI system governance, add or remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission.
+### Delegated decentralized verification (DDV)
+YST token Holders, whose main task is to decentralize UBI system governance, add or remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission from `Emission Reward Pool contract`.
 Each Verifier is a non-profit organization registered in the relevant jurisdiction in accordance with local laws. They identify UBI program participants and allow them to receive YALL tokens. For identification, they use documents, open sources and government databases. They also store personal data of participants strictly in accordance with local laws in a shared database. It is important to note that Verifiers must have a deposit, both in YALL and YST tokens. If the Verifier is removed, its security deposit is debited in favor of the YST Holders.
 ![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-5.png)
-### Complete decentralized verification
+### Complete decentralized verification (CDV)
 ## Yalland Tokens
 ### Yall ERC20 Token(YALL)
 #### Purpose
@@ -68,6 +68,8 @@ Using this balance, the token holder can create proposals for upgrading smart co
 ![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-2.png)
 #### YST transfer between chains
 Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). In the future, it is possible to be able to transfer tokens to ETH 2.0, Aragon chain, Yalland chain (if implemented) or any other reliable chain with high bandwidth and low transaction cost. 
+### Emission pool
+
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
 - [GSN Frequently Asked Questions](https://docs.openzeppelin.com/gsn-provider/0.1/gsn-faq#how_does_it_work)
