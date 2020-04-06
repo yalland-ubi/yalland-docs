@@ -36,6 +36,13 @@ Each Verifier is a non-profit organization registered in the relevant jurisdicti
 ![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-5.png)
 ### Complete decentralized verification (CDV)
 TBD
+### Verified user address change
+A situation may arise when the private key of a program participant has been compromised. In this case, having the old private key, he can set his new address without having to re-verify.
+To do this, the Program Member sends a transaction signed by the old private key containing the new address to `YALL Distribution Contract`. The balance from the old address is automatically transferred to the new one.
+### Verified user address recovery
+In case of loss of the private key, the Program Member can restore its balance and change the old address to the new one.
+Verifiers perform this operation. After the identity of the program member is confirmed, Verifiers (one or several) confirm the change of address. The `YALL Distribution Contract` contract burns YALL from old address and mints same amount to the new one.
+![Verified user address recovery](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-10.png)
 ## Yalland Tokens
 ### Yall ERC20 Token(YALL)
 #### Purpose
