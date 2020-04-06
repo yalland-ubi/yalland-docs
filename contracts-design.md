@@ -12,7 +12,7 @@ Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income p
 - Philanthropist periodically comes to the market and maintains the YALL rate, buying them from the market;
 - And of course there is a Speculator on the market who buys and sells YALL in order to profit from price fluctuations. Sometimes he succeeds, sometimes not.
 
-![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-4.png)
+![Yalland Basic economic principles](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-4.png)
 
 Thus, the wealthier and more successful Alice, Philanthropist and Speculator through natural market mechanisms, support Bob in difficult times. The whole process takes place without unnecessary intermediaries in the person of the state.
 ## Roles
@@ -33,7 +33,7 @@ In the future, it will be completely replaced by a second one.
 ### Delegated decentralized verification (DDV)
 YST token Holders, whose main task is to decentralize UBI system governance, add or remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission from `Emission Reward Pool contract`.
 Each Verifier is a non-profit organization registered in the relevant jurisdiction in accordance with local laws. They identify UBI program participants and allow them to receive YALL tokens. For identification, they use documents, open sources and government databases. They also store personal data of participants strictly in accordance with local laws in a shared database. It is important to note that Verifiers must have a deposit, both in YALL and YST tokens. If the Verifier is removed, its security deposit is debited in favor of the YST Holders.
-![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-5.png)
+![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-5.png)
 ### Complete decentralized verification (CDV)
 TBD
 ## Yalland Tokens
@@ -45,7 +45,7 @@ YALL has the following purposes:
 - redistribution of excess profits. 
 #### Emission model
 Each program participant can receive YALL as a Universal Basic Income for paying for goods and services. YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the right to mint tokens.
-![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-3.png)
+![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-3.png)
 After 264,000,000 YALL has been minted, YALL initial emission will cease and users will receive a weekly payment only from the Commission pool contract.
 #### YALL transfer between chains
 Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by `Governance Proposal manager contract`.
@@ -56,7 +56,7 @@ Tokens is transferable between Ethereum mainnet and xDai sidechain via Arbitrary
 - define mediator parameters: Min per transaction, Max per transaction, Transaction limit max per day.
 
 Any owner can send his YALL tokens to Ethereum mainnet. To do this, Owner transfers his Yall to `YALL ERC20 MEDIATOR` contract. This contract, in turn, transmits the message through the AMB to the mediator, which is located in Ethereum mainchain. `YALL ERC20 MEDIATOR` in Ethereum issues the right amount of tokens. When sent back, Yall tokens are burned at Ethereum and released on xDai.
-![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-1.png)
+![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-1.png)
 ### Yall ERC20 Staking Token(YST)
 #### YST purpose
 YST has the following purposes:
@@ -67,7 +67,7 @@ YST has fixed supply, issued once, may not have additional emissions(minted) or 
 #### YST staking 
 YST token can be staked by their Owners on Ethereum mainnet. The Owner of the token sends it to the `YALL STAKING mediator contract`. The token is blocked in the contract and the Owner of the token receives a blocked balance, which is simultaneously available in both Ethereum and xDai. 
 Using this balance, the token holder can create proposals for upgrading smart contracts, changing their parameters and elect Verifiers.
-![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-2.png)
+![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-2.png)
 #### YST transfer between chains
 Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). In the future, it is possible to be able to transfer tokens to ETH 2.0, Aragon chain, Yalland chain (if implemented) or any other reliable chain with high bandwidth and low transaction cost. 
 ### Emission Reward pool
@@ -75,14 +75,14 @@ A certain percentage of the total YALL issue (currently 10%) goes to the total e
 At the beginning of each token issuing period `YALL Distribution Contract` calls the` YALL ERC20 Contract`, which in turn mints tokens on the `Emission Reward Pool contract`.
 Verifiers receive 5% of the emissions distributed in equal parts between them. Delegators receive 5% of the emission, distributed in proportion to their Stake.
 
-![Emission pool](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-6.png)
+![Emission pool](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-6.png)
 
 ### Commission Reward Pool
 All operations with YALL have a commission, which is established by the `Governance Proposal manager contract`. The commission from each transfer goes to the `Commission Reward Pool Contract`. Until the end of the initial YALL distribution, this commission is divided between the Verifiers (in proportion to their total number) and the Delegators (in proportion to the steak) in proportion determined by `Governance Proposal manager contract`.
 
 After the end of the initial YALL distribution, part of the commission goes to payments to program participants through YALL Distribution Contract.
 
-![Commission Reward Pool](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-7.png)
+![Commission Reward Pool](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-7.png)
 
 ### Governance
 Decentralized governance of Yalland UBI system is performed by Delegators. They stake YST token to smart contract on Ethereum mainnet and vote by their stake. Simultaneosly they can vote on different chains (Ethereum and xDai). They upgrade smart contract, elect verifiers and set contract parameters. All those operations are performed by `Governance Proposal manager contract`. Delegators create proposals and vote on them. 
@@ -97,12 +97,12 @@ Voting takes place according to the following algorithm:
 
 Support, duration and minimum support can be changed.
 
-![Governance](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-8.png)
+![Governance](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-8.png)
 
 ### Gas Station Network
 To improve the user experience, the Gas Station Network is used. This is a system that allows Member to pay a gas commission not with a network token, but with ERC20. A program participant creates a transaction in the wallet and sends it to the Relayer. The Relayer signs the transaction and, through the GSN, sends it to the corresponding smart contracts. Relayer pays for gas and receives a commission in YALL from Member.
 
-![Governance](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-9.png)
+![Governance](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-9.png)
 ### Development Roadmap
 |Period|Scope|Status|
 |-----|-------|-------|
