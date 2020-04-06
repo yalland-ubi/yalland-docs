@@ -2,6 +2,7 @@
 ## Yalland universal basic income overview
 The program is a public blockchain smart contract system managed by a decentralized community. Everyone can participate in the program, verifying himself as a unique person and receive points (tokens), which can be exchanged for products, services or fiat money on the open market.
 The program is not state-owned and is built on the principles of P2P - economics.
+The presented smart contract system is blockchain agnistic and can be executed in any Turing-complete virtual machine. It is assumed that it will work initially on Ethereum + xDai and then will be migrated to Ethereum 2.0.
 ## Yalland Basic economic principles
 Meet ALice, Bob and Dan, Philanthropist and Speculator! Alice is a high income person, Bob just lost his job and he does not fit a little extra cash, Dan runs a grocery store. Philanthropist has a lot of assets and he is very concerned about social stability. The Speculator just wants to make some profit.
 - ALice, Bob and Dan all participate in Yalland UBI program as they share the values of social stability and mutual assistance. The all get 100 YALL each month;
@@ -34,6 +35,7 @@ YST token Holders, whose main task is to decentralize UBI system governance, add
 Each Verifier is a non-profit organization registered in the relevant jurisdiction in accordance with local laws. They identify UBI program participants and allow them to receive YALL tokens. For identification, they use documents, open sources and government databases. They also store personal data of participants strictly in accordance with local laws in a shared database. It is important to note that Verifiers must have a deposit, both in YALL and YST tokens. If the Verifier is removed, its security deposit is debited in favor of the YST Holders.
 ![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-5.png)
 ### Complete decentralized verification (CDV)
+TBD
 ## Yalland Tokens
 ### Yall ERC20 Token(YALL)
 #### Purpose
@@ -96,6 +98,12 @@ Voting takes place according to the following algorithm:
 Support, duration and minimum support can be changed.
 
 ![Governance](https://github.com/yalland-ubi/yalland-docs/blob/npopeka-patch-2/images/yalland-8.png)
+
+### Gas Station Network
+
+
+### Development Roadmap
+
 ## References
 - [Arbitrary Message Bridge](https://docs.tokenbridge.net/amb-bridge/about-amb-bridge);
 - [GSN Frequently Asked Questions](https://docs.openzeppelin.com/gsn-provider/0.1/gsn-faq#how_does_it_work)
