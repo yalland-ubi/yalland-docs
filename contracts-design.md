@@ -21,7 +21,7 @@ Thus, the wealthier and more successful Alice, Philanthropist and Speculator thr
 - **Delegators** -  YST token holders, which elect Verifiers by voting, upgrade smart contracts and change their parameters.
 
 ## Tokens Overview
-- **Yalland ERC20 Token(YALL)** - ERC20 standard token with the following additional functions: balance caching per block, the ability to specify a note as an arbitrary line when the token transfer is performed, token transfer can be performed only between verified users and whitelisted smart contracts, compatibility with Gas Station Network(GSN), 
+- **Yalland ERC20 Token(YALL)** - ERC20 standard token with the following additional functions: the ability to specify a note as an arbitrary line when the token transfer is performed, token transfer can be performed only between verified users and whitelisted smart contracts, compatibility with Gas Station Network(GSN), 
 transfer fee. YALL has a limited supply. YALL is transferable between  different chains. For current implementation it’s initial created on xDAI chain and transferable to Ethereum mainnet and back via ETH-xDai Arbitrary Message Bridge.   
 - **Yall ERC20 Staking Token(YST)** - ERC20 standard token with the following additional functions: balance caching per block. The main purpose of the token is the decentralized management of smart contracts of the system of universal basic income. Token has fixed supply. It’s initially created on Ethereum mainnet as a token of Aragon organisation. It can be staked.
 ## Program member verification
@@ -51,7 +51,7 @@ YALL has the following purposes:
 - means of payment for goods and services;
 - redistribution of excess profits. 
 #### Emission model
-Each program participant can receive YALL as a Universal Basic Income for paying for goods and services. YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 245 000 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the right to mint tokens.
+Each program participant can receive YALL as a Universal Basic Income for paying for goods and services. YALL tokens are issued in periods of 7 days. The maximum number of YALLs that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 247 500 YALLs are distributed among program participants. At the same time, each program participant must independently receive YALL by sending transaction to `YALLDistribution smart contract`, which has the right to mint tokens.
 ![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-3.png)
 After 264,000,000 YALL has been minted, YALL initial emission will cease and users will receive a weekly payment only from the Commission pool contract.
 #### YALL transfer between chains
