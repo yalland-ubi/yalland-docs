@@ -1,4 +1,4 @@
-#### Версия 1.3.5
+#### Версия 1.3.6
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -979,6 +979,7 @@
     "ssid":"SESSION_ID",
     "walletAddress":"WALLET_ADDRESS",
     "walletState":STATE
+    <,"contractPersonId":"CONTRACT_PERSON_ID">
 }
 ```
 Ответ:
