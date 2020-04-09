@@ -21,27 +21,31 @@ Multiple addresses can be assigned to a particular role.
 
 Has exclusive permissions to call:
 
-- #setDefaultExchangeRate()
-- #setMemberExchangeRate()
+- `#setDefaultExchangeRate()`
+- `#setMemberExchangeRate()`
+- `#setDefaultPeriodLimit()`
+- `#setMemberPeriodLimit()`
 
 #### Operator
 
 - Has exclusive permissions to call:
 
-- #closeOrder()
-- #cancelOrder()
+- `#closeOrder()`
+- `#cancelOrder()`
 
 #### Super Operator
 
-- #voidOrder()
+- `#voidOrder()`
 
 ### YAL active member
 
 Any active YAL program member can call:
 
-- #createOrder()
+- `#createOrder()`
 
-## Exchange limits per member
+## Exchange limits
+
+### Limit 1. Per member limit
 
 A member limits in YAL tokens are calculated by the following formula:
 
@@ -54,3 +58,9 @@ Et - total exchanged amount
 Ot - total amount for the orders on status OPEN
 Vt - total voided amount
 ```
+
+### Limit 2. Per member per period limit
+
+## Future features (not to be implemented in the current version)
+
+* initialization with pre-defined data for members like `totalExchanged`, `totalVoided`, etc.
