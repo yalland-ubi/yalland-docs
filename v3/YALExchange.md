@@ -35,8 +35,22 @@ Has exclusive permissions to call:
 
 - #voidOrder()
 
-## YAL active member
+### YAL active member
 
 Any active YAL program member can call:
 
 - #createOrder()
+
+## Exchange limits per member
+
+A member limits in YAL tokens are calculated by the following formula:
+
+```
+Am = Ct - Et - Ot + Vt
+
+Am - max. amount available to exchange
+Ct - total claimed amount
+Et - total exchanged amount
+Ot - total amount for the orders on status OPEN
+Vt - total voided amount
+```
