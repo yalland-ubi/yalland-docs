@@ -25,7 +25,7 @@ Has exclusive permissions to call:
 - `#setMemberExchangeRate()`
 - `#setDefaultPeriodLimit()`
 - `#setMemberPeriodLimit()`
-- '#withdrawYALs()'
+- `#withdrawYALs()`
 
 #### Operator
 
@@ -47,11 +47,11 @@ Any active YAL program member can call:
 ## Exchange limits
 
 
-### Limit #1. Per member limit
+### Limit #1. Personal exchanged volume limit
 
 The limit is checked once on `createOrder` method call.
 
-A member limits in YAL tokens are calculated by the following formula:
+A member limit in YAL tokens are calculated by the following formula:
 
 ```
 Am = Ct - Et - Ot + Vt
@@ -63,25 +63,38 @@ Ot - total amount for the orders on status OPEN
 Vt - total voided amount
 ```
 
-### Limit #2. Per member per period limit
+### Limit #2. Per member/period.
 
 The limit is checked once on `createOrder` method call.
 
 Total exchanged amount by the member in the current period (Ept) is incremented on `#createOrder()` call and is optionally decremented on `#cancelOrder()` call.
 
-Per member per period limit should satisfy the following requirement:
+Per member/period limit should satisfy the following requirement:
 
 ```
-if (Lm || Ld):
-  (Ept + Ac) < (Lm || Ld)
+L = Lp || Lm
+
+if (L > 0):
+  require (Ac + Tam) <= L
+  
+if (Lt > 0):
+  require (Ac + Ta) <= Lt
 
 Ac - current amount to exchange
+
 Ept - total exchanged amount by the member in the current period
-Lm - member custom period limit
-Ld - default period limit
+Ta - accummulated period total for all open and closed orders
+Tam - accumulated period total for a particular member
+Lt - a total period limit for orders for all active members
+La - a period limit for any active member
+Lm - a personal limit for a particular member
+
 ```
 
-No limit #2 is applied in case when both member custom period limit and default period limit are set to 0
+No limit #2 is applied in case when the following limits are set to 0:
+- a total period limit
+- a period limit for any active member
+- a personal period limit for a perticular member
 
 ## Future features (not to be implemented in the current version)
 
