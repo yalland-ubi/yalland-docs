@@ -72,7 +72,7 @@ Total exchanged amount by the member in the current period (Ept) is incremented 
 Per member/period limit should satisfy the following requirement:
 
 ```
-L = Lp || Lm
+L = Lm || La
 
 if (L > 0):
   require (Ac + Tam) <= L
