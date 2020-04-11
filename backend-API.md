@@ -1086,7 +1086,7 @@
     "email":"EMAIL",
     "walletAddress":"WALLET_ADDRESS",
     "bankId":"BIC",
-    "checkingAccount":"CHECKING_ACCOUNT"
+    "bankAccount":"BANK_ACCOUNT"
 }
 ```
 
