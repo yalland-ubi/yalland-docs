@@ -1,4 +1,4 @@
-#### Версия 1.3.7
+#### Версия 1.3.8
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -63,11 +63,15 @@
 |43|setPersonSnId                        |          |    |+            |        |           |            |       |          |      |
 |44|getPersonSnId                        |          |    |+            |        |           |            |       |          |      |
 |45|getPersonDataByWallet                |          |    |             |        |           |            |       |          |+     |
-|46|getPersonDataByContractPersonId      |          |    |+            |        |           |            |       |          |      |
+|46|getPersonBankAccountDataByPersonId   |          |    |             |        |           |            |       |          |+     |
 |47|walletOwnerIsVerified                |          |    |             |        |           |            |       |          |+     |
 |48|checkPromoPayByWallet                |          |    |             |        |           |            |       |          |+     |
 |49|updatePaymentStatus                  |          |    |             |        |           |            |       |          |+     |
 |50|getTariffList                        |          |    |+            |        |           |            |       |          |      |
+|51|getBankNameByBankId                  |          |    |+            |        |           |            |       |          |+     |
+|52|bankAccountIsValid                   |          |    |+            |        |           |            |       |          |+     |
+|53|updateBankAccountByPersonId          |          |    |+            |        |           |            |       |          |+     |
+|54|getBankAccountByPersonId             |          |    |+            |        |           |            |       |          |+     |
 
 Все разрешения динамически регулируются через БД.
     
@@ -1066,8 +1070,8 @@
 Запрос:
 ```json
 {
-    "request":"getPersonDataByContractPersonId",
-    "contractPersonId":"CONTRACT_PERSON_ID",
+    "request":"getPersonBankAccountDataByPersonId",
+    "personId":ID,
     "ssid":"SESSION_ID"
 }
 ```
@@ -1167,5 +1171,76 @@
         },
         ...
     ]
+}
+```
+
+#### [51] Получение имени банка по его БИК.
+Запрос:
+```json
+{
+    "request":"getBankNameByBankId",
+    "bankId":"BIC",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "bankId":"BIC",
+    "bankName":"BANK_NAME"
+}
+```
+
+#### [52] Проверка правильности банковского счета пользователя.
+Запрос:
+```json
+{
+    "request":"bankAccountIsValid",
+    "bankId":"BIC",
+    "bankAccount":"BANK_ACCOUNT",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+
+#### [53] Обновление банковского счета пользователя.
+Запрос:
+```json
+{
+    "request":"updateBankAccount",
+    "personId":ID,
+    "bankId":"BIC",
+    "bankAccount":"BANK_ACCOUNT",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success"
+}
+```
+
+#### [54] Получение платежных реквизитов пользователя.
+Запрос:
+```json
+{
+    "request":"getBankAccountByPersonId",
+    "personId":ID,
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "bankId":"BIC",
+    "bankAccount":"BANK_ACCOUNT"
 }
 ```
