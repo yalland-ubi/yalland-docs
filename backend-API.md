@@ -1,4 +1,4 @@
-#### Версия 1.3.6
+#### Версия 1.3.7
 #### Тестовый сервер: https://testbackend.yalland.com:5000/
 #### Соглашения.
 1. Request Method: POST.
@@ -24,49 +24,50 @@
 ```
 
 #### Разрешения.
-|  |                           |Без сессии|Сайт|Администратор|Оператор|Регистратор|Пользователь|Магазин|Приложение|Бэкенд|
-|--|---------------------------|----------|----|-------------|--------|-----------|------------|-------|----------|------|
-|1 |checkSession               |+         |    |             |        |           |            |       |          |      |
-|2 |login                      |+         |    |             |        |           |            |       |          |      |
-|3 |logout                     |+         |    |             |        |           |            |       |          |      |
-|6 |personList                 |          |    |+            |+       |           |            |       |          |      |
-|7 |personShow                 |          |    |+            |+       |           |            |       |          |      |
-|8 |personCreate               |          |+   |             |        |           |            |       |+         |      |
-|9 |personEdit                 |          |    |+            |        |           |            |       |          |      |
-|10|confirmPhone               |          |+   |             |        |           |+           |       |          |      |
-|11|personFind                 |          |    |+            |        |           |            |       |          |      |
-|12|personRemove               |          |    |+            |        |           |            |       |          |      |
-|15|personLogin                |+         |    |             |        |           |            |       |          |      |
-|18|changePassword             |          |    |             |        |           |+           |       |          |      |
-|19|restorePassword            |+         |    |             |        |           |            |       |          |      |
-|22|createPromocodePool        |          |    |+            |        |           |            |       |          |      |
-|23|createReferralAction       |          |    |+            |        |           |            |       |          |      |
-|24|createPromocodePoolByAction|          |    |             |        |           |+           |       |          |      |
-|25|getReferralActions         |          |    |+            |        |           |            |       |          |      |
-|26|getActiveReferralActions   |          |    |             |        |           |+           |       |          |      |
-|27|editPoolSettings           |          |    |+            |        |           |            |       |          |      |
-|28|getReferralPayments        |          |    |+            |        |           |            |       |          |      |
-|29|editReferralPayment        |          |    |+            |        |           |            |       |          |      |
-|30|confirmPhoneRequest        |          |    |             |        |           |+           |       |          |      |
-|31|personVerify               |          |    |             |        |           |+           |       |          |      |
-|32|setPassword                |          |    |             |        |           |+           |       |          |      |
-|33|setPhoto                   |          |    |             |        |           |+           |       |          |      |
-|34|findPersonByWallet         |          |    |             |        |           |            |       |          |+     |
-|35|getPersonTypeByWallet      |          |    |             |        |           |            |       |+         |      |
-|36|logCreate                  |          |    |             |        |           |            |       |+         |      |
-|37|getLogs                    |          |    |+            |        |           |            |       |          |      |
-|38|getServerVersion           |          |+   |             |        |           |            |       |+         |+     |
-|39|emailIsUnique              |          |+   |             |        |           |            |       |+         |+     |
-|40|phoneIsUnique              |          |+   |             |        |           |            |       |+         |+     |
-|41|acceptPersonVerify         |          |    |+            |+       |           |            |       |          |      |
-|42|updateWalletState          |          |    |             |        |           |            |       |          |+     |
-|43|setPersonSnId              |          |    |+            |        |           |            |       |          |      |
-|44|getPersonSnId              |          |    |+            |        |           |            |       |          |      |
-|45|getPersonDataByWallet      |          |    |             |        |           |            |       |          |+     |
-|47|walletOwnerIsVerified      |          |    |             |        |           |            |       |          |+     |
-|48|checkPromoPayByWallet      |          |    |             |        |           |            |       |          |+     |
-|49|updatePaymentStatus        |          |    |             |        |           |            |       |          |+     |
-|50|getTariffList              |          |    |+            |        |           |            |       |          |      |
+|  |                                     |Без сессии|Сайт|Администратор|Оператор|Регистратор|Пользователь|Магазин|Приложение|Бэкенд|
+|--|-------------------------------------|----------|----|-------------|--------|-----------|------------|-------|----------|------|
+|1 |checkSession                         |+         |    |             |        |           |            |       |          |      |
+|2 |login                                |+         |    |             |        |           |            |       |          |      |
+|3 |logout                               |+         |    |             |        |           |            |       |          |      |
+|6 |personList                           |          |    |+            |+       |           |            |       |          |      |
+|7 |personShow                           |          |    |+            |+       |           |            |       |          |      |
+|8 |personCreate                         |          |+   |             |        |           |            |       |+         |      |
+|9 |personEdit                           |          |    |+            |        |           |            |       |          |      |
+|10|confirmPhone                         |          |+   |             |        |           |+           |       |          |      |
+|11|personFind                           |          |    |+            |        |           |            |       |          |      |
+|12|personRemove                         |          |    |+            |        |           |            |       |          |      |
+|15|personLogin                          |+         |    |             |        |           |            |       |          |      |
+|18|changePassword                       |          |    |             |        |           |+           |       |          |      |
+|19|restorePassword                      |+         |    |             |        |           |            |       |          |      |
+|22|createPromocodePool                  |          |    |+            |        |           |            |       |          |      |
+|23|createReferralAction                 |          |    |+            |        |           |            |       |          |      |
+|24|createPromocodePoolByAction          |          |    |             |        |           |+           |       |          |      |
+|25|getReferralActions                   |          |    |+            |        |           |            |       |          |      |
+|26|getActiveReferralActions             |          |    |             |        |           |+           |       |          |      |
+|27|editPoolSettings                     |          |    |+            |        |           |            |       |          |      |
+|28|getReferralPayments                  |          |    |+            |        |           |            |       |          |      |
+|29|editReferralPayment                  |          |    |+            |        |           |            |       |          |      |
+|30|confirmPhoneRequest                  |          |    |             |        |           |+           |       |          |      |
+|31|personVerify                         |          |    |             |        |           |+           |       |          |      |
+|32|setPassword                          |          |    |             |        |           |+           |       |          |      |
+|33|setPhoto                             |          |    |             |        |           |+           |       |          |      |
+|34|findPersonByWallet                   |          |    |             |        |           |            |       |          |+     |
+|35|getPersonTypeByWallet                |          |    |             |        |           |            |       |+         |      |
+|36|logCreate                            |          |    |             |        |           |            |       |+         |      |
+|37|getLogs                              |          |    |+            |        |           |            |       |          |      |
+|38|getServerVersion                     |          |+   |             |        |           |            |       |+         |+     |
+|39|emailIsUnique                        |          |+   |             |        |           |            |       |+         |+     |
+|40|phoneIsUnique                        |          |+   |             |        |           |            |       |+         |+     |
+|41|acceptPersonVerify                   |          |    |+            |+       |           |            |       |          |      |
+|42|updateWalletState                    |          |    |             |        |           |            |       |          |+     |
+|43|setPersonSnId                        |          |    |+            |        |           |            |       |          |      |
+|44|getPersonSnId                        |          |    |+            |        |           |            |       |          |      |
+|45|getPersonDataByWallet                |          |    |             |        |           |            |       |          |+     |
+|46|getPersonDataByContractPersonId      |          |    |+            |        |           |            |       |          |      |
+|47|walletOwnerIsVerified                |          |    |             |        |           |            |       |          |+     |
+|48|checkPromoPayByWallet                |          |    |             |        |           |            |       |          |+     |
+|49|updatePaymentStatus                  |          |    |             |        |           |            |       |          |+     |
+|50|getTariffList                        |          |    |+            |        |           |            |       |          |      |
 
 Все разрешения динамически регулируются через БД.
     
@@ -1042,7 +1043,7 @@
 }
 ```
 
-#### [45] Типа записи и идентификатора пользователя по адресу кошелька.
+#### [45] Получение типа записи и идентификатора пользователя по адресу кошелька.
 Запрос:
 ```json
 {
@@ -1060,6 +1061,30 @@
 }
 ```
 Значения поля "rowType" описано в пункте "[8] Регистрация нового пользователя".
+
+#### [46] Получение данных пользователя по идентификатору в контракте.
+Запрос:
+```json
+{
+    "request":"getPersonDataByContractPersonId",
+    "contractPersonId":"CONTRACT_PERSON_ID",
+    "ssid":"SESSION_ID"
+}
+```
+Ответ:
+```json
+{
+    "result":"success",
+    "personId":ID,
+    "firstName":"FIRST_NAME",
+    "secondName":"SECOND_NAME",
+    "phoneNumber":"PHONE_NUMBER",
+    "email":"EMAIL",
+    "walletAddress":"WALLET_ADDRESS",
+    "bankId":"BIC",
+    "checkingAccount":"CHECKING_ACCOUNT"
+}
+```
 
 #### [47] Проверка адреса кошелька на верификацию.
 Запрос:
