@@ -44,6 +44,49 @@ Any active YAL program member can call:
 
 - `#createOrder()`
 
+## Accumulators
+There are 6 accumulators in this exchange contract:
+
+#### TotalExchangedYal
+
+Increments on: `#closeOrder()`
+
+Decrements on: `#voidOrder()`
+
+#### TotalOpen
+
+Increments on: `#createOrder()`
+
+Decrements on: `#closeOrder()`, `#cancelOrderr()`
+
+#### YalExchangedByPeriod
+
+Increments on: `#closeOrder()`
+
+Decrements on: `#voidOrder()`
+
+The order creation period ID is used as reference for the accumulator.
+
+#### MemberTotalExchangedYal
+
+Increments on: `#closeOrder()`
+
+Decrements on: `#voidOrder()`
+
+#### MemberYalExchangedByPeriod
+
+Increments on: `#closeOrder()`
+
+Decrements on: `#voidOrder()`
+
+The order creation period ID is used as reference for the accumulator.
+
+#### MemberTotalOpen
+
+Increments on: `#createOrder()`
+
+Decrements on: `#closeOrder()`, `#cancelOrderr()`
+
 ## Exchange limits
 
 ### Limit #1. Personal exchanged volume limit
@@ -56,9 +99,9 @@ A member limit in YAL tokens are calculated by the following formula:
 Am = Ct - Et - Ot + Vt
 
 Am - max. amount available to exchange
-Ct - total claimed amount
-Et - total exchanged amount
-Ot - total amount for the orders on status OPEN
+Ct - total claimed amount by member in all periods
+Et - total exchanged amount by member in all periods
+Ot - total amount for the orders on status OPEN in all periods
 Vt - total voided amount
 ```
 
@@ -74,12 +117,13 @@ Per member/period limit should satisfy the following requirement:
 L = Lm || La
 
 if (L > 0):
-  require (Ac + Tam) <= L
+  require (Ac + Tom + Tcm) <= L
 
 Ac - current amount to exchange
 La - a period limit for any active member
 Lm - a personal limit for a particular member
-Tam - accumulated period total for a particular member
+Tom - total opened orders for a member in a given period
+Tcm - total closed orders for a member in a given period
 ```
 
 No `Limit #2` is applied in case when the following limits are set to 0:
@@ -90,10 +134,11 @@ No `Limit #2` is applied in case when the following limits are set to 0:
 
 ```
 if (Lt > 0):
-  require (Ac + Ta) <= Lt
+  require (Ac + To + Tc) <= Lt
 
 Ac - current amount to exchange
-Ta - accummulated period total for all open and closed orders
+To - accummulated period total for all open orders
+Tc - accummulated period total for all closed orders
 Lt - a total period limit for orders for all active members
 ```
 
