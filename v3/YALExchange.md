@@ -45,100 +45,66 @@ Any active YAL program member can call:
 - `#createOrder()`
 
 ## Accumulators
-There are 6 accumulators in this exchange contract:
+There are 4 accumulators in this exchange contract:
 
-#### TotalExchangedYal
+* TotalExchangedYal
+* YalExchangedByPeriod
+* MemberTotalExchangedYal
+* MemberYalExchangedByPeriod
 
-Increments on: `#closeOrder()`
+Parameters are incremented on: `#createOrder()`
 
-Decrements on: `#voidOrder()`
-
-#### TotalOpen
-
-Increments on: `#createOrder()`
-
-Decrements on: `#closeOrder()`, `#cancelOrderr()`
-
-#### YalExchangedByPeriod
-
-Increments on: `#closeOrder()`
-
-Decrements on: `#voidOrder()`
+and decremented on: `#cancelOrder()`, `#voidOrder()`
 
 The order creation period ID is used as reference for the accumulator.
-
-#### MemberTotalExchangedYal
-
-Increments on: `#closeOrder()`
-
-Decrements on: `#voidOrder()`
-
-#### MemberYalExchangedByPeriod
-
-Increments on: `#closeOrder()`
-
-Decrements on: `#voidOrder()`
-
-The order creation period ID is used as reference for the accumulator.
-
-#### MemberTotalOpen
-
-Increments on: `#createOrder()`
-
-Decrements on: `#closeOrder()`, `#cancelOrderr()`
 
 ## Exchange limits
 
-### Limit #1. Personal exchanged volume limit
+All these limits are checked once on `createOrder` method call.
 
-The limit is checked once on `createOrder` method call.
+### Limit #1. Personal exchanged volume limit
 
 A member limit in YAL tokens are calculated by the following formula:
 
 ```
-Am = Ct - Et - Ot + Vt
+Am = Ct - Et + Vt
 
 Am - max. amount available to exchange
 Ct - total claimed amount by member in all periods
 Et - total exchanged amount by member in all periods
-Ot - total amount for the orders on status OPEN in all periods
 Vt - total voided amount
 ```
 
 ### Limit #2. Member period limit.
 
-The limit is checked once on `createOrder` method call.
-
-Total exchanged amount by the member in the current period is incremented on `#createOrder()` call and is optionally decremented on `#cancelOrder()` call.
-
-Per member/period limit should satisfy the following requirement:
+Member period limit should satisfy the following requirement:
 
 ```
 L = Lm || La
 
 if (L > 0):
-  require (Ac + Tom + Tcm) <= L
+  require (Ac + Tem) <= L
 
 Ac - current amount to exchange
 La - a period limit for any active member
 Lm - a personal limit for a particular member
-Tom - total opened orders for a member in a given period
-Tcm - total closed orders for a member in a given period
+Tem - total opened and closed orders (total exchanged) for a member in a given period
 ```
 
-No `Limit #2` is applied in case when the following limits are set to 0:
+No `Limit #2` is applied in case when all the following limits are set to 0:
 - a period limit for any active member
-- a personal period limit for a perticular member
+- a personal period limit for a particular member
 
 ### Limit #3. Period total limit.
 
+Period total limit should satisfy the following requirement:
+
 ```
 if (Lt > 0):
-  require (Ac + To + Tc) <= Lt
+  require (Ac + Te) <= Lt
 
 Ac - current amount to exchange
-To - accummulated period total for all open orders
-Tc - accummulated period total for all closed orders
+Te - total for all open orders of all active members in a given period
 Lt - a total period limit for orders for all active members
 ```
 
