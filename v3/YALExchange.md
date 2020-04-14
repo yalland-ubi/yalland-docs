@@ -22,9 +22,11 @@ Multiple addresses can be assigned to a particular role.
 Has exclusive permissions to call:
 
 - `#setDefaultExchangeRate()`
-- `#setMemberExchangeRate()`
-- `#setDefaultPeriodLimit()`
-- `#setMemberPeriodLimit()`
+- `#setCustomExchangeRate()`
+- `#setTotalPeriodLimit()`
+- `#setDefaultMemberPeriodLimit()`
+- `#setCustomPeriodLimit()`
+- `#setGsnFee()`
 - `#withdrawYALs()`
 
 #### Operator
