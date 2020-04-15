@@ -15,7 +15,7 @@ The contract will be deployed with the following variables.
 * _dailyLimitMaxPerTxMinPerTxArray: `???` [ 0 = _dailyLimit, 1 = _maxPerTx, 2 = _minPerTx ]
 * _executionDailyLimitExecutionMaxPerTxArray: `???` [ 0 = _executionDailyLimit, 1 = _executionMaxPerTx ]
 * _requestGasLimit: 2_000_000
-* _decimalShift: `???`
+* _decimalShift: 0
 
 ### xDai chain
 
@@ -25,7 +25,7 @@ The contract will be deployed with the following variables.
 * _dailyLimitMaxPerTxMinPerTxArray: `???` [ 0 = _dailyLimit, 1 = _maxPerTx, 2 = _minPerTx ]
 * _executionDailyLimitExecutionMaxPerTxArray: `???` [ 0 = _executionDailyLimit, 1 = _executionMaxPerTx ]
 * _requestGasLimit: 2_000_000
-* _decimalShift: `???`
+* _decimalShift: 0
 
 More details on `_dailyLimitMaxPerTxMinPerTxArray` and `_executionDailyLimitExecutionMaxPerTxArray` here https://github.com/poanetwork/tokenbridge-contracts/blob/dfe427b5fd4d57ebdf7bddc659aa780b752777e7/contracts/upgradeable_contracts/amb_erc677_to_erc677/BasicAMBErc677ToErc677.sol#L43
 ## Proxy
