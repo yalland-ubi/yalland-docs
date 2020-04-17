@@ -1213,7 +1213,7 @@
 Запрос:
 ```json
 {
-    "request":"updateBankAccount",
+    "request":"updateBankAccountByPersonId",
     "personId":ID,
     "bankId":"BIC",
     "bankAccount":"BANK_ACCOUNT",
