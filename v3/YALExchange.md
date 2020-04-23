@@ -13,7 +13,7 @@ Owner is a particular address. It has exclusive permissions for:
 
 * managing (add/remove actions) all existing roles
 
-### Roles
+### Manager Roles
 
 Multiple addresses can be assigned to a particular role.
 
@@ -22,9 +22,11 @@ Multiple addresses can be assigned to a particular role.
 Has exclusive permissions to call:
 
 - `#setDefaultExchangeRate()`
-- `#setMemberExchangeRate()`
-- `#setDefaultPeriodLimit()`
-- `#setMemberPeriodLimit()`
+- `#setCustomExchangeRate()`
+- `#setTotalPeriodLimit()`
+- `#setDefaultMemberPeriodLimit()`
+- `#setCustomPeriodLimit()`
+- `#setGsnFee()`
 - `#withdrawYALs()`
 
 #### Operator
@@ -37,6 +39,11 @@ Has exclusive permissions to call:
 #### Super Operator
 
 - `#voidOrder()`
+
+#### Pauser
+
+- `#pause()`
+- `#unpause()`
 
 ### YAL active member
 
