@@ -3,7 +3,7 @@
 ## Contract list
 
 ## Both Chains:
-* `YALLRegistry` (both Registry + ACL in one contract)
+* [`YALLRegistry`](./YALLRegistry.md) (both Registry + ACL in one contract)
 * `YALLGovernance` - proposal management system, has ownerhsip/proxy ownership permissions for all related contracst on the chain
 
 Home Chain (xDai):
