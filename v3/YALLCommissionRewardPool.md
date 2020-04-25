@@ -1,6 +1,6 @@
 # YALLCommissionRewardPool
 
-Claims commission from registered contracts once a period. Distributes the claimed commission among verifiers, delegators and (optionally) members
+Claims commission from registered contracts once a period. Distributes the claimed commission among verifiers, delegators and (optionally) members. The funds weren't claimed by any of the validators or members will be redistributed to the next period. This rule doesn't apply to delegator rewards.
 
 ## Inheritance
 
@@ -29,6 +29,7 @@ The contract does not implement Ownable trait, so there is no owner.
 The method performs the following actions:
 
 * Withdraws all earned commission in YALLs from registered list of contracts
+* Redistributes funds not claimed by verifiers and members at the perevious period to the current one
 * Calculates and stores reward values for delegators, verifiers and members
 
 Information about the current period id and it's beginning resides in `YALLDistributor` contract.
