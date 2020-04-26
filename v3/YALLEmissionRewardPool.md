@@ -11,9 +11,20 @@ This rule doesn't apply to delegator rewards.
 
 * `EMISSION_MANAGER`
 
-## Interface
+## Permissions
 
 The contract does not implement Ownable trait, so there is no owner.
+
+## Interface
+
+* Permissionless
+  * [#triggerTransition()](#triggerTransition)
+* EMISSION_MANAGER ACL Role
+  * [#setShares()](#setShares)
+* Delegator
+  * [#claimDelegatorReward()](#claimDelegatorReward)
+* Verifier
+  * [#claimVerifierReward()](#claimVerifierReward)
 
 ### Permissionless methods
 
