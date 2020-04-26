@@ -7,9 +7,9 @@
 * `YALLGovernance` - proposal management system, has ownerhsip/proxy ownership permissions for all related contracst on the chain
 
 Home Chain (xDai):
-* `YALLToken` - ERC20 token
-* `YALLDistributor` - Member accounting, emission distribution
-* `YALLExchange` - `YALLToken` exchange
+* [`YALLToken`](./YALLToken.md) - ERC20 token
+* [`YALLDistributor`](./YALLDistributor.md) - Member accounting, emission distribution
+* [`YALLExchange`](./YALLExchange.md) - `YALLToken` exchange
 * `YALLVerification` - Verifier add/removal by `YALLGovernance`, member add/removal actions by a verifier
 * [`YALLEmissionRewardPool`](./YALLEmissionRewardPool) - Emission distribution among verifiers and delegates
 * [`YALLCommissionRewardPool`](./YALLCommissionRewardPool.md) - A system contracts commission, withdrawn and distributed among verifiers, delegates and (optionally) members
@@ -17,7 +17,7 @@ Home Chain (xDai):
 * `YALLStakingHomeMediator` - A mediator with synced information from `YALLStakingForeignMediator`
 
 Foreign Chain (Ethereum):
-* `YALLEthereum` - a ERC20 token bridged with `YALLToken` on xDai chain
+* [`YALLTokenEthereum`](./YALLTokenEthereum.md) - a ERC20 token bridged with `YALLToken` on xDai chain
 * [`YSTToken`](./YSTToken.md) - a ERC20 governance token for staking
 * `YALLTokenForeignMediator` - Bridges `YALLTokenEthereum` with `YALLToken`
 * `YALLStakingForeignMediator` - Checkpointable Staking & Foreign Mediator in-one contract
