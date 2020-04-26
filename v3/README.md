@@ -17,8 +17,8 @@ Home Chain (xDai):
 * `YALLStakingHomeMediator` - A mediator with synced information from `YALLStakingForeignMediator`
 
 Foreign Chain (Ethereum):
-* `YALLEthereum` - ERC20 token bridged with `YALLToken` on xDai chain
-* `YST` - ERC20 governance token for staking
+* `YALLEthereum` - a ERC20 token bridged with `YALLToken` on xDai chain
+* [`YSTToken`](./YSTToken.md) - a ERC20 governance token for staking
 * `YALLTokenForeignMediator` - Bridges `YALLTokenEthereum` with `YALLToken`
 * `YALLStakingForeignMediator` - Checkpointable Staking & Foreign Mediator in-one contract
 
