@@ -1,4 +1,4 @@
-# CoinToken
+# YALLToken
 
 ERC20 compatible token with the following functionlaity:
 
