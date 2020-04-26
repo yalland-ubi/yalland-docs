@@ -44,7 +44,7 @@ A reward of delegator depends on his stake in YST tokens, it's not the same for 
 Rd = Ct * Ds * (SpN / TpN)
 
 Rd - a reward for a particular delegator
-Ct - a total withdrawn commission from all contracts, in YST
+Ct - a total withdrawn commission from all contracts, in YALL
 Ds - delegators share of total commission, in %
 SpN - a delegator stake at the timestamp of the beginning of period N, in YST
 TpN - total stakes of all delegators at the timestamp of the beginning of period N, in YST
@@ -61,7 +61,7 @@ Verifier reward is the same for all verifiers.
 Rv = Ct * Vs / Tv
 
 Rv - a reward for a verifier
-Ct - a total withdrawn commission from all contracts, in YST
+Ct - a total withdrawn commission from all contracts, in YALL
 Vs - verifiers share of total commission, in %
 Tv - a total amount of active verifiers at the time of calling this method
 ```
@@ -76,7 +76,7 @@ Member reward is the same for all members.
 Rm = Ct * Ms / Tm
 
 Rm - a reward for a verifier
-Ct - a total withdrawn commission from all contracts, in YST
+Ct - a total withdrawn commission from all contracts, in YALL
 Ms - members share of total commission, in %
 Tm - a total amount of active members at the time of calling this method
 ```
