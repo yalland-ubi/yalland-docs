@@ -1,4 +1,4 @@
-# YAL Fund Exchange Development Specification
+# YALLExchange
 
 ## GSN support
 
