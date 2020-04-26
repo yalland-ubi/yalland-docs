@@ -1,4 +1,4 @@
-# YalDistributorV3
+# YALLDistributor
 
 ## Important Updates
 ### 14/03/2020
