@@ -32,6 +32,17 @@ Foreign Chain (Ethereum):
 * `YALLDistributor`
 * `YALLExchange`
 
+###### ACL Roles
+* `YALL_TOKEN_MINTER` - `YALDistributor` contract
+* `YALL_TOKEN_BURNER` - `YALDistributor` contract
+* `YALL_TOKEN_WHITELIST_MANAGER` - external address
+* `EXCHANGE_FUND_MANAGER` - external address
+* `EXCHANGE_OPERATOR` - external address
+* `EXCHANGE_SUPER_OPERATOR` - external address
+* `FEE_MANAGER` - external address
+* `PAUSER` - external address
+* `VERIFIER` - external address
+
 ### Stage #2:
 
 TBD...
@@ -44,17 +55,6 @@ TBD...
 * `YALLToken`
 * `YALLDistributor`
 * `YALLExchange`
-
-###### ACL Roles
-* `YALL_TOKEN_MINTER` - `YALDistributor` contract
-* `YALL_TOKEN_BURNER` - `YALDistributor` contract
-* `YALL_TOKEN_WHITELIST_MANAGER` - external address
-* `EXCHANGE_FUND_MANAGER` - external address
-* `EXCHANGE_OPERATOR` - external address
-* `EXCHANGE_SUPER_OPERATOR` - external address
-* `FEE_MANAGER` - external address
-* `PAUSER` - external address
-* `VERIFIER` - external address
 
 ### Stage #2:
 
