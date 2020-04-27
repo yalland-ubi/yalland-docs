@@ -35,17 +35,17 @@ Since being deposited, the cached values can be used by:
 ## Interface
 
 
-* [Owner](#ownerInterface)
-  * [#setYallTokenContract()](#setYallTokenContract)
-  * [#setMediatorContractOnOtherSide()](#setMediatorContractOnOtherSide)
-  * [#setRequestGasLimit()](#setRequestGasLimit)
-  * [#setCoolDownPeriodLength()](#setCoolDownPeriodLength)
-* [YST Holder](ystHolderInterface)
-  * [#stake()](#stake)
-  * [#unstake()](#unstake)
-  * [#releaseCoolDownBox()](#releaseCoolDownBox)
-* [Permissionless](#permissionlessInterface)
-  * [#triggerTransition()](#syncCachedBalance)
+* [Owner](#owner-interface)
+  * [#setYallTokenContract()](#setyalltokencontractaddress-_newyalltokenaddress)
+  * [#setMediatorContractOnOtherSide()](#setmediatorcontractonothersideaddress-_newmediatorcontractonotherside)
+  * [#setRequestGasLimit()](#setrequestgaslimituint256-_newrequestgaslimit)
+  * [#setCoolDownPeriodLength()](#setcooldownperiodlengthuint256-_newcooldownperiodlength)
+* [YST Holder](yst-holder-interface)
+  * [#stake()](#stakeuint256-_amount)
+  * [#unstake()](#unstakeuint256-_amount)
+  * [#releaseCoolDownBox()](#releasecooldownboxuint256-_cooldownboxid)
+* [Permissionless](#permissionless-interface)
+  * [#triggerTransition()](#synccachedbalanceaddress-_delegator-uint256-_timestamp)
   
 ### Owner Interface
 ##### #setYallTokenContract(address _newYallTokenAddress)
