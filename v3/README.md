@@ -20,7 +20,7 @@ Foreign Chain (Ethereum):
 * [`YALLTokenEthereum`](./YALLTokenEthereum.md) - a ERC20 token bridged with `YALLToken` on xDai chain
 * [`YSTToken`](./YSTToken.md) - a ERC20 governance token for staking
 * `YALLTokenForeignMediator` - Bridges `YALLTokenEthereum` with `YALLToken`
-* `YALLStakingForeignMediator` - Checkpointable Staking & Foreign Mediator in-one contract
+* [`YALLStakingForeignMediator`](./YALLStakingForeignMediator.md) - Checkpointable Staking & Foreign Mediator in-one contract
 
 --------
 ## Launch Stages
