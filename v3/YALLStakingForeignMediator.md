@@ -1,0 +1,76 @@
+# YALLStakingForeignMediator
+
+The contract has two distinct groups of functionality - a balance caching per timestamp and a mediator logic.
+
+Balance caching is done in using the approach introduced in MiniMe token with several adjustments.
+One of the adjustments is ignoring parent tokens and balance inheritance.
+Another one is caching not per block but per timestamp.
+
+Although [poanetwork/tokenbridge-contracts](https://github.com/poanetwork/tokenbridge-contracts/tree/a5946e7024caf598e562da916675a3b269ab293d/contracts/upgradeable_contracts) repo has audited versions of bridges, they were ignored due to several reasons:
+
+* Solidity version is 0.4.x while Yalland contracts use Solidity v0.5.x
+* YALLStakingForeignMediator has one direction of messages, it doesn't accept incoming messages from Home bridge
+* YALLStakingForeignMediator message logic doesn't replicate any of audited bridges logic
+
+## Inheritance
+
+* TimestampCheckpointable - balance ber block caching
+* BasicMediator - custom implementation of mediator logic
+
+## Use Cases
+
+To become a delegator, a YST token holder should stake them at `YALLStakingForeignMediator`.
+Like other ERC20 deposit functions, this is done using 2 separate transactions: approve and transferFrom wrapped in the contract method call.
+
+When `YALLStakingForeignMediator` receives the deposit it caches its value by the current block timestamp. Along with caching, it transfers the given timestamp and balance to `YALLStakingHomeMediator` home mediator. Particularly it calls #setBalance(address _delegator, uint256 _timestamp, uint256 _balance);
+
+Since being deposited, the cached values can be used by:
+
+* YALLGovernance contract, by calculating the weight of a delegator vote
+* YALLEmissionRewardPool, by calculating a delegator reward amount proportional to the stake he has
+* YALLCommissionRewardPool, by calculating a delegator reward amount proportional to the stake he has
+
+## Bridge interface 
+
+## Interface
+
+### Owner Interface
+##### #setYallTokenContract()
+
+Sets a new yallTokenAddress by its address
+
+##### #setMediatorContractOnOtherSide()
+
+Sets a mediator contract on another side by its address
+
+##### #setRequestGasLimit()
+
+Sets a request gas limit in weis
+
+##### #setCoolDownPeriodLength()
+
+Sets a new coolDownPeriodLength in seconds. The change won't affect the existings boxes.
+
+### YST holder interface
+
+##### #stake()
+
+Stakes a given amount of YST tokens. Caches the balance by the current block timestamp key. Transfer a message using AMB to the home chain.
+
+##### #unstake()
+
+Unstakes a given amount of YST tokens. An important thing to notice is that it doesn't transfer the unstaked YST balance immediately. Instead, it deducts the given amount in the cache, notifies the mediator on the other side about the amount and creates a personal CoolDownBox record with the following information:
+
+```
+CoolDownBox {
+	id: uint256 - unique id of the box, increments each new box by 1 starting from 1
+	holder: address - a member who is eligibly releasing this box;
+	amount: uint256 - amount to release
+	releaseAt: uint256 - timestamp specifying since when this box can be released by a holder
+}
+```
+
+##### #releaseCoolDownBox()
+
+A delegator releases a cooldown box if he is eligible to do that.
+
