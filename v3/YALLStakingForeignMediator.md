@@ -22,7 +22,7 @@ Although [poanetwork/tokenbridge-contracts](https://github.com/poanetwork/tokenb
 To become a delegator, a YST token holder should stake them at `YALLStakingForeignMediator`.
 Like other ERC20 deposit functions, this is done using 2 separate transactions: approve and transferFrom wrapped in the contract method call.
 
-When `YALLStakingForeignMediator` receives the deposit it caches its value by the current block timestamp. Along with caching, it transfers the given timestamp and balance to `YALLStakingHomeMediator` home mediator. Particularly it calls #setBalance(address _delegator, uint256 _timestamp, uint256 _balance);
+When `YALLStakingForeignMediator` receives the deposit it caches its value by the current block timestamp. Along with caching, it transfers the given timestamp and balance to `YALLStakingHomeMediator` home mediator. Particularly it calls `#setBalance(address _delegator, uint256 _timestamp, uint256 _balance)`;
 
 Since being deposited, the cached values can be used by:
 
@@ -34,30 +34,43 @@ Since being deposited, the cached values can be used by:
 
 ## Interface
 
+
+* [Owner](#ownerInterface)
+  * [#setYallTokenContract()](#setYallTokenContract)
+  * [#setMediatorContractOnOtherSide()](#setMediatorContractOnOtherSide)
+  * [#setRequestGasLimit()](#setRequestGasLimit)
+  * [#setCoolDownPeriodLength()](#setCoolDownPeriodLength)
+* [YST Holder](ystHolderInterface)
+  * [#stake()](#stake)
+  * [#unstake()](#unstake)
+  * [#releaseCoolDownBox()](#releaseCoolDownBox)
+* [Permissionless](#permissionlessInterface)
+  * [#triggerTransition()](#syncCachedBalance)
+  
 ### Owner Interface
-##### #setYallTokenContract()
+##### #setYallTokenContract(address _newYallTokenAddress)
 
 Sets a new yallTokenAddress by its address
 
-##### #setMediatorContractOnOtherSide()
+##### #setMediatorContractOnOtherSide(address _newMediatorContractOnOtherSide)
 
 Sets a mediator contract on another side by its address
 
-##### #setRequestGasLimit()
+##### #setRequestGasLimit(uint256 _newRequestGasLimit)
 
 Sets a request gas limit in weis
 
-##### #setCoolDownPeriodLength()
+##### #setCoolDownPeriodLength(uint256 _newCoolDownPeriodLength)
 
 Sets a new coolDownPeriodLength in seconds. The change won't affect the existings boxes.
 
-### YST holder interface
+### YST Holder Interface
 
-##### #stake()
+##### #stake(uint256 _amount)
 
 Stakes a given amount of YST tokens. Caches the balance by the current block timestamp key. Transfer a message using AMB to the home chain.
 
-##### #unstake()
+##### #unstake(uint256 _amount)
 
 Unstakes a given amount of YST tokens. An important thing to notice is that it doesn't transfer the unstaked YST balance immediately. Instead, it deducts the given amount in the cache, notifies the mediator on the other side about the amount and creates a personal CoolDownBox record with the following information:
 
@@ -70,7 +83,13 @@ CoolDownBox {
 }
 ```
 
-##### #releaseCoolDownBox()
+##### #releaseCoolDownBox(uint256 _coolDownBoxId)
 
 A delegator releases a cooldown box if he is eligible to do that.
+
+### Permissionless Interface
+
+##### #syncCachedBalance(address _delegator, uint256 _timestamp)
+
+The AMB sync process in this bridge is not bidirectional but has one direction from `Foreign` to `Home` networks. In order to save this simplicity of the protocol, this fix message pattern used by most AMB bridges to fix the failed transactions was ignored. The only type of transaction that could fail is `#setBalance(address _delegator, uint256 _timestamp, uint256 _balance)` method call. Since the value sent to the `Home` bridge can't be changed later, the most convenient way to fix a failed transaction is to send this value again. So this method allows anyone to sync an already existing cache record in this contract.
 
