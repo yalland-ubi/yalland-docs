@@ -63,6 +63,7 @@ The `handlePeriodTransitionIfRequired` will be replaced with a function if it ca
 To calculate whether a member can claim a reward in this period or not, the following constraints are imposed:
 
 ```
+// this also implies that Le <= Ld
 assert(memberIsActiveNow == true)
 
 if (Ld != 0 && CPid != 0) {
