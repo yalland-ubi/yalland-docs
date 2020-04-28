@@ -4,7 +4,7 @@
 
 ## Both Chains:
 * [`YALLRegistry`](./YALLRegistry.md) (both Registry + ACL in one contract)
-* `YALLGovernance` - proposal management system, has ownerhsip/proxy ownership permissions for all related contracst on the chain
+* [`YALLGovernance`](./YALLGovernance.md) - proposal management system, has ownerhsip/proxy ownership permissions for all related contracst on the chain
 
 Home Chain (xDai):
 * [`YALLToken`](./YALLToken.md) - ERC20 token
