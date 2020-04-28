@@ -2,11 +2,11 @@
 
 ## Contract list
 
-## Both Chains:
+### Both Chains:
 * [`YALLRegistry`](./YALLRegistry.md) (both Registry + ACL in one contract)
 * [`YALLGovernance`](./YALLGovernance.md) - proposal management system, has ownerhsip/proxy ownership permissions for all related contracst on the chain
 
-Home Chain (xDai):
+### Home Chain (xDai):
 * [`YALLToken`](./YALLToken.md) - ERC20 token
 * [`YALLDistributor`](./YALLDistributor.md) - Member accounting, emission distribution
 * [`YALLExchange`](./YALLExchange.md) - `YALLToken` exchange
@@ -16,7 +16,7 @@ Home Chain (xDai):
 * `YALLTokenHomeMediator` - Bridges `YALLToken` with `YALLTokenEthereum`
 * [`YALLStakingHomeMediator`](./YALLStakingHomeMediator.md) - A mediator with synced information from `YALLStakingForeignMediator`
 
-Foreign Chain (Ethereum):
+### Foreign Chain (Ethereum):
 * [`YALLTokenEthereum`](./YALLTokenEthereum.md) - a ERC20 token bridged with `YALLToken` on xDai chain
 * [`YSTToken`](./YSTToken.md) - a ERC20 governance token for staking
 * `YALLTokenForeignMediator` - Bridges `YALLTokenEthereum` with `YALLToken`
