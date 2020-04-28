@@ -21,18 +21,18 @@ The contract doesn't implement `Ownable` trait.
 
 ## Interfaces
 
-* The contract itself
-  * [#changeSupportRequiredPct(uint64 _supportRequiredPct)](#setShares)
-  * [#changeMinAcceptQuorumPct(uint64 _minAcceptQuorumPct)](#setCommissionSources)
-  * [#changeVoteTime(uint64 _voteTimeSeconds)](#blah)
+* [The contract itself](#the-contract-itself)
+  * [#changeSupportRequiredPct(uint64 _supportRequiredPct)](#changesupportrequiredpctuint64-_supportrequiredpct)
+  * [#changeMinAcceptQuorumPct(uint64 _minAcceptQuorumPct)](#changeminacceptquorumpctuint64-_minacceptquorumpct)
+  * [#changeVoteTime(uint64 _voteTimeSeconds)](#changevotetimeuint64-_votetimeseconds)
 
-* YST Holder Interface
-  * [#newVote(bytes _executionScript, string _metadata)](#claimDelegatorReward)
-  * [#newVote(bytes _executionScript, string _metadata, bool _castVote, bool _executesIfDecided)](#claimDelegatorReward)
-  * [#vote(uint256 _voteId, bool _supports, bool _executesIfDecided) external voteExists(_voteId)](#claimDelegatorReward)
+* [YST Holder Interface](#yst-holder)
+  * [#newVote(bytes _executionScript, string _metadata)](#newvotebytes-_executionscript-string-_metadata)
+  * [#newVote(bytes _executionScript, string _metadata, bool _castVote, bool _executesIfDecided)](#newvotebytes-_executionscript-string-_metadata-bool-_castvote-bool-_executesifdecided)
+  * [#vote(uint256 _voteId, bool _supports, bool _executesIfDecided) external voteExists(_voteId)](#voteuint256-_voteid-bool-_supports-bool-_executesifdecided-external-voteexists_voteid)
 
-* Permissionless Interface
-  * [#executeVote(uint256 _voteId)](#executeVote)
+* [Permissionless Interface](#permissionless-interface)
+  * [#executeVote(uint256 _voteId)](#executevoteuint256-_voteid)
 
 ### The contract itself
 
