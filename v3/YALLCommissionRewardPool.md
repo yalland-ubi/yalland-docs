@@ -24,7 +24,7 @@ The contract does not implement Ownable trait, so there is no owner.
 
 ### Permissionless methods
 
-#### #triggerTransition()
+##### #triggerTransition()
 
 The method performs the following actions:
 
@@ -36,7 +36,7 @@ Information about the current period id and it's beginning resides in `YALLDistr
 
 The commission is not pegged to a particular period ID, so commission earned by the contracts in period N could be withdrawn along with part of the commission earned in the period between the beginning of period N + 1 and the method call.
 
-##### Delegator reward calculation
+###### Delegator reward calculation
 
 A reward of delegator depends on his stake in YST tokens, it's not the same for all delegators.
 
@@ -53,7 +53,7 @@ TpN - total stakes of all delegators at the timestamp of the beginning of period
 Information about a delegator stake and total stakes of all delegators resides at `YALLStakingHomeMediator` contract.
 
 
-##### Verifier reward calculation
+###### Verifier reward calculation
 
 Verifier reward is the same for all verifiers.
 
@@ -68,7 +68,7 @@ Tv - a total amount of active verifiers at the time of calling this method
 
 Information about active verifiers resides in YALLVerification contract. In order to make active verifiers count at the time of calling this method equal verifiers count at the beginning of the given period, the verifiers contract should prevent actions that modify this count until this method be executed.
 
-##### Member reward calculation
+###### Member reward calculation
 
 Member reward is the same for all members.
 
@@ -87,26 +87,26 @@ Information about active members resides in YALLDistributor contract. In order t
 
 COMMISSION_MANAGER can call the following methods:
 
-#### #setShares()
+##### #setShares()
 
 It sets shares for `validators`, `delegators`, and `members`. The sum of these values should be equal to 100%. Group can be disabled by setting its share to 0.
 
-#### #setCommissionSources()
+##### #setCommissionSources()
 
 It sets a new list of contracts, `#triggerTransition()` will use this list later to fetch commission from them.
 
 ### Delegator interface
 
-#### #claimDelegatorReward()
+##### #claimDelegatorReward()
 
 A delegator who had an active stake at the beginning of the given period can claim his reward. The reward can be claimed even during one of the further periods.
 
 ### Verifier interface
 
-#### #claimVerifierReward()
+##### #claimVerifierReward()
 A verifier who is eligible at the moment can claim his reward. Eligibility is defined using the same logic as eligibility of a member to claim emission reward in the current period.
 
 ### Member interface
 
-#### #claimMemberReward()
+##### #claimMemberReward()
 A member who is eligible at the moment can claim his reward. Eligibility is defined using the same logic as eligibility of a member to claim emission reward in the current period.
