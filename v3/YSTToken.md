@@ -6,6 +6,8 @@ The main purpose of this token is staking at `YALLStakingForeignMediator`
 
 It's deployed on Ethereum mainnet.
 
+The `totalSupply` value should be provided via constructor during deployment process.
+
 ## Inheritance
 
 * [`OpenZeppelin/ERC20`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.5.0/contracts/token/ERC20/ERC20.sol)
