@@ -11,7 +11,7 @@ Home Chain (xDai):
 * [`YALLDistributor`](./YALLDistributor.md) - Member accounting, emission distribution
 * [`YALLExchange`](./YALLExchange.md) - `YALLToken` exchange
 * `YALLVerification` - Verifier add/removal by `YALLGovernance`, member add/removal actions by a verifier
-* [`YALLEmissionRewardPool`](./YALLEmissionRewardPool) - Emission distribution among verifiers and delegates
+* [`YALLEmissionRewardPool`](./YALLEmissionRewardPool.md) - Emission distribution among verifiers and delegates
 * [`YALLCommissionRewardPool`](./YALLCommissionRewardPool.md) - A system contracts commission, withdrawn and distributed among verifiers, delegates and (optionally) members
 * `YALLTokenHomeMediator` - Bridges `YALLToken` with `YALLTokenEthereum`
 * `YALLStakingHomeMediator` - A mediator with synced information from `YALLStakingForeignMediator`
