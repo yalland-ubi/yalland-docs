@@ -28,7 +28,7 @@ The contract does not implement Ownable trait, so there is no owner.
 
 ### Permissionless methods
 
-#### #triggerTransition()
+##### #triggerTransition()
 
 The method performs the following actions:
 
@@ -40,7 +40,7 @@ Information about the current period id and it's beginning resides in `YALLDistr
 
 The methods executes `YALLDistributor->#triggerTransition()` function, if it has't been executed yet for the current period.
 
-##### Delegator reward calculation
+###### Delegator reward calculation
 
 A reward of a delegator depens on his stake in YST tokens, it's not the same for all delegators.
 
@@ -57,7 +57,7 @@ TpN - total stakes of all delegators at the timestamp of beginning of period N, 
 Information about a delegator stake and total stakes of all delegators resides at `YALLStakingHomeMediator` contract.
 
 
-##### Verifier reward calculation
+###### Verifier reward calculation
 
 Verifier reward is the same for all verifiers.
 
@@ -76,18 +76,18 @@ Information about active verifiers resides in YALLVerification contract. In orde
 
 EMISSION_MANAGER can call the following methods:
 
-#### #setShares()
+##### #setShares()
 
 It sets shares for `validators` and `delegators`. The sum of these values should be equal to 100%. A group can be disabled by setting it's share to 0.
 
 ### Delegator interface
 
-#### #claimDelegatorReward()
+##### #claimDelegatorReward()
 
 A delegator who had an active stake at beginning of the given period can claim his reward. The reward can be claimed even during one of further periods.
 
 ### Verifier interface
 
-#### #claimVerifierReward()
+##### #claimVerifierReward()
 A verifier who is eligible at the moment can claim his reward. Eligibility is defined using the same logic as eligibility of a member to claim emission reward in the current period.
 
