@@ -14,7 +14,7 @@ Home Chain (xDai):
 * [`YALLEmissionRewardPool`](./YALLEmissionRewardPool.md) - Emission distribution among verifiers and delegates
 * [`YALLCommissionRewardPool`](./YALLCommissionRewardPool.md) - A system contracts commission, withdrawn and distributed among verifiers, delegates and (optionally) members
 * `YALLTokenHomeMediator` - Bridges `YALLToken` with `YALLTokenEthereum`
-* `YALLStakingHomeMediator` - A mediator with synced information from `YALLStakingForeignMediator`
+* [`YALLStakingHomeMediator`](./YALLStakingHomeMediator.md) - A mediator with synced information from `YALLStakingForeignMediator`
 
 Foreign Chain (Ethereum):
 * [`YALLTokenEthereum`](./YALLTokenEthereum.md) - a ERC20 token bridged with `YALLToken` on xDai chain
