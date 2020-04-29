@@ -14,7 +14,7 @@ Although [poanetwork/tokenbridge-contracts](https://github.com/poanetwork/tokenb
 
 ## Inheritance
 
-* TimestampCheckpointable - balance ber block caching
+* TimestampCheckpointable - balance per timestamp caching
 * BasicMediator - custom implementation of mediator logic
 
 ## Use Cases
