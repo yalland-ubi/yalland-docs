@@ -1,4 +1,4 @@
-# Yalland Project Smart Contracts Design
+# Yalland Whitepaper
 ## Yalland universal basic income overview
 The program is a public blockchain smart contract system managed by a decentralized community. Everyone can participate in the program, verifying himself/herself as a unique person and receive points (tokens), which can be exchanged for products, services or fiat money on the open market.
 The program is not state-owned and is built on the principles of P2P - economics.
@@ -23,7 +23,7 @@ Thus, the wealthier and more successful Alice, Philanthropist and Speculator are
 ## Tokens Overview
 - **Yalland ERC20 Token(YALL)** - ERC20 standard token with the following additional functionality: the ability to specify a note as an arbitrary line when the token transfer is performed, token transfer can be performed only between verified users and whitelisted smart contracts, compatibility with Gas Station Network(GSN), 
 transfer fee. YALL has a limited supply. YALL is transferable between  different chains. For current implementation it is initially created on xDAI chain and is transferable to Ethereum mainnet and back via ETH-xDai Arbitrary Message Bridge.   
-- **Yall ERC20 Staking Token(YST)** - ERC20 standard token with the following additional functionality: balance caching per block. The main purpose of the token is the decentralized management of smart contracts of the system of universal basic income. Token has fixed supply. It’s initially created on Ethereum mainnet as a token of Aragon organisation. It can be staked.
+- **Yall ERC20 Staking Token(YST)** - ERC20 standard token. The main purpose of the token is the decentralized management of smart contracts of the system of universal basic income. Token has fixed supply and can be staked for governance purposes.
 ## Program member verification
 In order to receive UBI, each person who wants to participate in the program must periodically confirm that he/she is a unique person. This is a prerequisite for an honest distribution of universal basic income. For these purposes, two mechanisms are used:
 - the mechanism of delegated decentralized verification;
