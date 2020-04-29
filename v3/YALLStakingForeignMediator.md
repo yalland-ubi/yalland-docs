@@ -8,27 +8,27 @@ Another one is caching not per block but per timestamp.
 
 Although [poanetwork/tokenbridge-contracts](https://github.com/poanetwork/tokenbridge-contracts/tree/a5946e7024caf598e562da916675a3b269ab293d/contracts/upgradeable_contracts) repo has audited versions of bridges, they were ignored due to several reasons:
 
-* Solidity version is 0.4.x while Yalland contracts use Solidity v0.5.x
-* YALLStakingForeignMediator has one direction of messages, it doesn't accept incoming messages from Home bridge
-* YALLStakingForeignMediator message logic doesn't replicate any of audited bridges logic
+* Solidity version is 0.4.x while Yalland contracts use Solidity v0.5.x;
+* YALLStakingForeignMediator has one direction of messages, it doesn't accept incoming messages from Home bridge;
+* YALLStakingForeignMediator message logic doesn't replicate any of audited bridges logic;
 
 ## Inheritance
 
-* TimestampCheckpointable - balance per timestamp caching
-* BasicMediator - custom implementation of mediator logic
+* TimestampCheckpointable - balance per timestamp caching;
+* BasicMediator - custom implementation of mediator logic;
 
 ## Use Cases
 
 To become a delegator, a YST token holder should stake them at `YALLStakingForeignMediator`.
 Like other ERC20 deposit functions, this is done using 2 separate transactions: approve and transferFrom wrapped in the contract method call.
 
-When `YALLStakingForeignMediator` receives the deposit it caches its value by the current block timestamp. Along with caching, it transfers the given timestamp and balance to `YALLStakingHomeMediator` home mediator. Particularly it calls `#setBalance(address _delegator, uint256 _timestamp, uint256 _balance)`;
+When `YALLStakingForeignMediator` receives the deposit it caches its value by the current block timestamp. Along with caching, it transfers the given timestamp and balance to `YALLStakingHomeMediator` home mediator. Particularly it calls `#setBalance(address _delegator, uint256 _timestamp, uint256 _balance)`.
 
 Since being deposited, the cached values can be used by:
 
-* YALLGovernance contract, by calculating the weight of a delegator vote
-* YALLEmissionRewardPool, by calculating a delegator reward amount proportional to the stake he has
-* YALLCommissionRewardPool, by calculating a delegator reward amount proportional to the stake he has
+* YALLGovernance contract, by calculating the weight of a delegator vote;
+* YALLEmissionRewardPool, by calculating a delegator reward amount proportional to the stake he has;
+* YALLCommissionRewardPool, by calculating a delegator reward amount proportional to the stake he has;
 
 ## Bridge interface 
 
