@@ -3,15 +3,15 @@
 A protocol governance contract that has owner permissions for most of the contracts.
 It allows YST create and vote for proposals like changing system parameters or upgrading system contracts.
 
-## Implementatino details
+## Implementation details
 
 Contracts will reuse [Aragon Voting](https://github.com/aragon/aragon-apps/blob/7ff724339d2adf41c946b036233d8b8244d8c0bc/apps/voting/contracts/Voting.sol) contract with the following changes:
 
-- upgrade to `Solidity v0.5.x`
-- `YALLStakingForeignMediator`/`YALLStakingHomeMediator` contracts as a source of cached balances
-- different error messages
-- different permission checks
-- can change `voteTime` value for further votes
+- upgrade to `Solidity v0.5.x`;
+- `YALLStakingForeignMediator`/`YALLStakingHomeMediator` contracts as a source of cached balances;
+- different error messages;
+- different permission checks;
+- can change `voteTime` value for further votes;
 
 The rest features should comply with the aforementioned Voting contract from Aragon including a vote execution decision logic.
 
