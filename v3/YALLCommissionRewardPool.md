@@ -2,7 +2,25 @@
 
 Claims commission from registered contracts once a period. Distributes the claimed commission among verifiers, delegators and (optionally) members. The funds weren't claimed by any of the validators or members will be redistributed to the next period. This rule doesn't apply to delegator rewards.
 
-## Inheritance
+## Detailed agorithm
+
+This example explains who can claim commission, for what period, and how it is calculated.
+
+#### Period 1:
+
+* verifiers Alice, Bob, Charlie are connected before period started;
+* in period 1, the Alice verifier becomes inactive after connection;
+* in the interval between calling the transition function of the period 0-> 1 and the time of changing the period 1-> 2, a commission of 20 YAL was accumulated in ERC20 contract.
+
+#### Period 2:
+
+* at the beginning of the period only Bob and Charlie verifiers are active;
+* in the interval between the time of changing the period 1-> 2 and the call to the transition function of the period 1-> 2, the commission 3 YAL was accumulated in ERC20 contract;
+* the transition function of the period 1-> 2 is called up, a commission of 23 YAL is withdrawn from the ERC20 contract accumulated between the call of the transition function of the period 0-> 1 and the call of the transition function of the period 1-> 2, the extended commission is assigned for payment in the current period 2;
+* Charlie verifier is deactivated;
+* Alice was not active during the transition period of the period 1-> 2 and is not active now, she will not participate in the distribution of the commission in the period 2;
+* Bob was active on the date of the transition of the period 1-> 2 and is active now, so he participates in the distribution of the commission in the period 2;
+* Charlie was active during the transition period of the period 1-> 2 but was not active now, he did not manage to withdraw the commission in period 2 while he was active, and now he can’t extend it, but if it is activated again in period 2, he will be able to do it (slot on Charlie was assigned because it was active for the transition 1-> 2).
 
 ## Permissions
 The contract does not implement Ownable trait, so there is no owner.
