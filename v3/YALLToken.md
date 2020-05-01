@@ -1,14 +1,11 @@
-# CoinToken
+# YALLToken
 
 ERC20 compatible token with the following functionlaity:
 
-* ERC20 - basic functionality
-* ERC20Pausable - trigger for pausing a contract (onlyPauser modifier is overriden)
-* ERC20Burnable - 'burner' role can burn tokens
-* ERC20Detailed - token info like name, token name, decimals
-* Checkpointable - MiniMe-like caching
-* Permissionable - roles
-* GSNRecipientSigned - GSN support
+* Additional commission, the amount of which is determined by YALLGovernance;
+* Gas Station Network support;
+* Token transfer can only be performed between verified users (user status is defined in YALLDistributor) and the whitelisted contracts (determined in token contract);
+* Token balance can be restored by YALLDistributor contract.
 
 
 ## GSN support

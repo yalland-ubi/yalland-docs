@@ -1,4 +1,4 @@
-# YalDistributorV3
+# YALLDistributor
 
 ## Important Updates
 ### 14/03/2020
@@ -57,6 +57,41 @@ The modifier is included into the following methods:
 So each call for the aforementioned methods would cause these checks.
 
 The `handlePeriodTransitionIfRequired` will be replaced with a function if it causes `stack too deep` errors.
+
+## Can claim a reward constraints
+
+To calculate whether a member can claim a reward in this period or not, the following constraints are imposed:
+
+```
+// this also implies that Le <= Ld
+assert(memberIsActiveNow == true)
+
+if (Ld != 0 && CPid != 0) {
+  assert(
+      // a member has been both disabled and enabled in the current period
+      (Ld >= CPb && Le >= CPb)
+      // a member was both disabled and enabled in the previous period
+      || (Ld >= PPb && Le >= PPb && Ld < CPb && Le < CPb)
+      // a member was both disabled and enabled before the current period started
+      || (Ld < CPb && Le < CPb)
+  )
+}
+
+// Can claim a reward
+Ok()
+
+----
+CPid - current period ID
+CPb - Current period begins at timestamp
+PPb - Previous period begins at timestamp
+Le - Member last enabled at
+Ld - Member last disabled at
+```
+
+The code above checks for the major requirement for a reward claiming, ensuring that a member:
+
+* is active now
+* was active at the timestamp when the current period started
 
 ## Deployment
 
