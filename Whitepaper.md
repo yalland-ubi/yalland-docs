@@ -42,6 +42,7 @@ To do this, the Program Member sends a transaction signed by the old private key
 ### Verified user address recovery
 In case of loss of the private key, the Program Member can restore its balance and change the old address to the new one.
 Verifiers perform this operation. After the identity of the program member is confirmed, Verifiers (one or several) confirm the change of the address. The `YALL Distribution Contract` contract burns YALL from old address and mints the same amount to the new one.
+
 ![Verified user address recovery](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-10.png)
 ## Yalland Tokens
 ### Yall ERC20 Token(YALL)
