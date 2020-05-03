@@ -1,13 +1,6 @@
 # YALLDistributor
 
-## Important Updates
-### 14/03/2020
-- Use lastActivateTimestamp and lastDeActivateTimestamp in structMember and activateMember(), deactivateMember(), claimFunds() functions instead of mapping (uint256 //period// => bool //deactivationStatus//)
-
-### 13/03/2020
--  add mapping (uint256 //period// => bool //deactivationStatus//) public deactivationPerPeriod;
-- in deactivateMember() add deactivationPerPeriod.[getCurrentPeriod()] = true;
-- check in claimFunds() activationPerPeriod[getCurrentPeriod()-1] == false; 
+The contract distributes YALL emission among registered members and emission pool address.
 
 ## Constructor arguments (the values can't be changed later):
 
