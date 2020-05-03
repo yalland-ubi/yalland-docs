@@ -102,6 +102,15 @@ The code above checks for the major requirement for a reward claiming, ensuring 
 * is active now
 * was active at the timestamp when the current period started
 
+## Pausable
+
+`YALLToken` contract implements `ACLPausable` trait. If the contract is paused, execution of the following methods will be reverted:
+
+* claimEmissionPoolReward()
+* claimFundsMultiple()
+* claimFunds()
+* changeMyAddress()
+
 ## Interface
 
 ### Permissionless Interface
@@ -120,13 +129,13 @@ Changes a verifier reward share to a new one.
 
 Changes a periodVolume to a new value.
 
-### Fee Manager Interface()
+### Fee Manager Interface
 
 ##### setGsnFee(uint256 _gsnFee)
 
 Set a new GSN fee value
 
-### Fee Claimer Interface()
+### Fee Claimer Interface
 
 ##### withdrawFee()
 
@@ -165,3 +174,13 @@ Verifier changes a member address with a new one. MemberId remains the same.
 ##### claimFundsMultiple(address[] calldata _memberAddresses)
 
 Acts on behalf of multiple fund members, distributes funds to their corresponding addresses.
+
+### Member Interface
+
+##### claimFunds()
+
+Claims member funds
+
+##### changeMyAddress(address _to)
+
+A member changes his address with a new one. MemberId remains the same.
