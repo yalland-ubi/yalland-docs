@@ -92,3 +92,62 @@ No `Limit #3` is applied in case when a total period limit is set to 0.
 ## Future features (not to be implemented in the current version)
 
 * initialization with pre-defined data for members like `totalExchanged`, `totalVoided`, etc.
+
+## Interface
+
+### Exchange Member Interface
+
+##### setDefaultExchangeRate(uint256 _defaultExchangeRate)
+
+Sets a default exchange rate
+
+##### setCustomExchangeRate(bytes32 _memberId, uint256 _customExchangeRate)
+
+Sets a particular member exchange rate by its id
+
+##### setTotalPeriodLimit(uint256 _totalPeriodLimit)
+
+Sets a total period exchange limit for all users
+
+##### setDefaultMemberPeriodLimit(uint256 _defaultMemberPeriodLimit)
+
+Sets a member exchange limit for a period
+
+##### setCustomPeriodLimit(bytes32 _memberId, uint256 _customPeriodLimit)
+
+Sets a particular member exchange limit for a period
+
+### Fee Manager Interface
+
+##### setGsnFee(uint256 _gsnFee)
+
+Sets a default GSN fee
+
+### Fee Claimer Interface
+
+##### withdrawYALLs()
+
+Withdraws almost all YALL tokens
+
+### Member Interface
+
+##### createOrder(uint256 _yallAmount)
+
+A user creates a new order with a specified amount to exchange
+
+### Operator Interface
+
+##### closeOrder(uint256 _orderId, string calldata _paymentDetails)
+
+An operator successfully closes an exchange order
+
+##### cancelOrder(uint256 _orderId, string calldata _cancelReason)
+
+An operator cancels an order failed due some reason
+
+### Super Operator Interface
+
+##### voidOrder(uint256 _orderId)
+
+A super operator voids an already closed order and refunds deposited YALLs
+
