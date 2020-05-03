@@ -15,6 +15,7 @@ ERC20 compatible token with the following functionlaity:
 |`YALL_BURNER`| `burn()`|
 |`FEE_MANAGER`| `setGsnFee()`, `setTransferFee()`|
 |`FEE_CLAIMER`| `withdrawFee()`|
+|`PAUSER`| `pause()`, `unpause()`|
 
 ## GSN support
 
