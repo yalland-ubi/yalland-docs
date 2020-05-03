@@ -2,52 +2,24 @@
 
 ## GSN support
 
-GSN support should be implemented for the following methods:
+GSN support is implemented for the following methods:
 
-* #createOrder - a program member creates an exchange order
+* `createOrder()` - a program member creates an exchange order
 
-## Permissions
-### Owner
+## Inbound ACL Permissions
 
-Owner is a particular address. It has exclusive permissions for:
+|Role name| Allowed methods |
+|---|---|
+|`EXCHANGE_MANAGER`| `YALLExchange->setDefaultExchangeRate()`, `setCustomExchangeRate()`, `setTotalPeriodLimit()`, `setDefaultMemberPeriodLimit()`, `setCustomPeriodLimit()`|
+|`EXCHANGE_OPERATOR`| `closeOrder()`, `cancelOrder()`|
+|`EXCHANGE_SUPER_OPERATOR`| `void()`|
+|`FEE_MANAGER`| `setGsnFee()`|
+|`FEE_CLAIMER`| `withdrawFee()`|
+|`PAUSER`| `pause()`, `unpause()`|
 
-* managing (add/remove actions) all existing roles
+### YALL  active member
 
-### Manager Roles
-
-Multiple addresses can be assigned to a particular role.
-
-#### Fund Manager
-
-Has exclusive permissions to call:
-
-- `#setDefaultExchangeRate()`
-- `#setCustomExchangeRate()`
-- `#setTotalPeriodLimit()`
-- `#setDefaultMemberPeriodLimit()`
-- `#setCustomPeriodLimit()`
-- `#setGsnFee()`
-- `#withdrawYALs()`
-
-#### Operator
-
-- Has exclusive permissions to call:
-
-- `#closeOrder()`
-- `#cancelOrder()`
-
-#### Super Operator
-
-- `#voidOrder()`
-
-#### Pauser
-
-- `#pause()`
-- `#unpause()`
-
-### YAL active member
-
-Any active YAL program member can call:
+Any active YALL program member can call:
 
 - `#createOrder()`
 
