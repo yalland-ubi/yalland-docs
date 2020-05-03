@@ -2,6 +2,17 @@
 
 The Stage #1 contract are deployed at `xDai` chain only.
 
+## Contract list
+
+|Instance|Contract|Owner|Proxy Owner|Arbitrary ERC20 withdrawal|ETH Withdrawal|Pausable|
+|---|---|---|---|---|---|---|
+|yallRegistry|YALLRegistry|adminMultiSig|adminMultiSig|no|no|no|
+|yallProxyAdmin|ProxyAdmin|adminMultiSig|no proxy|no|no|no|
+|yallToken|YALLToken|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
+|yallDistribution|YALLDistributor|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
+|yallExchange|YALLExhange|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
+
+
 ## ACL permissions list
 
 |Role|Assigned to|Can call methods|
