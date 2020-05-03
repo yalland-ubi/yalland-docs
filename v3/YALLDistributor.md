@@ -27,6 +27,7 @@ The contract has `YALL_MINTER` and `YALL_BURNER` ACL roles assigned, hence this 
 |`DISTRIBUTOR_EMISSION_CLAIMER`| `claimEmissionPoolReward()`|
 |`FEE_MANAGER`| `setGsnFee()`|
 |`FEE_CLAIMER`| `withdrawYALLs()`|
+|`PAUSER`| `pause()`, `unpause()`|
 
 ## Features
 ### Reward calculations
