@@ -1,36 +1,41 @@
 # YALLDistributor
 
-## Important Updates
-### 14/03/2020
-- Use lastActivateTimestamp and lastDeActivateTimestamp in structMember and activateMember(), deactivateMember(), claimFunds() functions instead of mapping (uint256 //period// => bool //deactivationStatus//)
-
-### 13/03/2020
--  add mapping (uint256 //period// => bool //deactivationStatus//) public deactivationPerPeriod;
-- in deactivateMember() add deactivationPerPeriod.[getCurrentPeriod()] = true;
-- check in claimFunds() activationPerPeriod[getCurrentPeriod()-1] == false; 
+The contract distributes YALL emission among registered members and emission pool address.
 
 ## Constructor arguments (the values can't be changed later):
-- erc20TokenAddress
-- periodLength
-- startTime - timestamp of the beginning of the first period
+
+The values that can't be changed later:
+- YALLRegistry contract address
+- periodLength - in seconds
+- genesisTimestamp - timestamp of the beginning of the first period
+
+The values that can be changed later:
 - periodVolume - the number of tokens to mint during a single period
+- emissionPoolRewardShare
 
 ## Contract Permissions
 ### Outbound
 
-The contract has `minter` permissions at YAL(ERC20) contract
+The contract has `YALL_MINTER` and `YALL_BURNER` ACL roles assigned, hence this allows it minting and burning YALL_TOKENS.
 
 ### Inbound
 
-* An owner can manage the verifier address and his reward, a reward should comply "<100%" requirement
-* A verifier can manage member: add/addMultiple/change/activate/deactivate, claims his rewards 
+|Role name| Allowed methods |
+|---|---|
+|`DISTRIBUTOR_MANAGER`| `setEmissionPoolRewardShare()`, `setPeriodVolume()`|
+|`DISTRIBUTOR_VERIFIER`| `addMembersBeforeGenesis()`, `addMembers()`, `addMember()`, `enableMembers()`, `disableMembers()`, `changeMemberAddresses()`, `changeMemberAddress()`|
+|`DISTRIBUTOR_EMISSION_CLAIMER`| `claimEmissionPoolReward()`|
+|`FEE_MANAGER`| `setGsnFee()`|
+|`FEE_CLAIMER`| `withdrawYALLs()`|
+|`PAUSER`| `pause()`, `unpause()`|
+
+## Features
+### Reward calculations
+
 * Any member which is inside the member list and is active at the moment can claim distributed tokens if he was already included at the beginning of the current period
-
-## Reward calculations
-
 * When a new user joins as a member, he should wait when the next period starts in order to start receiving funds
 * An already existing member could claim his funds for a period if he had not claimed it yet
-* If a member had deactivated status at beginning of the current period and was activated, he could claim his funds the same way as an already existing user does
+* If a member had been deactivated at beginning of the current period, and later he had been activated again, he could claim his reward
 * If a member had been deactivated in a current period and had not claimed funds yet, he can't claim the funds unless he will be activated in this period again
 * If a member claims his reward in the current period, a verifier performs activate/deactivate actions on the member in the current period, the member can't claim the period reward again since he already did.
 * There is no way to delete member completely, only to deactivate him
@@ -38,7 +43,7 @@ The contract has `minter` permissions at YAL(ERC20) contract
 * A member mints his reward on each claim, the reward amount is calculated once within `handlePeriodTransitionIfRequired` modifier
 * The funds not claimed by users are not minted, so there is no need to redistribute them
 
-## Dealing with period transition
+### Dealing with period transition
 
 In order to detect a new period and perform corresponding actions, there is `handlePeriodTransitionIfRequired` modifier introduced. If there is a new period started, the modifier will:
 * calculate and cache `rewardPerUser` for the current period.
@@ -56,9 +61,7 @@ The modifier is included into the following methods:
 
 So each call for the aforementioned methods would cause these checks.
 
-The `handlePeriodTransitionIfRequired` will be replaced with a function if it causes `stack too deep` errors.
-
-## Can claim a reward constraints
+### Can claim a reward constraints
 
 To calculate whether a member can claim a reward in this period or not, the following constraints are imposed:
 
@@ -93,393 +96,85 @@ The code above checks for the major requirement for a reward claiming, ensuring 
 * is active now
 * was active at the timestamp when the current period started
 
-## Deployment
-
-### YALDistribution
-* Owner address will be assigned to  `0x???`
-* Initial verifier address will be assigned to `0x???`
-
-### YALToken(ERC20)
-* DCity `minter` permissions will be revoked
-* DCity `burner` permissions will be revoked
-* YALDistribution will be granted with a `minter` role
-
-## Other
-* Contract implements Pausable and Ownable traits from OZ
-* Contract uses SafeMath from OZ for uint256 values
-* Contract allows the owner claiming any amount ETHs, ERC721 tokens and all ERC20 tokens other than the one specified as `token` storage variable
-* The contract doesn't need a `burner` role as DCity contract does.
-
-## Prototype code
-(won't compile)
-
-```solidity
-/*
- * Copyright ©️ 2020 Galt•Project Society Construction and Terraforming Company
- * (Founded by [Nikolai Popeka](https://github.com/npopeka)
- *
- * Copyright ©️ 2020 Galt•Core Blockchain Company
- * (Founded by [Nikolai Popeka](https://github.com/npopeka) by
- * [Basic Agreement](ipfs/QmaCiXUmSrP16Gz8Jdzq6AJESY1EAANmmwha15uR3c1bsS)).
- */
-
-pragma solidity ^0.5.13;
-
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-
-// TODO: make pausable
-// TODO: make ownable
-contract YALDistribution {
-  uint256 public genesisTimestamp;
-  uint256 public periodLength;
-  uint256 public periodVolume;
-
-  uint256 public idCounter;
-  IERC20 public token;
-  uint256 public activeMemberCount;
-
-  mapping(bytes32 => Member) public members;
-  mapping(address => bytes32) public memberAddress2Id;
-  // periodId => rewardPerMember
-  mapping(uint256 => uint256) public periodRewardPerMember;
-  // periodId => amount
-  mapping(uint256 => uint256) public verifierPeriodReward;
-
-  address public verifier;
-  // 100% == 100 ether
-  uint256 public verifierRewardShare;
-
-  struct Member {
-    bool active;
-    uint256 createdAt;
-    address addr;
-    // periodId => claimed
-    mapping(uint256 => bool) claimedPeriods;
-  }
-
-  constructor(
-    IERC20 _token,
-    uint256 _periodLength,
-    uint256 _genesisTimestamp,
-    uint256 _periodVolume
-  )
-    public
-  {
-    // ..assign
-  }
-
-  // Mints tokens, assigns the verifier reward and caches reward per member
-  modifier handlePeriodTransitionIfRequired() {
-    uint256 currentPeriodId = getCurrentPeriodId();
-
-    if (periodRewardPerMember[currentPeriodId] == 0) {
-      verifierPeriodReward[currentPeriodId] = periodVolume * verifierRewardShare;
-
-      // imbalance will be left at the contract
-      uint256 currentPeriodRewardPerMember = (periodVolume * (100 ether - verifierRewardShare)) / activeMemberCount;
-      assert(currentPeriodRewardPerMember > 0);
-      periodRewardPerMember[currentPeriodId] = currentPeriodRewardPerMember;
-    }
-
-    _;
-  }
-
-  // OWNER INTERFACE
-
-  function setVerifier(address _verifier) external onlyOwner {
-    verifier = _verifier;
-  }
-
-  function setVerifierRewardShare(uint256 _share) external onlyOwner {
-    require(_share < 100 ether);
-    verifierRewardShare = _share;
-  }
+## Pausable
 
-  function setPeriodVolume(uint256 _newVolume) external onlyOwner {
-    periodVolume = _newVolume;
-  }
+`YALLToken` contract implements `ACLPausable` trait. If the contract is paused, execution of the following methods will be reverted:
 
-  // VERIFIER INTERFACE
+* claimEmissionPoolReward()
+* claimFundsMultiple()
+* claimFunds()
+* changeMyAddress()
 
-  function addMembers(bytes32[] calldata _memberIds, address calldata _addrs) external mintNewPeriodIfRequired onlyVerifier {
-    uint256[] memory ids = new uint256(_members.length);
+## Interface
 
-    for (uint256 i = 0; i < _members.length; i++) {
-      ids[i] = _addMember(_members[i]);
-    }
+### Permissionless Interface
 
-    return ids;
-  }
+##### handlePeriodTransitionIfRequired()
 
-  function addMember(bytes32 _memberId, bytes32 _member) external mintNewPeriodIfRequired onlyVerifier {
-    return _addMember(_member);
-  }
+Anyone can trigger period transition if it is required.
 
-  function _addMember(bytes32 _memberId, address _member) internal {
-    require(memberAddress2Id[_member] == address(0), "The address already registered");
+### Distributor Manager Interface
 
-    Member storage member = members[_memberId];
+##### setEmissionPoolRewardShare(uint256 _emissionPoolRewardShare)
 
-    member.addr = _member;
-    member.active = true;
-    member.createdAt = now;
-
-    activeMemberCount++;
-  }
-
-  function activateMember(bytes32 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
-    Member storage member = members[id];
-    require(member.active == false);
-    require(member.createdAt != 0);
-    activeMemberCount++;
-  }
-
-  function deactivateMember(bytes32 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
-    Member storage member = members[id];
-    require(member.active == true);
-    activeMemberCount--;
-  }
-
-  function changeMemberAddress(bytes32 _memberId, address _to) external onlyVerifier {
-    Member storage member = members[id];
-    member.addr = _to;
-  }
-
-  function claimVerifierReward(uint256 _periodId, address _to) external onlyVerifier {
-    // TODO: add already claimed check
-    token.mint(_to, verifierPeriodRewards[_periodId]);
-  }
-
-  // MEMBER INTERFACE
-  // @dev Claims msg.sender funds for the previous period
-  function claimFunds(
-    uint256 _memberId
-  )
-    external
-    handlePeriodTransitionIfRequired
-  {
-    Member storage member = members[_memberId];
-
-    require(member.addr == msg.sender, "Address doesn't match");
-    require(member.active == true, "Not active member");
-
-    require(member.createdAt < getCurrentPeriodBeginsAt());
-    require(member.claimedPeriods[getCurrentPeriodId()] == false);
-
-    member.claimedPeriods[getCurrentPeriodId()] = true;
+Changes a verifier reward share to a new one.
 
-    token.mint(msg.sender, verifierPeriodReward[getCurrentPeriodId()]);
-  }
+##### setPeriodVolume(uint256 _periodVolume)
 
-  function changeMyAddress(bytes32 _memberId, address _to) external {
-    Member storage member = members[id];
-    require(member.addr = msg.sender);
-    member.addr = _to;
-  }
+Changes a periodVolume to a new value.
 
-  // PERMISSIONLESS INTERFACE
-  function handlePeriodTransitionIfRequired() external handlePeriodTransitionIfRequired {
-  }
+### Fee Manager Interface
 
-  // INTERNAL METHODS
+##### setGsnFee(uint256 _gsnFee)
 
-  function nextId() internal returns (uint256) {
-    return ++idCounter;
-  }
+Set a new GSN fee value
 
-  // VIEW METHODS
+### Fee Claimer Interface
 
-  function getCurrentPeriodId() public view returns (uint256) {
-    uint256 blockTimestamp = block.timestamp;
+##### withdrawFee()
 
-    require(blockTimestamp > genesisTimestamp, "Contract not initiated yet");
+Transfer all contract YALLs to a corresponding msg.sender.
 
-    // return (blockTimestamp - genesisTimestamp) / periodLength;
-    return (blockTimestamp.sub(genesisTimestamp)) / periodLength;
-  }
+### Verifier Interface
 
-  function getNextPeriodBeginsAt() public view returns (uint256) {
-    if (block.timestamp <= genesisTimestamp) {
-      return genesisTimestamp;
-    }
+##### addMembersBeforeGenesis(bytes32[] calldata _memberIds, address[] calldata _memberAddresses)
 
-    // return ((getCurrentPeriod() + 1) * periodLength) + genesisTimestamp;
-    return ((getCurrentPeriodId() + 1).mul(periodLength)).add(genesisTimestamp);
-  }
+Adds multiple members. To be called before genesisTimestamp.
 
-  function getCurrentPeriodBeginsAt() public view returns (uint256) {
-    if (block.timestamp <= genesisTimestamp) {
-      return genesisTimestamp;
-    }
+##### addMembers(bytes32[] calldata _memberIds, address[] calldata _memberAddresses)
 
-    // return (getCurrentPeriod() * periodLength) + genesisTimestamp;
-    return (getCurrentPeriodId().mul(periodLength)).add(genesisTimestamp);
-  }
-}
+Adds multiple members. To be called after genesisTimestamp.
 
-    IERC20 _token,
-    uint256 _periodLength,
-    uint256 _genesisTimestamp,
-    uint256 _periodVolume
-  )
-    public
-  {
-    // ..assign
-  }
-
-  // Mints tokens, assigns the verifier reward and caches reward per member
-  modifier handlePeriodTransitionIfRequired() {
-    uint256 currentPeriodId = getCurrentPeriodId();
-
-    if (periodRewardPerMember[currentPeriodId] == 0) {
-      verifierPeriodReward[currentPeriodId] = periodVolume * verifierRewardShare;
-
-      // imbalance will be left at the contract
-      uint256 currentPeriodRewardPerMember = (periodVolume * (100 ether - verifierRewardShare)) / activeMemberCount;
-      assert(currentPeriodRewardPerMember > 0);
-      periodRewardPerMember[currentPeriodId] = currentPeriodRewardPerMember;
-    }
-
-    _;
-  }
-
-  // OWNER INTERFACE
+##### addMember(bytes32 _memberId, address _memberAddress)
 
-  function setVerifier(address _verifier) external onlyOwner {
-    verifier = _verifier;
-  }
+Adds a single member.
 
-  function setVerifierRewardShare(uint256 _share) external onlyOwner {
-    require(_share < 100 ether);
-    verifierRewardShare = _share;
-  }
+##### enableMembers(address[] calldata _memberAddresses)
 
-  function setPeriodVolume(uint256 _newVolume) external onlyOwner {
-    periodVolume = _newVolume;
-  }
+Activates multiple members.
 
-  // VERIFIER INTERFACE
+##### disableMembers(address[] calldata _memberAddresses)
 
-  function addMembers(address[] calldata _members) external mintNewPeriodIfRequired onlyVerifier returns (uint256[] memory){
-    uint256[] memory ids = new uint256(_members.length);
+Deactivates multiple members.
 
-    for (uint256 i = 0; i < _members.length; i++) {
-      ids[i] = _addMember(_members[i]);
-    }
+##### changeMemberAddresses(address[] calldata _fromAddresses, address[] calldata _toAddresses)
 
-    return ids;
-  }
+Verifier changes multiple member addresses with a new ones. MemberIds remain the same.
 
-  function addMember(address _member) external mintNewPeriodIfRequired onlyVerifier returns (uint256) {
-    return _addMember(_member);
-  }
+##### changeMemberAddress(address _from, address _to)
 
-  function _addMember(address _member) internal returns (uint256) {
-    require(memberAddress2Id[_member] == address(0), "The address already registered");
+Verifier changes a member address with a new one. MemberId remains the same.
 
-    uint256 id = nextId();
+##### claimFundsMultiple(address[] calldata _memberAddresses)
 
-    Member storage member = members[id];
+Acts on behalf of multiple fund members, distributes funds to their corresponding addresses.
 
-    member.addr = _member;
-    member.active = true;
-    member.createdAt = now;
+### Member Interface
 
-    activeMemberCount++;
+##### claimFunds()
 
-    return id;
-  }
+Claims member funds
 
-  function activateMember(uint256 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
-    Member storage member = members[id];
-    require(member.active == false);
-    require(member.createdAt != 0);
-    activeMemberCount++;
-  }
+##### changeMyAddress(address _to)
 
-  function deactivateMember(uint256 _memberId) external handlePeriodTransitionIfRequired onlyVerifier {
-    Member storage member = members[id];
-    require(member.active == true);
-    activeMemberCount--;
-  }
-
-  function changeMemberAddress(uint256 _memberId, address _to) external onlyVerifier {
-    Member storage member = members[id];
-    member.addr = _to;
-  }
-
-  function claimVerifierReward(uint256 _periodId, address _to) external onlyVerifier {
-    // TODO: add already claimed check
-    token.mint(_to, verifierPeriodRewards[_periodId]);
-  }
-
-  // MEMBER INTERFACE
-  // @dev Claims msg.sender funds for the previous period
-  function claimFunds(
-    uint256 _memberId
-  )
-    external
-    handlePeriodTransitionIfRequired
-  {
-    Member storage member = members[_memberId];
-
-    require(member.addr == msg.sender, "Address doesn't match");
-    require(member.active == true, "Not active member");
-
-    require(member.createdAt < getCurrentPeriodBeginsAt());
-    require(member.claimedPeriods[getCurrentPeriodId()] == false);
-
-    member.claimedPeriods[getCurrentPeriodId()] = true;
-
-    token.mint(msg.sender, verifierPeriodReward[getCurrentPeriodId()]);
-  }
-
-  function changeMyAddress(uint256 _memberId, address _to) external {
-    Member storage member = members[id];
-    require(member.addr = msg.sender);
-    member.addr = _to;
-  }
-
-  // PERMISSIONLESS INTERFACE
-  function handlePeriodTransitionIfRequired() external handlePeriodTransitionIfRequired {
-  }
-
-  // INTERNAL METHODS
-
-  function nextId() internal returns (uint256) {
-    return ++idCounter;
-  }
-
-  // VIEW METHODS
-
-  function getCurrentPeriodId() public view returns (uint256) {
-    uint256 blockTimestamp = block.timestamp;
-
-    require(blockTimestamp > genesisTimestamp, "Contract not initiated yet");
-
-    // return (blockTimestamp - genesisTimestamp) / periodLength;
-    return (blockTimestamp.sub(genesisTimestamp)) / periodLength;
-  }
-
-  function getNextPeriodBeginsAt() public view returns (uint256) {
-    if (block.timestamp <= genesisTimestamp) {
-      return genesisTimestamp;
-    }
-
-    // return ((getCurrentPeriod() + 1) * periodLength) + genesisTimestamp;
-    return ((getCurrentPeriodId() + 1).mul(periodLength)).add(genesisTimestamp);
-  }
-
-  function getCurrentPeriodBeginsAt() public view returns (uint256) {
-    if (block.timestamp <= genesisTimestamp) {
-      return genesisTimestamp;
-    }
-
-    // return (getCurrentPeriod() * periodLength) + genesisTimestamp;
-    return (getCurrentPeriodId().mul(periodLength)).add(genesisTimestamp);
-  }
-}
-
-```
-
+A member changes his address with a new one. MemberId remains the same.
