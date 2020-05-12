@@ -1,9 +1,9 @@
 # YALLEmissionRewardPool
 
 Claims the emission reward from YALLDistributor contracts once a period.
-Ditributes the claimed reward among verifiers and delegators. The distributed rewrads are minted on an explicit request of each particular verifier or delegator.
+Distributes the claimed reward among verifiers and delegators. The distributed rewards are minted on an explicit request of each particular verifier or delegator.
 
-Verifiers can claim their rewards only for current period. If a validator don't claim a reward in the given period, he won't be able to do this later.
+Verifiers can claim their rewards only for the current period. If a validator doesn't claim a reward in the given period, he won't be able to do this later.
 
 Delegators have no period restrictions for claiming rewards. They can claim a reward for the given period at any time in the future.
 
