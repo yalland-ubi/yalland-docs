@@ -12,7 +12,7 @@ Contracts will reuse [Aragon Voting](https://github.com/aragon/aragon-apps/blob/
 - different error messages;
 - different permission checks;
 - can change `voteTime` value for further votes;
-- forwarding future is ignored
+- forwarding feature is ignored
 - no blacklists for evm script destination addresses
 - evmScript DOES support sending ETHs from `YALLGovernance` contract
 - evmScript call results are emitted using evm logs, not returned to `runScript()` caller
