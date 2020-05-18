@@ -49,6 +49,12 @@ TBD...
 
 --------
 ## Development Stages
+✅ - Ready
+
+⚠️ - Minimal viable version + behaviour tests are ready, unit tests pending
+
+❌ - Pending
+
 ### Stage #1:
 
 * ✅`YALLRegistry`
