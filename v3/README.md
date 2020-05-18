@@ -25,6 +25,9 @@
 --------
 ## Launch Stages
 ### Stage #1 (slated to May 24th 2020):
+
+![Stage #1 Deployment](../images/deployment-stage-1.svg)
+
 #### xDai chain
 
 * `YALLRegistry`
@@ -55,6 +58,7 @@
 * `YALLTokenForeignMediator` `proxy owner` - external address
 
 ### Stage #2:
+![Stage #2 Deployment](../images/deployment-stage-2.svg)
 
 TBD...
 
