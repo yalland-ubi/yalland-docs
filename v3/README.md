@@ -51,23 +51,20 @@ TBD...
 ## Development Stages
 ### Stage #1:
 
-* `YALLRegistry`
-* `YALLToken`
-* `YALLDistributor`
-* `YALLExchange`
+* ✅`YALLRegistry`
+* ✅`YALLToken`
+* ✅`YALLDistributor`
+* ✅`YALLExchange`
 
 ### Stage #2:
 
-* `YST`
-* `YALLStakingForeignMediator`
-* `YALLStakingHomeMediator`
+* ⚠️`YST`
+* ⚠️`YALLStakingForeignMediator`
+* ⚠️`YALLStakingHomeMediator`
+* ⚠️`YALLEmissionRewardPool`
+* ⚠️`YALLCommissionRewardPool`
+* ⚠️`YALLGovernance`
 
 ### Stage #3:
 
-* `YALLVerification`
-* `YALLEmissionRewardPool`
-* `YALLCommissionRewardPool`
-
-### Stage #4:
-
-* `YALLGovernance`
+* ❌`YALLVerification`
