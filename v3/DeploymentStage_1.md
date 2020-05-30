@@ -4,14 +4,16 @@ The Stage #1 contract are deployed at `xDai` chain only.
 
 ## Contract list
 
-|Instance|Contract|Owner|Proxy Owner|Arbitrary ERC20 withdrawal|ETH Withdrawal|Pausable|
-|---|---|---|---|---|---|---|
-|yallRegistry|YALLRegistry|adminMultiSig|adminMultiSig|no|no|no|
-|yallProxyAdmin|ProxyAdmin|adminMultiSig|no proxy|no|no|no|
-|yallToken|YALLToken|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
-|yallDistribution|YALLDistributor|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
-|yallExchange|YALLExhange|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
-
+|Chain|Instance|Contract|Owner|Proxy Owner|Arbitrary ERC20 withdrawal|ETH Withdrawal|Pausable|
+|---|---|---|---|---|---|---|---|
+|xDai|yallRegistry|YALLRegistry|adminMultiSig|adminMultiSig|no|no|no|
+|xDai|yallProxyAdmin|ProxyAdmin|adminMultiSig|no proxy|no|no|no|
+|xDai|yallToken|YALLToken|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
+|xDai|yallDistribution|YALLDistributor|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
+|xDai|yallExchange|YALLExhange|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
+|xDai|yallHomeMediator|YALLTokenHomeMediator|adminMultiSig|adminMultiSig|any ERC20 by a Proxy Owner|by a Proxy Owner|no|
+|Ethereum Mainnet|yallForeignMediator|YALLTokenForeignMediator|adminMultiSig|adminMultiSig|any ERC20 by a Proxy Owner|by a Proxy Owner|no|
+|Ethereum Mainnet|yallTokenEthereum|YALLTokenEthereum|adminMultiSig|no proxy|no|no|no|
 
 ## ACL permissions list
 
