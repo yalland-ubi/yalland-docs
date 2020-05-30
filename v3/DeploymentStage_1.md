@@ -2,6 +2,8 @@
 
 The Stage #1 contract are deployed at `xDai` chain only.
 
+![Stage #1 Deployment](../images/deployment-stage-1.svg)
+
 ## External address list
 
 |Code|Address|
