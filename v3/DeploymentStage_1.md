@@ -48,3 +48,8 @@ The Stage #1 contract are deployed at `xDai` and `Ethereum Mainnet` chains.
 |EXCHANGE_MANAGER|...|YALLExchange->setDefaultExchangeRate()<br>YALLExchange->setCustomExchangeRate()<br>YALLExchange->setTotalPeriodLimit()<br>YALLExchange->setDefaultMemberPeriodLimit()<br>YALLExchange->setCustomPeriodLimit()|
 |EXCHANGE_OPERATOR|...|YALLExchange->closeOrder()<br>YALLExchange->cancelOrder()|
 |EXCHANGE_SUPER_OPERATOR|...|YALLExchange->voidOrder()|
+
+## Contract-scoped Roles
+|Instance Code|Role|AssignedTo|
+|---|---|---|
+|`yallTokenEthereum`|`minter`|`yallTokenForeignMediator`|
