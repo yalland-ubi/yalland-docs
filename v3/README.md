@@ -24,15 +24,19 @@
 
 --------
 ## Launch Stages
-### Stage #1:
-#### xDai chain(only)
+### Stage #1 (slated to May 24th 2020):
+
+![Stage #1 Deployment](../images/deployment-stage-1.svg)
+
+#### xDai chain
 
 * `YALLRegistry`
 * `YALLToken`
 * `YALLDistributor`
 * `YALLExchange`
+* `YALLTokenHomeMediator`
 
-###### ACL Roles
+###### xDai ACL Roles
 * `YALL_TOKEN_MINTER` - `YALDistributor` contract
 * `YALL_TOKEN_BURNER` - `YALDistributor` contract
 * `YALL_TOKEN_WHITELIST_MANAGER` - external address
@@ -43,31 +47,45 @@
 * `PAUSER` - external address
 * `VERIFIER` - external address
 
+#### Ethereum Mainnet
+
+* `YALLTokenEthereum`
+* `YALLTokenForeignMediator`
+
+###### Ethereum Mainnet Permissions
+* `YALLTokenEthereum` `owner` - external address
+* `YALLTokenForeignMediator` `owner` - external address
+* `YALLTokenForeignMediator` `proxy owner` - external address
+
 ### Stage #2:
+![Stage #2 Deployment](../images/deployment-stage-2.svg)
 
 TBD...
 
 --------
 ## Development Stages
+✅ - Ready
+
+⚠️ - Minimal viable version + behaviour tests are ready, unit tests pending
+
+❌ - Pending
+
 ### Stage #1:
 
-* `YALLRegistry`
-* `YALLToken`
-* `YALLDistributor`
-* `YALLExchange`
+* ✅`YALLRegistry`
+* ✅`YALLToken`
+* ✅`YALLDistributor`
+* ✅`YALLExchange`
 
 ### Stage #2:
 
-* `YST`
-* `YALLStakingForeignMediator`
-* `YALLStakingHomeMediator`
+* ⚠️`YST`
+* ⚠️`YALLStakingForeignMediator`
+* ⚠️`YALLStakingHomeMediator`
+* ⚠️`YALLEmissionRewardPool`
+* ⚠️`YALLCommissionRewardPool`
+* ⚠️`YALLGovernance`
 
 ### Stage #3:
 
-* `YALLVerification`
-* `YALLEmissionRewardPool`
-* `YALLCommissionRewardPool`
-
-### Stage #4:
-
-* `YALLGovernance`
+* ❌`YALLVerification`
