@@ -18,7 +18,7 @@ The Stage #1 contract are deployed at `xDai` chain only.
 
 ## Contract list
 
-|Chain|Instance|Contract|Owner|Proxy Owner|Arbitrary ERC20 withdrawal|ETH Withdrawal|Pausable|
+|Chain|Instance Code|Contract|Owner|Proxy Owner|Arbitrary ERC20 withdrawal|ETH Withdrawal|Pausable|
 |---|---|---|---|---|---|---|---|
 |xDai|yallRegistry|YALLRegistry|extAdminMultiSig|extAdminMultiSig|no|no|no|
 |xDai|yallProxyAdmin|ProxyAdmin|extAdminMultiSig|no proxy|no|no|no|
@@ -37,8 +37,8 @@ The Stage #1 contract are deployed at `xDai` chain only.
 |FEE_CLAIMER|no one|reserved for future use|
 |PAUSER|external address|YALLExchange->pause()<br>YALLExchange->unpause()<br>YALLDistributor->pause()<br>YALLDistributor->unpause()<br>YALLToken->pause()<br>YALLToken->unpause()|
 | | | |
-|YALL_TOKEN_MINTER|`YALLDistributor`|YALLToken->mint()|
-|YALL_TOKEN_BURNER|`YALLDistributor`|YALLToken->burn()|
+|YALL_TOKEN_MINTER|`yallDistributor`|YALLToken->mint()|
+|YALL_TOKEN_BURNER|`yallDistributor`|YALLToken->burn()|
 |YALL_TOKEN_MANAGER|external address|YALLToken->setCanTransferWhitelistAddress()<br>YALLToken->setNoTransferFeeWhitelistAddress()<br>YALLToken->setTransferRestrictionMode()|
 | | | |
 |DISTRIBUTOR_MANAGER|external address|YALLDistributor->setEmissionPoolRewardShare()<br>YALLDistributor->setPeriodVolume()|
