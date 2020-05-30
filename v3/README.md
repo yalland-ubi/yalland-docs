@@ -13,13 +13,13 @@
 * `YALLVerification` - Verifier add/removal by `YALLGovernance`, member add/removal actions by a verifier;
 * [`YALLEmissionRewardPool`](./YALLEmissionRewardPool.md) - Emission distribution among verifiers and delegates;
 * [`YALLCommissionRewardPool`](./YALLCommissionRewardPool.md) - A system contracts commission, withdrawn and distributed among verifiers, delegates and (optionally) members;
-* `YALLTokenHomeMediator` - Bridges `YALLToken` with `YALLTokenEthereum`;
+* [`YALLTokenHomeMediator`](./YALLTokenMediators.md) - Bridges `YALLToken` with `YALLTokenEthereum`;
 * [`YALLStakingHomeMediator`](./YALLStakingHomeMediator.md) - A mediator with synced information from `YALLStakingForeignMediator`;
 
 ### Foreign Chain (Ethereum):
 * [`YALLTokenEthereum`](./YALLTokenEthereum.md) - An ERC20 token bridged with `YALLToken` on xDai chain;
 * [`YSTToken`](./YSTToken.md) - An ERC20 governance token for staking;
-* `YALLTokenForeignMediator` - Bridges `YALLTokenEthereum` with `YALLToken`;
+* [`YALLTokenForeignMediator`](./YALLTokenMediators.md) - Bridges `YALLTokenEthereum` with `YALLToken`;
 * [`YALLStakingForeignMediator`](./YALLStakingForeignMediator.md) - Checkpointable Staking & Foreign Mediator in-one contract;
 
 --------
