@@ -1,6 +1,6 @@
 # Deploy Stage #1
 
-The Stage #1 contract are deployed at `xDai` chain only.
+The Stage #1 contract are deployed at `xDai` and `Ethereum Mainnet` chains.
 
 ![Stage #1 Deployment](../images/deployment-stage-1.svg)
 
@@ -33,18 +33,18 @@ The Stage #1 contract are deployed at `xDai` chain only.
 
 |Role|Assigned to|Can call methods|
 |---|---|---|
-|FEE_MANAGER|external address|YALLExchange->setGsnFee()<br>YALLToken->setGsnFee()<br>YALLToken->setTransferFee()<br>YALLDistributor->setGsnFee()|
+|FEE_MANAGER|...|YALLExchange->setGsnFee()<br>YALLToken->setGsnFee()<br>YALLToken->setTransferFee()<br>YALLDistributor->setGsnFee()|
 |FEE_CLAIMER|no one|reserved for future use|
-|PAUSER|external address|YALLExchange->pause()<br>YALLExchange->unpause()<br>YALLDistributor->pause()<br>YALLDistributor->unpause()<br>YALLToken->pause()<br>YALLToken->unpause()|
+|PAUSER|...|YALLExchange->pause()<br>YALLExchange->unpause()<br>YALLDistributor->pause()<br>YALLDistributor->unpause()<br>YALLToken->pause()<br>YALLToken->unpause()|
 | | | |
 |YALL_TOKEN_MINTER|`yallDistributor`|YALLToken->mint()|
 |YALL_TOKEN_BURNER|`yallDistributor`|YALLToken->burn()|
-|YALL_TOKEN_MANAGER|external address|YALLToken->setCanTransferWhitelistAddress()<br>YALLToken->setNoTransferFeeWhitelistAddress()<br>YALLToken->setTransferRestrictionMode()|
+|YALL_TOKEN_MANAGER|...|YALLToken->setCanTransferWhitelistAddress()<br>YALLToken->setNoTransferFeeWhitelistAddress()<br>YALLToken->setTransferRestrictionMode()|
 | | | |
-|DISTRIBUTOR_MANAGER|external address|YALLDistributor->setEmissionPoolRewardShare()<br>YALLDistributor->setPeriodVolume()|
-|DISTRIBUTOR_VERIFIER|external address|YALLDistributor->addMembersBeforeGenesis()<br>YALLDistributor->addMembers()<br>YALLDistributor->addMember()<br>YALLDistributor->enableMembers()<br>YALLDistributor->disableMembers()<br>YALLDistributor->changeMemberAddresses()<br>YALLDistributor->changeMemberAddress()|
-|DISTRIBUTOR_EMISSION_CLAIMER|external address|YALLDistributor->distributeEmissionPoolReward()|
+|DISTRIBUTOR_MANAGER|...|YALLDistributor->setEmissionPoolRewardShare()<br>YALLDistributor->setPeriodVolume()|
+|DISTRIBUTOR_VERIFIER|...|YALLDistributor->addMembersBeforeGenesis()<br>YALLDistributor->addMembers()<br>YALLDistributor->addMember()<br>YALLDistributor->enableMembers()<br>YALLDistributor->disableMembers()<br>YALLDistributor->changeMemberAddresses()<br>YALLDistributor->changeMemberAddress()|
+|DISTRIBUTOR_EMISSION_CLAIMER|...|YALLDistributor->distributeEmissionPoolReward()|
 | | | |
-|EXCHANGE_MANAGER|external address|YALLExchange->setDefaultExchangeRate()<br>YALLExchange->setCustomExchangeRate()<br>YALLExchange->setTotalPeriodLimit()<br>YALLExchange->setDefaultMemberPeriodLimit()<br>YALLExchange->setCustomPeriodLimit()|
-|EXCHANGE_OPERATOR|external address|YALLExchange->closeOrder()<br>YALLExchange->cancelOrder()|
-|EXCHANGE_SUPER_OPERATOR|external address|YALLExchange->voidOrder()|
+|EXCHANGE_MANAGER|...|YALLExchange->setDefaultExchangeRate()<br>YALLExchange->setCustomExchangeRate()<br>YALLExchange->setTotalPeriodLimit()<br>YALLExchange->setDefaultMemberPeriodLimit()<br>YALLExchange->setCustomPeriodLimit()|
+|EXCHANGE_OPERATOR|...|YALLExchange->closeOrder()<br>YALLExchange->cancelOrder()|
+|EXCHANGE_SUPER_OPERATOR|...|YALLExchange->voidOrder()|
