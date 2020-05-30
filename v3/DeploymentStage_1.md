@@ -6,9 +6,9 @@ The Stage #1 contract are deployed at `xDai` chain only.
 
 |Code|Address|
 |---|---|
-|`adminMultiSig`| ... |
-|`feeCollector`| ... |
-|`gsnFeeCollector`| ... |
+|`extAdminMultiSig`| ... |
+|`extFeeCollector`| ... |
+|`extGsnFeeCollector`| ... |
 
 ## Initial values
 
@@ -18,14 +18,14 @@ The Stage #1 contract are deployed at `xDai` chain only.
 
 |Chain|Instance|Contract|Owner|Proxy Owner|Arbitrary ERC20 withdrawal|ETH Withdrawal|Pausable|
 |---|---|---|---|---|---|---|---|
-|xDai|yallRegistry|YALLRegistry|adminMultiSig|adminMultiSig|no|no|no|
-|xDai|yallProxyAdmin|ProxyAdmin|adminMultiSig|no proxy|no|no|no|
+|xDai|yallRegistry|YALLRegistry|extAdminMultiSig|extAdminMultiSig|no|no|no|
+|xDai|yallProxyAdmin|ProxyAdmin|extAdminMultiSig|no proxy|no|no|no|
 |xDai|yallToken|YALLToken|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
 |xDai|yallDistribution|YALLDistributor|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
 |xDai|yallExchange|YALLExhange|not ownable|yallProxyAdmin|only YALL by FEE_CLAIMER role|no|particular methods|
-|xDai|yallHomeMediator|YALLTokenHomeMediator|adminMultiSig|adminMultiSig|any ERC20 by a Proxy Owner|by a Proxy Owner|no|
-|Ethereum Mainnet|yallForeignMediator|YALLTokenForeignMediator|adminMultiSig|adminMultiSig|any ERC20 by a Proxy Owner|by a Proxy Owner|no|
-|Ethereum Mainnet|yallTokenEthereum|YALLTokenEthereum|adminMultiSig|no proxy|no|no|no|
+|xDai|yallHomeMediator|YALLTokenHomeMediator|extAdminMultiSig|extAdminMultiSig|any ERC20 by a Proxy Owner|by a Proxy Owner|no|
+|Ethereum Mainnet|yallForeignMediator|YALLTokenForeignMediator|extAdminMultiSig|extAdminMultiSig|any ERC20 by a Proxy Owner|by a Proxy Owner|no|
+|Ethereum Mainnet|yallTokenEthereum|YALLTokenEthereum|extAdminMultiSig|no proxy|no|no|no|
 
 ## ACL permissions list
 
