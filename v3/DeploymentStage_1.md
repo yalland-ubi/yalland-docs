@@ -43,7 +43,7 @@ The Stage #1 contract are deployed at `xDai` chain only.
 | | | |
 |DISTRIBUTOR_MANAGER|external address|YALLDistributor->setEmissionPoolRewardShare()<br>YALLDistributor->setPeriodVolume()|
 |DISTRIBUTOR_VERIFIER|external address|YALLDistributor->addMembersBeforeGenesis()<br>YALLDistributor->addMembers()<br>YALLDistributor->addMember()<br>YALLDistributor->enableMembers()<br>YALLDistributor->disableMembers()<br>YALLDistributor->changeMemberAddresses()<br>YALLDistributor->changeMemberAddress()|
-|DISTRIBUTOR_EMISSION_CLAIMER|external address|YALLDistributor->claimEmissionPoolReward()|
+|DISTRIBUTOR_EMISSION_CLAIMER|external address|YALLDistributor->distributeEmissionPoolReward()|
 | | | |
 |EXCHANGE_MANAGER|external address|YALLExchange->setDefaultExchangeRate()<br>YALLExchange->setCustomExchangeRate()<br>YALLExchange->setTotalPeriodLimit()<br>YALLExchange->setDefaultMemberPeriodLimit()<br>YALLExchange->setCustomPeriodLimit()|
 |EXCHANGE_OPERATOR|external address|YALLExchange->closeOrder()<br>YALLExchange->cancelOrder()|
