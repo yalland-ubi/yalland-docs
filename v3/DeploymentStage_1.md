@@ -45,6 +45,21 @@ The values not supposed to be imported from the previous contracts.
 * Name: "YALL Token Ethereum"
 * Symbol: "YALE"
 * Decimals: 18
+* Initial supply: 0
+
+#### YALLTokenHomeMediator
+
+* DAILY_LIMIT: ...
+* MAX_AMOUNT_PER_TX: ...
+* MIN_AMOUNT_PER_TX: ...
+* MEDIATOR_REQUEST_GAS_LIMIT: 2_000_000
+
+#### YALLTokenForeignMediator
+
+* DAILY_LIMIT: ...
+* MAX_AMOUNT_PER_TX: ...
+* MIN_AMOUNT_PER_TX: ...
+* MEDIATOR_REQUEST_GAS_LIMIT: 2_000_000
 
 ## Contract list
 
