@@ -13,8 +13,24 @@ The Stage #1 contract are deployed at `xDai` and `Ethereum Mainnet` chains.
 |`extGsnFeeCollector`| ... |
 
 ## Initial values
+The values not supposed to be imported from the previous contracts.
 
-* GSN Fee for all contracts: 100000 YALL (to prevent using it right now)
+#### Common
+
+* GSN Fee for all contracts: 100_000 YALL (to prevent from using it right now)
+
+#### YALLToken
+
+* Name: "YALL Token"
+* Symbol: "YALL"
+* Decimals: 18
+* Transfer Fee: 0.02%
+
+#### YALLTokenEthereum
+
+* Name: "YALL Token Ethereum"
+* Symbol: "YALE"
+* Decimals: 18
 
 ## Contract list
 
