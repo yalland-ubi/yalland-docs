@@ -25,6 +25,20 @@ The values not supposed to be imported from the previous contracts.
 * Symbol: "YALL"
 * Decimals: 18
 * Transfer Fee: 0.02%
+* TransferRestrictionsMode: `ONLY_MEMBERS_OR_WHITELIST`, other options: [`OFF`, `ONLY_MEMBERS`, `ONLY_WHITELIST`]
+* CanTransferWhitelist Addresses:
+  * `yallDistributor`
+  * `yallExchange`
+  * `yallHomeMediator`
+  * `extAdminMultiSig`
+  * `extFeeCollector`
+  * `extGsnFeeCollector`
+* NoTransferFeeWhitelist Addresses:
+  * `yallDistributor`
+  * `yallExchange`
+  * `yallHomeMediator`
+  * `extFeeCollector`
+  * `extGsnFeeCollector`
 
 #### YALLTokenEthereum
 
