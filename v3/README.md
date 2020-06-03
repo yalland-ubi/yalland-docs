@@ -10,7 +10,7 @@
 * [`YALLToken`](./YALLToken.md) - ERC20 token;
 * [`YALLDistributor`](./YALLDistributor.md) - Member accounting, emission distribution;
 * [`YALLExchange`](./YALLExchange.md) - smart contract for YALL exchange between program participants and non-profit organizations;
-* `YALLVerification` - Verifier add/removal by `YALLGovernance`, member add/removal actions by a verifier;
+* [`YALLVerification`](./YALLVerification.md) - Verifier add/removal by `YALLGovernance`, member add/removal actions by a verifier;
 * [`YALLEmissionRewardPool`](./YALLEmissionRewardPool.md) - Emission distribution among verifiers and delegates;
 * [`YALLCommissionRewardPool`](./YALLCommissionRewardPool.md) - A system contracts commission, withdrawn and distributed among verifiers, delegates and (optionally) members;
 * [`YALLTokenHomeMediator`](./YALLTokenMediators.md) - Bridges `YALLToken` with `YALLTokenEthereum`;
