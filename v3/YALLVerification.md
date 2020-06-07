@@ -5,6 +5,9 @@ The contract provides verifiers with an interface for user and verifier manageme
 
 Governance contract/address can perform setVerifiers actions on verifiers. Also, the protocol governance could anytime redeploy another instance of the contract and plug it into the system instead of the current one. This could happen if the current set of verifiers has become dishonest or there is another issue with the contract itself.
 
+Verificator details resemble member details behavior/structure in `YALLDistributor` contract. Data like `createdAt`,
+`disabledAt`, `enabledAt` is used to determine whether a validator eligible claiming a particular reward or not.
+
 ## Permissions
 
 ### Outbound
