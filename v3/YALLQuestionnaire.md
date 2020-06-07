@@ -53,7 +53,7 @@ Withdraws an unused deposit in YALLS if a questionnaire if `(stopped && now() < 
 
 ##### submitAnswers(uint256 questionnaireId, bytes32 answers)
 
-* Any active can member submit answers to the questionnaire.
+* Any active member can submit answers to the questionnaire.
 * A member can't submit answers twice for a particular questionnaire.
 * A questionnaire rewards in YALLs is transferred to the submitter within the same transaction.
 * Answers are stored in the storage.
