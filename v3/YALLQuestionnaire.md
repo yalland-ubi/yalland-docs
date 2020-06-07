@@ -13,6 +13,7 @@ struct Questionnaire {
 	activeTill: uint256; // Active till timestamp
 	deposit: uint256; // YALL Deposit
 	reward: uint256; // Reward per member
+	submissionCount: uint256;
 	mapping (address => Submission) // member => submission;
 }
 
