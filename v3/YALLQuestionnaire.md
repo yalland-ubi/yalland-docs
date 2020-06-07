@@ -59,3 +59,9 @@ Withdraws an unused deposit in YALLS if a questionnaire if `(stopped && now() < 
 * Answers are stored in the storage.
 * There are no checks for a submitted answer array since it resides off-chain.
 * Can't submit answers if the questionnaire deposit amount is not enough to pay out a member reward.
+
+### Getters
+
+##### getRemainingSubmissionSlots(uint256 questionnaireId)
+
+Returns `deposit / reward` rounded to the floor.
