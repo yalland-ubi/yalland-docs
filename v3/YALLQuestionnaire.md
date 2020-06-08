@@ -8,13 +8,13 @@ A questionnaire is backed by the following structs:
 ```solidity
 struct Questionnaire {
 	stopped: bool;
-	creator: address;
+	creator: bytes32; // memberId of a creator
 	details: string; // IPLD link
 	activeTill: uint256; // Active till timestamp
 	deposit: uint256; // YALL Deposit
 	reward: uint256; // Reward per member
 	submissionCount: uint256;
-	mapping (address => Submission) // member => submission;
+	mapping (bytes32 => Submission) // memberId => submission;
 }
 
 struct Submission {
