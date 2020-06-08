@@ -8,6 +8,25 @@ Governance contract/address can perform setVerifiers actions on verifiers. Also,
 Verificator details resemble member details behavior/structure in `YALLDistributor` contract. Data like `createdAt`,
 `disabledAt`, `enabledAt` is used to determine whether a validator eligible claiming a particular reward or not.
 
+Verifier details are backed by the following struct:
+
+```
+  struct Verifier {
+    bool active;
+
+    // used to vote on "add/disable member" proposals; 
+    address verificationAddress;
+    // used to claim rewards from pools;
+    address payoutAddress;
+    // used to set data (name, legal, etc)
+    address dataManagementAddress
+    
+    uint256 createdAt;
+    uint256 lastEnabledAt;
+    uint256 lastDisabledAt;
+  }
+```
+
 ## Permissions
 
 ### Outbound
@@ -29,10 +48,16 @@ YALLVerifierRegistry contract allows any active verifier set his details anytime
 
 ### Verifier Interface
 
+##### Scoped to a validators `verificationAddress`
+
 * submitTransaction() - an active verifier creates proposal by submitting arbitrarily encoded data
 * confirmTransaction() - an active verifier agrees on a proposed topic; executes a proposal in case if the required threshold has reached
 * revokeConfirmation() - an active verifiers revokes his vote
 * executeTransaction() - executes a non-executed yet proposal
+
+##### Scoped to a validators `rootAddress`
+
+* setVerifierAddresses() - an active verifier sets correspoinding `verificationAddress`, `payoutAddress`, `dataManagementAddress`
 
 ### VERIFICATION_MANAGER Interface
 
