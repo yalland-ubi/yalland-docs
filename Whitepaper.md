@@ -97,7 +97,7 @@ A certain percentage of the total YALL issuance (currently 10%) goes to the tota
 At the beginning of each token issuance period `YALL Distribution Contract` calls the `YALL ERC20 Contract`, which, in return mints, tokens on the `Emission Reward Pool contract`.
 Verifiers receive 5% of the emissions distributed in equal parts between them. Delegators receive 5% of the emission, distributed in proportion to their Stake.
 
-<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-6.png" alt="Emission pool" width="400"/></p>
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-6.png" alt="Emission pool" width="500"/></p>
 
 ### Commission Reward Pool
 All operations with YALL have a commission, which is established by the `Governance Proposal manager contract`. The commission from each transfer goes to the `Commission Reward Pool Contract`. Until the end of the initial YALL distribution, this commission is divided between the Verifiers (proportionally to total number of Verifiers) and the Delegators (proportionally to their own steak) in proportions determined by `Governance Proposal manager contract`.
