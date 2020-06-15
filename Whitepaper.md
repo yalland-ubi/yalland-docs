@@ -119,12 +119,12 @@ Voting takes place according to the following algorithm:
 
 `Support`, `duration` and `minimum support` can be changed.
 
-<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-8.png" alt="Governance" width="400"/></p>
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-8.png" alt="Governance" width="500"/></p>
 
 ### Gas Station Network
 To improve the user experience, the Gas Station Network is used. This system allows Member to pay a gas commission not with a network token, but with ERC20. A program participant creates a transaction in the wallet and sends it to the Relayer. The Relayer signs the transaction and sends it to the corresponding smart contracts via the GSN. Relayer pays for gas and receives a commission in YALL from Member.
 
-<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-9.png" alt="Governance" width="400"/></p>
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-9.png" alt="Governance" width="500"/></p>
 
 ### Development Roadmap
 |Period|Scope|Status|
