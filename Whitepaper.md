@@ -11,7 +11,7 @@ Meet Alice, Bob and Dan, Philanthropist and Speculator! Alice is a high income p
 - Alice also has 100 YALL. Unlike Bob, she consumes more goods, since she has a larger income. Since she supports UBI values and prefers to pay in YALL, she buys 100 YALL for 400 USD on the open market and pays 200 YALL to Dan;
 - Philanthropist periodically comes to the market and maintains the YALL rate, by buying them from the market;
 - And, of course, there is a Speculator on the market who buys and sells YALL willing to profit from price fluctuations. Sometimes he succeeds, sometimes not.
-<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/blob/master/images/yalland-4.png" alt="Yalland Basic economic principles" width="700"/></p>
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-4.png" alt="Yalland Basic economic principles" width="700"/></p>
 
 Thus, the wealthier and more successful Alice, Philanthropist and Speculator are through natural market mechanisms, the more support Bob receives in difficult times. The whole process takes place without unnecessary intermediaries represented by the state.
 ## Roles
@@ -32,7 +32,7 @@ In the future, it will be completely replaced by the second one.
 ### Delegated decentralized verification (DDV)
 YST token Holders' main task is to decentralize UBI system governance, add and remove Verifiers by voting. As a reward they receive a part of the YALL tokens emission from `Emission Reward Pool contract`.
 Each Verifier is a non-profit organization registered in the relevant jurisdiction in accordance with local laws. They identify UBI program participants and allow them to receive YALL tokens. For identification, they use documents, open sources and government databases. Also, they store personal data of participants strictly in accordance with local laws in a shared database. It is important to note that Verifiers must have a deposit both in YALL and YST tokens. If the Verifier is removed, its security deposit is debited in favor of the YST Holders.
-![Delegated decentralized verification](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-5.png)
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-5.png" alt="Delegated decentralized verification" width="700"/></p>
 ### Complete decentralized verification (CDV)
 TBD
 ### Verified user address change
@@ -41,7 +41,9 @@ To do this, the Program Member sends a transaction signed by the old private key
 ### Verified user address recovery
 In case of loss of the private key, the Program Member can restore its balance and change the old address to the new one.
 Verifiers perform this operation. After the identity of the program member is confirmed, Verifiers (one or several) confirm the change of the address. The `YALL Distribution Contract` contract burns YALL from old address and mints the same amount to the new one.
-![Verified user address recovery](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-10.png)
+
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-10.png" alt="Verified user address recovery" width="700"/></p>
+
 ## Yalland Tokens
 ### Yall ERC20 Token(YALL)
 #### Purpose
@@ -51,7 +53,9 @@ YALL has the following purposes:
 - a redistribution of excess profits. 
 #### Emission model
 Each program participant can receive YALL as a Universal Basic Income. YALL tokens are issued in periods of 7 days. The maximum number of YALL that can be issued per period is 275 000. 10% go to the `Reward Pool contract` to reward Verifiers and Delegators at the beginning of each period. The remaining 247 500 YALL is distributed among program participants. At the same time, each program participant must independently claim YALL by sending transaction to `YALL Distribution smart contract`, which has the right to mint tokens.
-![Emission model](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-3.png)
+
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-3.png" alt="Emission model" width="700"/></p>
+
 After 264,000,000 YALL is minted, YALL initial emission will cease and users will receive a weekly payment only from the Commission pool contract.
 #### YALL transfer between chains
 Tokens are transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). Thanks to this, YALL can be traded on centralized and decentralized exchanges. Mediator contracts are managed by `Governance Proposal manager contract`.
@@ -62,7 +66,9 @@ Tokens are transferable between Ethereum mainnet and xDai sidechain via Arbitrar
 - define mediator parameters: Min per transaction, Max per transaction, Transaction limit max per day.
 
 Any owner can send his/her YALL tokens to the Ethereum mainnet. To do this, Owner transfers his/her YALL to `YALL ERC20 MEDIATOR contract`. This contract, in turn, transmits the message through the AMB to the mediator, which is located in the Ethereum mainchain. `YALL ERC20 MEDIATOR` in Ethereum issues the correct amount of tokens. When sent back, Yall tokens are burned in Ethereum and released in xDai.
-![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-1.png)
+
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-1.png" alt="YALL Transfer between chains" width="700"/></p>
+
 ### Yall ERC20 Staking Token(YST)
 #### YST purpose
 YST has the following purposes:
@@ -73,7 +79,9 @@ YST has fixed supply, issued once, may not have additional emissions(minted) or 
 #### YST staking 
 YST token can be staked by their Owners on Ethereum mainnet. The Owner of the token sends it to the `YALL STAKING MEDIATOR contract`. The token is blocked in the contract and the Owner of the token receives a blocked balance, which is simultaneously available in both Ethereum and xDai. 
 Using this balance, the token holder can create proposals for upgrading smart contracts and changing their parameters, as well as, elect Verifiers.
-![YALL Transfer between chains](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-2.png)
+
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-2.png" alt="YST staking" width="700"/></p>
+
 #### YST transfer between chains
 Tokens are not transferable between Ethereum mainnet and xDai sidechain via Arbitrary Message Bridge (AMB). In the future, it is possible to be able to transfer tokens to ETH 2.0, Aragon chain, Yalland chain (if implemented) or any other reliable chain with high bandwidth and low transaction cost. 
 ### Emission Reward pool
@@ -81,14 +89,14 @@ A certain percentage of the total YALL issuance (currently 10%) goes to the tota
 At the beginning of each token issuance period `YALL Distribution Contract` calls the `YALL ERC20 Contract`, which, in return mints, tokens on the `Emission Reward Pool contract`.
 Verifiers receive 5% of the emissions distributed in equal parts between them. Delegators receive 5% of the emission, distributed in proportion to their Stake.
 
-![Emission pool](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-6.png)
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-6.png" alt="Emission pool" width="700"/></p>
 
 ### Commission Reward Pool
 All operations with YALL have a commission, which is established by the `Governance Proposal manager contract`. The commission from each transfer goes to the `Commission Reward Pool Contract`. Until the end of the initial YALL distribution, this commission is divided between the Verifiers (proportionally to total number of Verifiers) and the Delegators (proportionally to their own steak) in proportions determined by `Governance Proposal manager contract`.
 
 After the end of the initial YALL distribution, part of the commission goes to payments to program participants through YALL Distribution Contract.
 
-![Commission Reward Pool](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-7.png)
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-7.png" alt="Commission Reward Pool" width="700"/></p>
 
 ### Governance
 Decentralized governance of the Yalland UBI system is performed by Delegators. They stake YST token to smart contract on Ethereum mainnet and vote by their stake. They can vote on different chains (Ethereum and xDai) simultaneosly. They upgrade smart contract, elect verifiers and set contract parameters. All those operations are performed by `Governance Proposal manager contract`. Delegators create proposals and vote for them. 
@@ -103,12 +111,13 @@ Voting takes place according to the following algorithm:
 
 `Support`, `duration` and `minimum support` can be changed.
 
-![Governance](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-8.png)
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-8.png" alt="Governance" width="700"/></p>
 
 ### Gas Station Network
 To improve the user experience, the Gas Station Network is used. This system allows Member to pay a gas commission not with a network token, but with ERC20. A program participant creates a transaction in the wallet and sends it to the Relayer. The Relayer signs the transaction and sends it to the corresponding smart contracts via the GSN. Relayer pays for gas and receives a commission in YALL from Member.
 
-![Governance](https://github.com/yalland-ubi/yalland-docs/blob/master/images/yalland-9.png)
+<p align="center"> <img src="https://raw.githubusercontent.com/yalland-ubi/yalland-docs/master/images/yalland-9.png" alt="Governance" width="700"/></p>
+
 ### Development Roadmap
 |Period|Scope|Status|
 |-----|-------|-------|
