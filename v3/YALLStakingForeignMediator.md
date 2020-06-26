@@ -34,7 +34,7 @@ Since being deposited, the cached values can be used by:
 
 * A delegate can lock a part or entier stake if he want to become a verifier.
 * The locked stake serves as a deposit to protect protocol from the delegate malicious behaviour.
-* The locked stake can be slashed by a governance contract.
+* The locked stake can be slashed by a `locked_stake_slasher` address set by a governance contract.
 * When the locked stake changes, a bridge sends a correspondive message with an updated value from mainnet to xDai
 
 ## Bridge interface 
@@ -95,7 +95,7 @@ CoolDownBox {
 ```
 
 A delegate can unlock his stake with exclusion of the locked value. For ex. if Alice has 30K stake and 20K of this stake is locked, she could unstake only 10K.
-If she wants to unstake the entire stake of 30K, she should unlock it first, and only after unlocking she would be able unstaking the entier 30K stake.
+If she wants to unstake the entire stake of 30K, she should unlock it first, and only after unlocking she would be able unstaking the entire 30K stake.
 
 ##### #lock(uint256 _amount)
 
@@ -103,15 +103,7 @@ A delegate locks his stake
 
 * Requires that the current staked balance is greater than.
 * When locked, the current stake is not decremented.
-* The Foreign bridge notifies the Home bridge about locke balance update.
-
-##### #unlock(uint256 _amount)
-
-A delegate unlocks his stake
-
-* When unlocked, the current stake is not incremented.
-* The Foreign bridge notifies the Home bridge about locke balance update.
-* The unlocked amount immediately becomes available for unstaking.
+* The Foreign bridge notifies the Home bridge about locked balance update.
 
 ##### #releaseCoolDownBox(uint256 _coolDownBoxId)
 
