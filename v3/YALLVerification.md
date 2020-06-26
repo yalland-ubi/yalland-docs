@@ -50,8 +50,8 @@ YALLVerifierRegistry contract allows any active verifier set his details anytime
 
 ##### Scoped to a validators `verificationAddress`
 
-* submitTransaction() - an active verifier creates proposal by submitting arbitrarily encoded data
-* confirmTransaction() - an active verifier agrees on a proposed topic; executes a proposal in case if the required threshold has reached
+* submitTransaction() - an active verifier creates proposal by submitting arbitrarily encoded data. Checks that a msg.sender conforms for a minimal locked stake requirement.
+* confirmTransaction() - an active verifier agrees on a proposed topic; executes a proposal in case if the required threshold has reached. Checks that a msg.sender conforms for a minimal locked stake requirement.
 * revokeConfirmation() - an active verifiers revokes his vote
 * executeTransaction() - executes a non-executed yet proposal
 
@@ -63,3 +63,4 @@ YALLVerifierRegistry contract allows any active verifier set his details anytime
 
 * setVerifiers(newVerifiers[], newM) - Sets multiple verifiers. The methods walks through the existing verifier set and disables them, if they are not presented in existing. This behaviour requires a nested for-loop, but it is the simpliest way to implement it.
 * changeRequirement(newM) - Set a new M value.
+* setVerifierMinimalLockedStake(minimalLockedStake) - Sets a minimal locked stake.
