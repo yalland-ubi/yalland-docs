@@ -8,9 +8,9 @@ The Stage #1 contract are deployed at `xDai` and `Ethereum Mainnet` chains.
 
 |Code|Address|
 |---|---|
-|`extAdminMultiSig`| ... |
-|`extFeeCollector`| ... |
-|`extGsnFeeCollector`| ... |
+|`extAdminMultiSig`| 0x10cB408e1285d840CACed4d730dF2359e3d56444 |
+|`extFeeCollector`| 0x10cB408e1285d840CACed4d730dF2359e3d56444 |
+|`extGsnFeeCollector`| 0x10cB408e1285d840CACed4d730dF2359e3d56444 |
 
 ## Initial values
 The values not supposed to be imported from the previous contracts.
@@ -24,8 +24,8 @@ The values not supposed to be imported from the previous contracts.
 * Name: "YALL Token"
 * Symbol: "YALL"
 * Decimals: 18
-* Transfer Fee: 0.02%
-* TransferRestrictionsMode: `ONLY_MEMBERS_OR_WHITELIST`, other options: [`OFF`, `ONLY_MEMBERS`, `ONLY_WHITELIST`]
+* Transfer Fee: 0%
+* TransferRestrictionsMode: `OFF`, other options: [`OFF`, `ONLY_MEMBERS`, `ONLY_WHITELIST`, `ONLY_MEMBERS_OR_WHITELIST`]
 * CanTransferWhitelist Addresses:
   * `yallDistributor`
   * `yallExchange`
@@ -49,18 +49,18 @@ The values not supposed to be imported from the previous contracts.
 
 #### YALLTokenHomeMediator
 
-* DAILY_LIMIT (outbound): ...
-* MAX_AMOUNT_PER_TX (outbound): ...
-* MIN_AMOUNT_PER_TX (outbound): ...
+* DAILY_LIMIT (outbound): 500_000
+* MAX_AMOUNT_PER_TX (outbound): 500_000
+* MIN_AMOUNT_PER_TX (outbound): 500_000
 * EXECUTION_DAILY_LIMIT (inbound): `DAILY_LIMIT` value from a Foreign Mediator
 * MAX_AMOUNT_PER_TX (inbound): `MAX_AMOUNT_PER_TX` value from a Foreign Mediator
 * MEDIATOR_REQUEST_GAS_LIMIT: 2_000_000
 
 #### YALLTokenForeignMediator
 
-* DAILY_LIMIT (outbound): ...
-* MAX_AMOUNT_PER_TX (outbound): ...
-* MIN_AMOUNT_PER_TX (outbound): ...
+* DAILY_LIMIT (outbound): 500_000
+* MAX_AMOUNT_PER_TX (outbound): 500_000
+* MIN_AMOUNT_PER_TX (outbound): 500_000
 * EXECUTION_DAILY_LIMIT (inbound): `DAILY_LIMIT` value from a Home Mediator
 * MAX_AMOUNT_PER_TX (inbound): `MAX_AMOUNT_PER_TX` value from a Home Mediator
 * MEDIATOR_REQUEST_GAS_LIMIT: 2_000_000
