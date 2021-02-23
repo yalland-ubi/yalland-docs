@@ -30,6 +30,13 @@ Since being deposited, the cached values can be used by:
 * YALLEmissionRewardPool, by calculating a delegator reward amount proportional to the stake he has;
 * YALLCommissionRewardPool, by calculating a delegator reward amount proportional to the stake he has;
 
+## Stake locking
+
+* A delegate can lock a part or entier stake if he want to become a verifier.
+* The locked stake serves as a deposit to protect protocol from the delegate malicious behaviour.
+* The locked stake can be slashed by a `locked_stake_slasher` address set by a governance contract.
+* When the locked stake changes, a bridge sends a correspondive message with an updated value from mainnet to xDai
+
 ## Bridge interface 
 
 ## Interface
@@ -64,6 +71,10 @@ Sets a request gas limit in weis
 
 Sets a new coolDownPeriodLength in seconds. The change won't affect the existings boxes.
 
+##### #slashLockedStake(address _delegate, uint256 _amount)
+
+The governance contract can slash any locked stake. Decrements both staked value and locked stake value. Creates a new cooldownbox with a beneficiary assigned to the governance contract.
+
 ### YST Holder Interface
 
 ##### #stake(uint256 _amount)
@@ -83,6 +94,17 @@ CoolDownBox {
 }
 ```
 
+A delegate can unlock his stake with exclusion of the locked value. For ex. if Alice has 30K stake and 20K of this stake is locked, she could unstake only 10K.
+If she wants to unstake the entire stake of 30K, she should unlock it first, and only after unlocking she would be able unstaking the entire 30K stake.
+
+##### #lock(uint256 _amount)
+
+A delegate locks his stake
+
+* Requires that the current staked balance is greater than.
+* When locked, the current stake is not decremented.
+* The Foreign bridge notifies the Home bridge about locked balance update.
+
 ##### #releaseCoolDownBox(uint256 _coolDownBoxId)
 
 A delegator releases a cooldown box if he is eligible to do that.
@@ -93,3 +115,6 @@ A delegator releases a cooldown box if he is eligible to do that.
 
 The AMB sync process in this bridge is not bidirectional but has one direction from `Foreign` to `Home` networks. In order to save this simplicity of the protocol, this fix message pattern used by most AMB bridges to fix the failed transactions was ignored. The only type of transaction that could fail is `#setBalance(address _delegator, uint256 _timestamp, uint256 _balance)` method call. Since the value sent to the `Home` bridge can't be changed later, the most convenient way to fix a failed transaction is to send this value again. So this method allows anyone to sync an already existing cache record in this contract.
 
+##### #syncLockedBalance(address _delegator)
+
+Sends AMB message to `Home` chain with the current locked balance of a delegator.

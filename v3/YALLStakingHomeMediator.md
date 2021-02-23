@@ -28,3 +28,7 @@ This could happen in the following case:
 - Someone tries manually update the first transaction balance using `YALLStakingForeignMediator->syncCachedBalance()`
 
 Although the foreign mediator store both balance changes, the home mediator will store only the last change. The first transaction update will be lost permanently and won't be accounted for by contracts like governance or reward distribution pools.
+
+##### #setLockedBalance(address _delogator, uint256 _balance)
+
+AMB updates a current locked balance value. The is no need for caching it.
